@@ -12,7 +12,9 @@
 > 🧠 Cerebro insemastereo ✅ (2026-06-19, `brain:check` SANO, commit fundacional `2f3e0bc`).
 > 🎨 **Mirror de la landing ✅ CONSTRUIDO y VERIFICADO** (vanilla 1:1 del handoff, ADR-A): `index.html` en la
 > raíz + `src/{styles,js/landing,assets}`. Verificado en navegador real: 18 secciones, GSAP, i18n ES↔EN,
-> 0 errores de consola, fuentes/assets OK. ✅ **PUBLICADO y AL AIRE** (`https://insemastereo.github.io/`). **Siguiente gran capítulo: migrar el LABORATORIO (ADR-B)** de PROTOTIPO al diseño nuevo.
+> 0 errores de consola, fuentes/assets OK. ✅ **PUBLICADO y AL AIRE** (`https://insemastereo.github.io/`).
+>
+> ⏸️ **PROYECTO EN PAUSA (dueño 2026-06-19)**: el demo queda AL AIRE estable — **NO cambiar proactivamente**. Retomar = paso **demo→real** (streaming en vivo · cuentas usuario · chat real · video cabina → `99` ADR-B §8) + migrar el laboratorio. **El dueño avisará cuándo y cómo continuar.**
 >
 > **🚫 Callejones sin salida (NO reintentar)**:
 > (a) **NO Astro / NO build** (ADR-A): incompatible con el i18n runtime (muta el DOM) + scripts globales.
@@ -35,6 +37,7 @@
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
+| **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
 
 ---
 

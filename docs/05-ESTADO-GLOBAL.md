@@ -16,6 +16,7 @@
 - 🔒 **ADR-B (futuro)**: Firebase client-side + datos de MENORES en repo público → Security Rules = única barrera. Tensión repo público vs privado.
 - 📋 **Decisiones del dueño**: SEO bilingüe (TODO-05; default adoptado = toggle runtime, fuera de alcance del demo) · 2ª opinión Gemini (TODO-06, opcional).
 - ✅ **Verificación del mirror (2026-06-19)**: corrige un supuesto del comité — el preview de Claude **SÍ corre GSAP**; lo que se cuelga es `preview_screenshot` (→ L-04).
+- ⏸️ **PAUSA (dueño 2026-06-19)**: demo AL AIRE estable; **NO cambiar proactivamente**. Retomar = demo→real (streaming/auth/chat/video, `99` ADR-B §8) + laboratorio; el dueño avisará.
 
 ## 🧩 Sub-sistemas
 cerebro ✅ · kernel ×4 ✅ · **landing mirror ✅ AL AIRE** · laboratorio (ADR-B) 🔮 ← siguiente capítulo
