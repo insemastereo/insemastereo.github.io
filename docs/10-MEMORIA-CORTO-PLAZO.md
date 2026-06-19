@@ -30,7 +30,7 @@
 | **TODO-01** | Cerebro: 8 nodos + `brain:check` SANO + commit fundacional | ✅ | — |
 | **TODO-02** | **Mirror de la landing** (vanilla 1:1: 18 secciones, dock, hero-snap, i18n, GSAP) | ✅ verificado | — |
 | **TODO-03** | **Fixes ortogonales**: `rel=preload` (Outfit 800 + PJS + hero webp) · canonical real · sitemap.xml · robots.txt · 404.html · OG + JSON-LD (`aria-live` del toggle ya venía) | ✅ | — |
-| **TODO-04** | **Publicar** (L-01): `.nojekyll` en el commit · add selectivo · push `main` · Settings>Pages (dueño) | 🔄 en curso | — |
+| **TODO-04** | **Publicar**: commit ✅ (`.nojekyll` + add selectivo). **Push BLOQUEADO 403** (credencial = `altorracars` ≠ `insemastereo`, L-05) → dueño arregla credencial → `git push -u origin main` → Settings>Pages | 🔄 | 🔑 credencial (dueño) |
 | **TODO-05** | **Decisión dueño**: SEO bilingüe real vs toggle runtime (default adoptado = toggle, fuera de alcance demo) | ⏳ dueño | — |
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
