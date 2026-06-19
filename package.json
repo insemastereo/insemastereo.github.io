@@ -1,0 +1,11 @@
+{
+  "name": "insemastereo.github.io",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Landing ECOVOCES IA — INSEMA STEREO (vanilla, GitHub Pages). Cerebro documental + kernel byte-idéntico con la familia (altorracars/bersaglio/inmobiliaria).",
+  "scripts": {
+    "brain:check": "node scripts/brain-check.mjs",
+    "brain:diff": "node scripts/brain-diff.mjs"
+  }
+}

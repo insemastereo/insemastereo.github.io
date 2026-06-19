@@ -1,0 +1,19 @@
+# Dependencias / build (vanilla no usa node_modules en runtime; solo tooling futuro)
+node_modules/
+dist/
+.vite/
+
+# Secrets (NUNCA al repo público)
+.env
+.env.*
+!.env.example
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Pesados que NO van al repo público (ADR-A · blindaje pre-publicación)
+# PNG originales 2048+ (~58M) — usar solo los .webp optimizados en web
+Multimedia/
+_archive/

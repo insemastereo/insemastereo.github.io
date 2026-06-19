@@ -1,0 +1,52 @@
+{
+  "brainTemplateVersion": "1.1.0",
+  "repo": "insemastereo",
+  "_comment": "Config INSTANCE del cerebro (topes/budgets). El linter scripts/brain-check.mjs es KERNEL idéntico ×4 repos (canon = bersaglio); estos budgets son por-repo. Replicado de altorracars 2026-06-19 (ADR-A/ADR-B del comité de sustrato). chars = unidad real de contexto. NO auto-cargado: solo lo lee el linter.",
+  "bootCharsTarget": 28000,
+  "alwaysOn": [
+    "CLAUDE.md",
+    "docs/05-ESTADO-GLOBAL.md",
+    "docs/10-MEMORIA-CORTO-PLAZO.md"
+  ],
+  "_caps_trinquete": "Trinquete: bajar el cap es libre; SUBIRLO exige ADR citado. Topes iniciales = familia hermana (bersaglio/inmobiliaria) ajustados a un cerebro recién nacido.",
+  "caps": {
+    "CLAUDE.md": { "lines": 320, "chars": 27000 },
+    "docs/05-ESTADO-GLOBAL.md": { "lines": 25, "chars": 4000 },
+    "docs/10-MEMORIA-CORTO-PLAZO.md": { "lines": 110, "chars": 12000 },
+    "docs/20-MEMORIA-ESPACIAL.md": { "lines": 280, "chars": 16000 },
+    "docs/30-LECCIONES.md": { "lines": 350, "chars": 40000 },
+    "docs/00-INDICE.md": { "lines": 450, "chars": 16000 },
+    "docs/40-LOBULOS-DOMINIO.md": { "lines": 280, "chars": 14000 }
+  },
+  "archiveDir": "../brain-private/insemastereo/research-archive",
+  "specsDir": "docs/superpowers/specs",
+  "staleDays": 10,
+  "peers": [
+    "../altorracars.github.io",
+    "../bersagliojewelry.github.io",
+    "../altorrainmobiliaria.github.io"
+  ],
+  "kernelFiles": [
+    "scripts/brain-check.mjs",
+    "scripts/brain-diff.mjs"
+  ],
+  "ssotFacts": [
+    {
+      "regex": "w11-\\d+",
+      "owner": "docs/05-ESTADO-GLOBAL.md",
+      "scan": [
+        "CLAUDE.md",
+        "docs/10-MEMORIA-CORTO-PLAZO.md"
+      ],
+      "_que": "la versión de cache-bust ?v=w11-N vive SOLO en 05 (ADR-A §4). CLAUDE.md/10 usan el placeholder genérico w11-N (sin dígitos), nunca el número vigente."
+    }
+  ],
+  "deepAudit": {
+    "last": "2026-06-19",
+    "coveredHeaderCount": 3,
+    "maxAdrGap": 12,
+    "maxDays": 30,
+    "_que": "Cerebro instalado 2026-06-19 (baseline, sin auditoría Nivel-2 aún). coveredHeaderCount = headers '## ' actuales en 99 (§0 Génesis + ADR-A + ADR-B)."
+  },
+  "orphanAllowlist": []
+}
