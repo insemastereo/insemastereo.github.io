@@ -30,7 +30,7 @@
 | **TODO-01** | Cerebro: 8 nodos + `brain:check` SANO + commit fundacional | ✅ | — |
 | **TODO-02** | **Mirror de la landing** (vanilla 1:1: 18 secciones, dock, hero-snap, i18n, GSAP) | ✅ verificado | — |
 | **TODO-03** | **Fixes ortogonales**: `rel=preload` (Outfit 800 + PJS + hero webp) · canonical real · sitemap.xml · robots.txt · 404.html · OG + JSON-LD (`aria-live` del toggle ya venía) | ✅ | — |
-| **TODO-04** | **Publicar**: commit ✅ (`.nojekyll` + add selectivo). **Push BLOQUEADO 403** (credencial = `altorracars` ≠ `insemastereo`, L-05) → dueño arregla credencial → `git push -u origin main` → Settings>Pages | 🔄 | 🔑 credencial (dueño) |
+| **TODO-04** | **Publicar**: commit ✅ + **push ✅** (`altorracars` colaborador resolvió L-05). Falta: confirmar/activar **Settings>Pages** (Source=`main` /root) → URL live | 🔄 casi | Settings>Pages (dueño) |
 | **TODO-05** | **Decisión dueño**: SEO bilingüe real vs toggle runtime (default adoptado = toggle, fuera de alcance demo) | ⏳ dueño | — |
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
@@ -42,4 +42,5 @@
 > - **2026-06-19 ⟦Opus 4.8⟧**: cerebro fundacional (commit `2f3e0bc`) + comité de sustrato (vanilla > Astro).
 >   Luego **mirror construido**: assets/CSS/JS verbatim del handoff → `src/`; `index.html` con rutas
 >   reescritas + `<head>` mejorado (drop Google Fonts → self-hosted + preloads + canonical + OG + JSON-LD +
->   cache-bust `?v=w11-N`). **Verificado en navegador** (0 errores, fuentes/i18n/assets OK). Siguiente: publicar.
+>   cache-bust `?v=w11-N`). **Verificado en navegador** (0 errores, fuentes/i18n/assets OK).
+> - **2026-06-19 · push ✅**: el dueño revocó el token expuesto + añadió `altorracars` como colaborador (resuelto L-05) → push de los 3 commits a `origin/main`. Pendiente: activar Settings>Pages.

@@ -6,9 +6,9 @@
 | Señal | Valor (última actualización: **2026-06-19**) |
 |---|---|
 | **Build** | 🧠 Cerebro ✅. 🎨 **Mirror de la landing CONSTRUIDO y VERIFICADO** en navegador real: 18 secciones · GSAP corriendo · i18n ES↔EN · **0 errores de consola** · fuentes self-hosted (Outfit 800 + Plus Jakarta Sans) · assets cargan · hero video `readyState=4`. Laboratorio = futuro (ADR-B). |
-| **LIVE / publicado** | ⏳ Mirror commiteado (`e29516e`). **Push BLOQUEADO: 403** — git autenticado como `altorracars`, sin acceso al repo de `insemastereo` (L-05). Falta: **el dueño arregla la credencial → push → Settings>Pages** (Source=`main` /root). 1er deploy ~10 min + 404 transitorio = normal (L-01). |
+| **LIVE / publicado** | ✅ **PUSHEADO a GitHub** (`origin/main`, 3 commits; añadir `altorracars` como colaborador resolvió el 403/L-05). ⏳ **GitHub Pages**: confirmar/activar en Settings>Pages (Source=`main` /root). URL `https://insemastereo.github.io/` en ~10 min (404 transitorio = normal, L-01). |
 | **Cache vigente** | **`w11-1`** (primer build del mirror). Vive SOLO aquí (SSoT). Bump en cada cambio de comportamiento (§4 · L-02). |
-| **Branch / git** | Local `main`; remoto `origin` declarado. Commit fundacional del cerebro + commit del mirror. Verificado vs git 2026-06-19 (§3.3). |
+| **Branch / git** | Local `main` == `origin/main` (**pusheado ✓** 2026-06-19, 3 commits). `altorracars` = colaborador del repo. Verificado vs git real (§3.3). |
 | **Sustrato** | **Vanilla sin build** (ADR-A · comité ×3). Astro descartado. Vite CONDICIONAL. |
 
 ## ⚠️ Flags de riesgo activos
