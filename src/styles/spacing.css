@@ -1,0 +1,41 @@
+/* ==========================================================================
+   ECOVOCES IA — spacing.css
+   Ritmo vertical y layout. Radios CALMADOS estilo Win11 (8/12/18/24 — evita
+   esquinas "app" de 40px+). Espaciado fluido con clamp().
+   ========================================================================== */
+:root{
+  /* ---- Radios (calmados, Win11) ---- */
+  --w11-r-sm:4px;
+  --w11-r:8px;
+  --w11-r-lg:12px;
+  --w11-r-xl:18px;
+  --w11-r-pill:999px;
+  --r-section:24px;  /* esquinas de bandas/cierre */
+
+  /* aliases */
+  --radius-sm:var(--w11-r-sm);
+  --radius:var(--w11-r);
+  --radius-lg:var(--w11-r-lg);
+  --radius-xl:var(--w11-r-xl);
+  --radius-pill:var(--w11-r-pill);
+
+  /* ---- Espaciado base (escala de 4px) ---- */
+  --space-1:.25rem;
+  --space-2:.5rem;
+  --space-3:.75rem;
+  --space-4:1rem;
+  --space-5:1.5rem;
+  --space-6:2rem;
+  --space-8:3rem;
+
+  /* ---- Espaciado fluido (secciones / gaps de grid) ---- */
+  --w11-section:clamp(3.5rem,8vw,6.5rem); /* @kind spacing */
+  --w11-gap:clamp(1rem,2vw,1.5rem);         /* gap entre tarjetas */
+  --space-section:var(--w11-section);
+  --space-gap:var(--w11-gap);
+
+  /* ---- Anchos de contenido ---- */
+  --w11-content:1160px;  /* ancho máximo estándar */
+  --w11-narrow:880px;    /* columnas de texto / cierre */
+  --content-max:var(--w11-content);
+}

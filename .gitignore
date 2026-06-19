@@ -17,3 +17,6 @@ Thumbs.db
 # PNG originales 2048+ (~58M) — usar solo los .webp optimizados en web
 Multimedia/
 _archive/
+
+# Handoff de diseño = fuente de referencia (el sitio servido vive en src/). No al repo público.
+design_handoff_ecovoces_landing/

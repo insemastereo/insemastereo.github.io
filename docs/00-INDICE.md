@@ -16,7 +16,7 @@
 | Especificación pixel-perfect del diseño (tokens, 18 secciones, interacciones) | `design_handoff_ecovoces_landing/README.md` |
 | Voy a **publicar** a GitHub Pages / `.nojekyll` / 404 transitorio | 🧪 `30` L-01 + `CLAUDE.md §3.5` |
 | Cache / `?v=w11-N` / el dueño no ve el cambio | 🧪 `30` L-02 + `CLAUDE.md §4` (la N vigente → `05`) |
-| El motion no se ve / GSAP / cómo verificar animaciones | 🧪 `30` L-03 (el preview no corre GSAP; navegador real) |
+| El motion no se ve / GSAP / cómo verificar animaciones | 🧪 `30` L-03 + L-04 (verificar en navegador real; `preview_eval`+console, NO `preview_screenshot`) |
 | ¿Por qué vanilla y no Astro/React? | 📚 `99` §1 (ADR-A) + bóveda comité |
 | Laboratorio / migrarlo / Firebase / datos de menores | 📚 `99` §2 (ADR-B) + 🎯 `40`→`41-SEGURIDAD` |
 | 🔵 Audita SEGURIDAD / rules / datos de menores | 🎯 `41-SEGURIDAD` (on-demand) + skill `arquitecto-software` |

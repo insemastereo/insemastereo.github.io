@@ -1,0 +1,788 @@
+<!-- ECOVOCES IA — Landing (handoff mirror). Fuente de verdad visual; recrear en el codebase destino. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ECOVOCES IA">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2315935a'/%3E%3Cpath d='M12 5a2.4 2.4 0 0 0-2.4 2.4v4.2a2.4 2.4 0 0 0 4.8 0V7.4A2.4 2.4 0 0 0 12 5Z' fill='white'/%3E%3Cpath d='M16.5 11v1a4.5 4.5 0 0 1-9 0v-1' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>document.documentElement.className += " js";</script>
+  <title>ECOVOCES IA — Donde se escucha el cambio</title>
+  <meta name="description" content="ECOVOCES IA, el proyecto estrella de innovación de INSEMA STEREO (la emisora escolar de INSEMA, Cartagena): radio escolar + IA + cultura Maker para la sostenibilidad. Piloto 2026.">
+  <meta name="theme-color" content="#f4f6f9">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2315935a'/%3E%3Cpath d='M12 5a2.4 2.4 0 0 0-2.4 2.4v4.2a2.4 2.4 0 0 0 4.8 0V7.4A2.4 2.4 0 0 0 12 5Z' fill='white'/%3E%3Cpath d='M16.5 11v1a4.5 4.5 0 0 1-9 0v-1' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  
+  
+  <link rel="canonical" href="https://insemastereo.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://insemastereo.github.io/">
+  <meta property="og:title" content="ECOVOCES IA — Donde se escucha el cambio">
+  <meta property="og:description" content="Radio escolar + IA + cultura Maker para la sostenibilidad. El proyecto estrella de INSEMA STEREO, Cartagena. Piloto 2026.">
+  <meta property="og:image" content="https://insemastereo.github.io/src/assets/img/escena-radio.webp">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Fuentes self-hosted (offline, $0). Preload del display del H1 (Outfit 800) + cuerpo + poster del hero (LCP). -->
+  <link rel="preload" href="src/assets/fonts/Outfit-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="src/assets/fonts/PlusJakartaSans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="src/assets/img/escena-laboratorio.webp" as="image" fetchpriority="high">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"INSEMA STEREO — ECOVOCES IA","alternateName":"Ondas Verdes","url":"https://insemastereo.github.io/","description":"Radio escolar, Inteligencia Artificial y cultura Maker para la sostenibilidad. Proyecto de INSEMA, Cartagena de Indias.","address":{"@type":"PostalAddress","addressLocality":"Cartagena de Indias","addressRegion":"Bolivar","addressCountry":"CO"}}</script>
+  <link rel="stylesheet" href="src/styles/tokens.css?v=w11-1">
+  <link rel="stylesheet" href="src/styles/landing.css?v=w11-1">
+  <script src="src/assets/js/vendor/gsap.min.js?v=w11-1" defer></script>
+  <script src="src/assets/js/vendor/ScrollTrigger.min.js?v=w11-1" defer></script>
+  <script src="src/js/landing/landing2.i18n.js?v=w11-1" defer></script>
+  <script src="src/js/landing/core.js?v=w11-1" defer></script>
+  <script src="src/js/landing/magnet.js?v=w11-1" defer></script>
+  <script src="src/js/landing/award.motion.js?v=w11-1" defer></script>
+  <script src="src/js/landing/foliage.js?v=w11-1" defer></script>
+  <script src="src/js/landing/comunidad.js?v=w11-1" defer></script>
+  <script src="src/js/landing/dock.js?v=w11-1" defer></script>
+  <script src="src/js/landing/herosnap.js?v=w11-1" defer></script>
+</head>
+
+<body class="ev">
+  <!-- LOADER -->
+  <div class="ev-loader" id="loader" aria-hidden="true">
+    <div class="ev-loader__word">Escucha</div>
+    <div class="ev-loader__count">000</div>
+    <div class="ev-loader__bar"><i></i></div>
+    <div class="ev-loader__skip">Toca para entrar</div>
+  </div>
+
+  <a href="#manifiesto" class="ev-skip">Saltar al contenido</a>
+  <div class="ev-progress" aria-hidden="true"><i id="progressbar"></i></div>
+  <div class="ev-strip" aria-hidden="true"></div>
+
+  <!-- FOLLAJE AMBIENTAL — motor botánico (canvas): hojas tropicales con profundidad, viento, parallax, motas de luz -->
+  <canvas class="ev-flora" id="flora" aria-hidden="true"></canvas>
+
+  <!-- NAV -->
+  <header class="ev-nav">
+    <div class="ev-nav__bar">
+      <a class="ev-brand" href="#hero" aria-label="INSEMA STEREO — proyecto ECOVOCES IA, inicio">
+        <span class="ev-brand__seal"><img src="src/assets/img/insema-logo-128.webp" width="42" height="42" alt=""></span>
+        <span class="ev-brand__copy">
+          <span class="ev-brand__name">INSEMA&nbsp;STEREO</span>
+          <span class="ev-brand__sub" id="brand-sub">Proyecto ECOVOCES IA</span>
+        </span>
+      </a>
+      <nav class="ev-nav__links" aria-label="Principal">
+        <a class="ev-navlink" href="#manifiesto" id="nav-proyecto" data-mega="proyecto" aria-expanded="false">El proyecto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+        <a class="ev-navlink" href="#metodo" id="nav-metodo" data-mega="metodo" aria-expanded="false">Metodología
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+        <a class="ev-navlink" href="#programa" id="nav-programa">Programación</a>
+        <a class="ev-navlink" href="#maker" id="nav-maker">Maker</a>
+        <a class="ev-navlink" href="#metas" id="nav-impacto">Impacto</a>
+        <a class="ev-navlink" href="#roles" id="nav-equipo">Equipo</a>
+        <a class="ev-navlink" href="#emisora" id="nav-comunidad">Comunidad</a>
+      </nav>
+      <div class="ev-nav__right">
+        <span class="ev-pill-school" id="nav-school">INSEMA · Cartagena</span>
+        <button id="lang-toggle" class="ev-langbtn" aria-label="Switch language to English" aria-live="polite">
+          <span class="lang-text">EN</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </button>
+        <a class="ev-navlogin" href="#lab" id="nav-login">Ingresar</a>
+        <button class="ev-burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+
+    <!-- Mega-menú: El proyecto -->
+    <div class="ev-mega" data-mega-panel="proyecto">
+      <div class="ev-mega__card">
+        <div class="ev-mega__col">
+          <h4 id="mp-1-h">El proyecto</h4>
+          <a href="#manifiesto" id="mp-1-a">Qué es ECOVOCES IA <span id="mp-1-as">Radio + IA + Maker sobre ABP</span></a>
+          <a href="#reto" id="mp-1-b">El reto local <span id="mp-1-bs">Residuos, agua y zonas verdes</span></a>
+          <a href="#retos" id="mp-1-c">Los 3 retos ambientales <span id="mp-1-cs">EcoPuntos · Gotas · Mercedes Verde</span></a>
+        </div>
+        <div class="ev-mega__col">
+          <h4 id="mp-2-h">Sostén</h4>
+          <a href="#metas" id="mp-2-a">Metas piloto 2026 <span id="mp-2-as">Con su instrumento de medición</span></a>
+          <a href="#honestidad" id="mp-2-b">Honestidad técnica <span id="mp-2-bs">Qué es real y qué es simulación</span></a>
+          <a href="#beneficiarios" id="mp-2-c">A quién alcanza <span id="mp-2-cs">Estudiantes, docentes, familias</span></a>
+        </div>
+        <div class="ev-mega__feat">
+          <b id="mp-feat-t">Ondas Verdes</b>
+          <p id="mp-feat-d">La emisora del proyecto: 16 emisiones quincenales al año en INSEMA STEREO.</p>
+          <a class="ev-btn ev-btn--on-dark ev-btn--ghost ev-btn--sm" href="#programa" id="mp-feat-c">Ver la parrilla</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mega-menú: Metodología -->
+    <div class="ev-mega" data-mega-panel="metodo">
+      <div class="ev-mega__card">
+        <div class="ev-mega__col">
+          <h4 id="mm-1-h">Cómo funciona</h4>
+          <a href="#metodo" id="mm-1-a">El ciclo ABP <span id="mm-1-as">Investigar → Crear → Comunicar → Transformar</span></a>
+          <a href="#programa" id="mm-1-b">Estructura del programa <span id="mm-1-bs">7 bloques, 20 minutos al aire</span></a>
+          <a href="#cronograma" id="mm-1-c">Cronograma del piloto <span id="mm-1-cs">4 fases con hitos medibles</span></a>
+        </div>
+        <div class="ev-mega__col">
+          <h4 id="mm-2-h">Aprendizaje</h4>
+          <a href="#evaluacion" id="mm-2-a">Evaluación auténtica <span id="mm-2-as">Rúbrica formativa en tiempo real</span></a>
+          <a href="#roles" id="mm-2-b">Los 7 roles del equipo <span id="mm-2-bs">Rotación equitativa de competencias</span></a>
+          <a href="#maker" id="mm-2-c">Cultura Maker <span id="mm-2-cs">Sensores de bajo costo, problemas reales</span></a>
+        </div>
+        <div class="ev-mega__feat">
+          <b id="mm-feat-t">Competencias del MEN</b>
+          <p id="mm-feat-d">Lectura crítica, pensamiento crítico, oralidad, producción textual, cultura ambiental y ciudadanía.</p>
+          <a class="ev-btn ev-btn--on-dark ev-btn--ghost ev-btn--sm" href="#metodo" id="mm-feat-c">Ver el método</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- DRAWER móvil -->
+  <div class="ev-drawer" id="drawer" aria-hidden="true">
+    <nav class="ev-drawer__nav" aria-label="Menú móvil"></nav>
+    <a class="ev-btn ev-btn--primary js-lab-link" href="#lab">Entrar al laboratorio</a>
+  </div>
+
+  <main>
+    <!-- HERO — tarjeta enmarcada (isla flotante sobre el lienzo) -->
+    <section class="ev-hero" id="hero" aria-labelledby="hero-h1" data-screen-label="Hero">
+      <div class="ev-hero__card">
+        <video class="ev-hero__video" autoplay loop muted playsinline poster="src/assets/img/escena-laboratorio.webp" aria-hidden="true">
+          <source src="src/assets/video/recorrido-laboratorio.mp4" type="video/mp4">
+        </video>
+        <div class="ev-hero__scrim" aria-hidden="true"></div>
+
+        <!-- Bloque central -->
+        <div class="ev-hero__content">
+          <div class="ev-hero__bar">
+            <h1 class="ev-hero__title" id="hero-h1"><span class="ev-line"><span>La radio que</span></span> <span class="ev-line"><span class="em">enciende</span></span> <span class="ev-line"><span>el cambio.</span></span></h1>
+            <p class="ev-hero__lead" id="hero-sub">El proyecto estrella de innovación de la emisora escolar de INSEMA: aquí la voz de los estudiantes se vuelve acción ambiental con radio, IA y cultura maker.</p>
+            <div class="ev-hero__actions">
+              <a class="ev-btn ev-btn--primary js-lab-link" href="#lab" id="hero-cta2">Entrar al laboratorio<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="ev-btn ev-hero__btn-ghost" href="#manifiesto" id="hero-cta1">Conoce el proyecto</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Isla dinámica (faux cutout): emisora en vivo · futura: notificaciones -->
+        <a class="ev-hero__corner js-emisora-open" href="#emisora" aria-label="Escuchar Ondas Verdes en vivo">
+          <span class="ev-hero__cut ev-hero__cut--top" aria-hidden="true"></span>
+          <span class="ev-hero__cut ev-hero__cut--left" aria-hidden="true"></span>
+          <span class="ev-hero__corner-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.14v14l11-7-11-7Z" fill="currentColor" stroke="none"/></svg>
+            <span class="ev-hero__corner-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          </span>
+          <span class="ev-hero__corner-txt">
+            <b id="hero-listen-t">Ondas Verdes</b>
+            <span class="ev-hero__corner-sub"><span class="ev-hero__livedot" aria-hidden="true"></span><span id="hero-listen-l">Escuchar en vivo</span></span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Scroll cue: franja derecha del marco -->
+      <a class="ev-scrollcue" href="#manifiesto" aria-label="Desplazar al contenido">
+        <span class="ev-scrollcue__word" id="scrollcue">Scroll</span>
+        <span class="ev-scrollcue__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+      </a>
+    </section>
+
+    <!-- MANIFIESTO -->
+    <section class="ev-section" id="manifiesto" aria-labelledby="mani-h">
+      <div class="ev-marquee" aria-hidden="true">
+        <div class="ev-marquee__row">
+          <span class="ev-marquee__item">Radio escolar</span><span class="ev-marquee__item alt">Inteligencia Artificial</span><span class="ev-marquee__item">Cultura Maker</span><span class="ev-marquee__item alt">ABP ambiental</span><span class="ev-marquee__item">Pensamiento crítico</span><span class="ev-marquee__item alt">Sostenibilidad</span>
+          <span class="ev-marquee__item">Radio escolar</span><span class="ev-marquee__item alt">Inteligencia Artificial</span><span class="ev-marquee__item">Cultura Maker</span><span class="ev-marquee__item alt">ABP ambiental</span><span class="ev-marquee__item">Pensamiento crítico</span><span class="ev-marquee__item alt">Sostenibilidad</span>
+        </div>
+      </div>
+      <div class="ev-wrap">
+        <p class="ev-manifesto" id="mani-h" data-split data-em="radio|voz|datos|acción|cambio">Convertimos la radio escolar en un laboratorio donde la voz se vuelve datos, los datos se vuelven acción y la acción se vuelve cambio.</p>
+      </div>
+    </section>
+
+    <!-- EMISORA EN VIVO + COMUNIDAD -->
+    <section class="ev-section" id="emisora" aria-labelledby="emisora-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="emisora-eyebrow">Sintoniza Ondas Verdes</span>
+          <h2 class="ev-h2" id="emisora-h">Dale play a la emisora y únete a la conversación.</h2>
+          <p class="ev-sub" id="emisora-sub">La radio del proyecto, al aire — y una sala donde la comunidad comenta cada emisión en vivo.</p>
+        </div>
+        <div class="ev-player ev-reveal" id="player" data-playing="false">
+          <div class="ev-player__art">
+            <img src="src/assets/img/escena-radio.webp" alt="Recreación: cabina de Ondas Verdes al aire (visualización)" loading="lazy">
+            <span class="ev-player__livetag"><span class="ev-player__livedot"></span>EN VIVO</span>
+          </div>
+          <div class="ev-player__main">
+            <span class="ev-player__station"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11a7 7 0 0 1 14 0M8 11a4 4 0 0 1 8 0M12 11v9M9 20h6"/></svg>Ondas Verdes · INSEMA STEREO</span>
+            <h3 class="ev-player__title" id="player-title">EcoPuntos: El Reto de la Botella</h3>
+            <span class="ev-player__block" id="player-block">Bloque 4 · Voz estudiantil — al aire ahora</span>
+            <div class="ev-player__viz" id="player-viz" aria-hidden="true"></div>
+            <div class="ev-player__controls">
+              <button class="ev-player__play" id="player-play" type="button" aria-pressed="false" aria-label="Reproducir la emisora en vivo">
+                <svg class="ev-player__ico ev-player__ico--play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="ev-player__ico ev-player__ico--pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+              </button>
+              <div class="ev-player__statusgroup">
+                <span class="ev-player__status" id="player-status">Toca para escuchar en vivo</span>
+                <span class="ev-player__listeners"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><path d="M4 14a2 2 0 0 1 2 2v2a2 2 0 0 1-4 0v-2a2 2 0 0 1 2-2zM20 14a2 2 0 0 0-2 2v2a2 2 0 0 0 4 0v-2a2 2 0 0 0-2-2z"/></svg><b id="player-count">128</b>&nbsp;escuchando</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ev-chat ev-reveal" id="comunidad">
+          <div class="ev-chat__main">
+            <header class="ev-chat__bar">
+              <span class="ev-chat__room"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Sala general · Ondas Verdes</span>
+              <span class="ev-chat__online"><span class="ev-chat__odot"></span><span id="chat-online">23</span> en línea</span>
+            </header>
+            <ol class="ev-chat__feed" id="chat-feed" aria-live="polite"></ol>
+            <form class="ev-chat__composer" id="chat-form" autocomplete="off">
+              <span class="ev-chat__meav" id="chat-meav" aria-hidden="true">Tú</span>
+              <input class="ev-chat__input" id="chat-input" type="text" maxlength="240" placeholder="Escribe un mensaje…" aria-label="Escribe un mensaje">
+              <button class="ev-chat__send" type="submit" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+            </form>
+            <div class="ev-chat__gate" id="chat-gate">
+              <div class="ev-chat__gatecard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <b id="gate-t">Solo miembros registrados pueden comentar</b>
+                <p id="gate-d">Ingresa tu nombre para unirte a la conversación de la comunidad.</p>
+                <form class="ev-chat__join" id="chat-join" autocomplete="off">
+                  <input id="join-name" type="text" maxlength="28" placeholder="Tu nombre o seudónimo" aria-label="Tu nombre">
+                  <button class="ev-btn ev-btn--primary ev-btn--sm" type="submit" id="join-btn">Unirme</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <aside class="ev-chat__side">
+            <div class="ev-chat__sideblock">
+              <h4 id="side-online-h">En línea ahora</h4>
+              <ul class="ev-chat__members" id="chat-members"></ul>
+            </div>
+            <div class="ev-chat__sideblock">
+              <h4 id="side-topics-h">Temas de la semana</h4>
+              <div class="ev-chat__topics">
+                <span class="ev-chat__topic c-res">#EcoPuntos</span><span class="ev-chat__topic c-agua">#GotasDeConciencia</span><span class="ev-chat__topic c-jard">#MercedesVerde</span><span class="ev-chat__topic c-mak">#Maker</span>
+              </div>
+            </div>
+            <p class="ev-chat__note" id="side-note">Demo de comunidad: los mensajes se guardan solo en tu navegador.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL RETO -->
+    <section class="ev-section" id="reto" aria-labelledby="reto-h">
+      <div class="ev-wrap ev-reto">
+        <div class="ev-reveal">
+          <span class="ev-eyebrow" id="reto-eyebrow">El reto local</span>
+          <div class="ev-reto__big ev-grad">−15%</div>
+          <p class="ev-sub" id="reto-sub" style="margin-top:.6rem">Es la meta: reducir los residuos plásticos del patio y la cafetería. Pero el reto se oye todos los días en INSEMA.</p>
+        </div>
+        <ul class="ev-reto__list ev-reveal ev-reveal--right">
+          <li><span class="ev-reto__ico" style="background:var(--w11-accent-soft);color:var(--w11-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg></span><span id="reto-1">Toneladas de plástico sin medición ni gestión organizada.</span></li>
+          <li><span class="ev-reto__ico" style="background:var(--w11-blue-soft);color:var(--w11-blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span><span id="reto-2">Agua que se va por grifos que quedan abiertos.</span></li>
+          <li><span class="ev-reto__ico" style="background:var(--w11-accent-soft);color:var(--w11-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span><span id="reto-3">Patios que piden sombra y más verde.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3 RETOS -->
+    <section class="ev-section" id="retos" aria-labelledby="retos-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-head--center ev-reveal">
+          <span class="ev-eyebrow" id="retos-eyebrow">Tres retos reales</span>
+          <h2 class="ev-h2" id="retos-h">Un mismo método, tres frentes de acción.</h2>
+          <p class="ev-sub" id="retos-sub">Cada reto del PRAE se convierte en un episodio, una campaña y una solución Maker de bajo costo con sensores.</p>
+        </div>
+        <div class="ev-retogrid">
+          <article class="ev-rcard ev-rcard--res ev-reveal">
+            <div class="ev-rcard__media"><span class="ev-rcard__tag">Residuos</span><span class="ev-rcard__ods"><span>ODS 11</span><span>ODS 12</span></span><img src="src/assets/img/escena-maker.webp" alt="Recreación: estación maker con contenedores y sensores (visualización)"></div>
+            <div class="ev-rcard__body"><span class="ev-rcard__sensor">HC-SR04 · ultrasónico</span><h3 id="rc-1-t">EcoPuntos: El Reto de la Botella</h3><p id="rc-1-d">Contenedores inteligentes que miden el nivel de llenado y una campaña de puntos por salón para reducir el plástico.</p></div>
+          </article>
+          <article class="ev-rcard ev-rcard--agua ev-reveal">
+            <div class="ev-rcard__media"><span class="ev-rcard__tag">Agua</span><span class="ev-rcard__ods"><span>ODS 6</span><span>ODS 12</span></span><img src="src/assets/img/lab-espacio.webp" alt="Recreación: laboratorio con zona de agua (visualización)"></div>
+            <div class="ev-rcard__body"><span class="ev-rcard__sensor">YF-S201 · caudal</span><h3 id="rc-2-t">Gotas de Conciencia</h3><p id="rc-2-d">Grifos con sensor de caudal y electroválvula de corte automático que cuidan cada gota de agua.</p></div>
+          </article>
+          <article class="ev-rcard ev-rcard--jard ev-reveal">
+            <div class="ev-rcard__media"><span class="ev-rcard__tag">Jardines</span><span class="ev-rcard__ods"><span>ODS 11</span><span>ODS 13</span></span><img src="src/assets/img/escena-laboratorio.webp" alt="Recreación: jardín vertical y laboratorio (visualización)"></div>
+            <div class="ev-rcard__body"><span class="ev-rcard__sensor">Humedad · relé</span><h3 id="rc-3-t">Mercedes Verde</h3><p id="rc-3-d">Jardín vertical en botellas PET con sensor de humedad de suelo y bomba por relé para reverdecer el patio.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTODO ABP -->
+    <section class="ev-section" id="metodo" aria-labelledby="metodo-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="metodo-eyebrow">El método</span>
+          <h2 class="ev-h2" id="metodo-h">De la pregunta al aire, en cuatro pasos.</h2>
+          <p class="ev-sub" id="metodo-sub">El ciclo de Aprendizaje Basado en Proyectos articula cada emisión y conecta cada paso con su competencia del currículo nacional.</p>
+        </div>
+        <div class="ev-steps" style="margin-top:1.7rem">
+          <article class="ev-step ev-reveal"><span class="ev-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><span class="ev-step__idx">01 / 04</span><h3 id="paso1-t">Investigar</h3><p id="paso1-d">Elegimos un reto ambiental real del colegio y verificamos los datos.</p><span class="ev-step__tag" id="paso1-tag">Lectura + pensamiento crítico · ODS 6 y 12</span></article>
+          <article class="ev-step ev-reveal"><span class="ev-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span class="ev-step__idx">02 / 04</span><h3 id="paso2-t">Crear</h3><p id="paso2-d">Diseñamos la solución Maker con sensores y co-escribimos el guion.</p><span class="ev-step__tag" id="paso2-tag">Producción textual · DBA Lenguaje 6-9</span></article>
+          <article class="ev-step ev-reveal"><span class="ev-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3ZM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></span><span class="ev-step__idx">03 / 04</span><h3 id="paso3-t">Comunicar</h3><p id="paso3-d">Grabamos en cabina y lo emitimos en Ondas Verdes.</p><span class="ev-step__tag" id="paso3-tag">Oralidad · Estándares de Lenguaje</span></article>
+          <article class="ev-step ev-reveal"><span class="ev-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></span><span class="ev-step__idx">04 / 04</span><h3 id="paso4-t">Transformar</h3><p id="paso4-d">La comunidad actúa y medimos el impacto contra la línea base.</p><span class="ev-step__tag" id="paso4-tag">Competencias ciudadanas · PRAE · ODS 4, 11, 13</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONDAS VERDES / PROGRAMA + PARRILLA -->
+    <section class="ev-section" id="programa" aria-labelledby="programa-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-head--center ev-reveal">
+          <span class="ev-eyebrow" id="programa-eyebrow">Ondas Verdes · en vivo</span>
+          <h2 class="ev-h2" id="programa-h">20 minutos al aire, 7 bloques fijos.</h2>
+          <p class="ev-sub" id="programa-sub">Cada emisión mantiene la misma estructura para que el equipo rote roles sin perder el formato. Lo que cambia es el reto del mes.</p>
+        </div>
+        <div class="ev-rundown ev-reveal">
+          <div class="ev-rundown__bar" role="img" aria-label="20 minutos al aire repartidos en 7 bloques">
+            <span class="ev-rundown__seg" data-c="1" style="flex:7.5"><span class="ev-rundown__segt">1:30</span></span>
+            <span class="ev-rundown__seg" data-c="2" style="flex:15"><span class="ev-rundown__segt">3:00</span></span>
+            <span class="ev-rundown__seg" data-c="3" style="flex:15"><span class="ev-rundown__segt">3:00</span></span>
+            <span class="ev-rundown__seg" data-c="4" style="flex:25"><span class="ev-rundown__segt">5:00</span></span>
+            <span class="ev-rundown__seg" data-c="5" style="flex:15"><span class="ev-rundown__segt">3:00</span></span>
+            <span class="ev-rundown__seg" data-c="6" style="flex:12.5"><span class="ev-rundown__segt">2:30</span></span>
+            <span class="ev-rundown__seg" data-c="7" style="flex:10"><span class="ev-rundown__segt">2:00</span></span>
+          </div>
+          <div class="ev-rundown__scale"><span>0:00</span><span class="ev-rundown__total">20:00 al aire</span></div>
+          <ol class="ev-rundown__list">
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="1"></span><span class="ev-rundown__name" id="blk-1">Apertura y cortina<span id="blk-1s">Saludo, identificación y lema</span></span><span class="ev-rundown__time">1:30</span></li>
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="2"></span><span class="ev-rundown__name" id="blk-2">Reto ambiental del mes<span id="blk-2s">Línea base y meta de la quincena</span></span><span class="ev-rundown__time">3:00</span></li>
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="3"></span><span class="ev-rundown__name" id="blk-3">Dato con IA<span id="blk-3s">Una cifra verificable (simulación)</span></span><span class="ev-rundown__time">3:00</span></li>
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="4"></span><span class="ev-rundown__name" id="blk-4">Voz estudiantil / entrevista<span id="blk-4s">Testimonio o reportaje de campo</span></span><span class="ev-rundown__time">5:00</span></li>
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="5"></span><span class="ev-rundown__name" id="blk-5">Maker en cabina<span id="blk-5s">Reporte del prototipo de sensores</span></span><span class="ev-rundown__time">3:00</span></li>
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="6"></span><span class="ev-rundown__name" id="blk-6">Llamado a la acción<span id="blk-6s">Invitación concreta y medible</span></span><span class="ev-rundown__time">2:30</span></li>
+            <li class="ev-rundown__row"><span class="ev-rundown__dot" data-c="7"></span><span class="ev-rundown__name" id="blk-7">Cierre y créditos<span id="blk-7s">Recapitulación y próximo episodio</span></span><span class="ev-rundown__time">2:00</span></li>
+          </ol>
+        </div>
+        <div class="ev-parrilla ev-reveal">
+          <div class="ev-parrilla__head">
+            <span class="ev-eyebrow" id="parrilla-eyebrow">Parrilla piloto 2026</span>
+            <h3 id="parrilla-h">16 emisiones quincenales.</h3>
+          </div>
+            <div class="ev-parrilla__rail">
+              <button class="ev-parrilla__arrow ev-parrilla__arrow--prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="ev-parrilla__scroller">
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-res">Residuos</span><span class="ev-ep__date">Feb</span></div><h4>EcoPuntos: El Reto de la Botella</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">19:40</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-res">Residuos</span><span class="ev-ep__date">Feb</span></div><h4>La Botella Habla: línea base</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/lab-espacio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:30</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-agua">Agua</span><span class="ev-ep__date">Mar</span></div><h4>Gotas de Conciencia</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/lab-espacio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">21:10</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-agua">Agua</span><span class="ev-ep__date">Mar</span></div><h4>Cada Grifo Cuenta · YF-S201</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-laboratorio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-jard">Jardines</span><span class="ev-ep__date">Abr</span></div><h4>Mercedes Verde: el jardín</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-laboratorio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">19:50</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-jard">Jardines</span><span class="ev-ep__date">Abr</span></div><h4>Raíces en Botellas PET</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:20</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-res">Residuos</span><span class="ev-ep__date">May</span></div><h4>Reciclar es Ritmo</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-res">Residuos</span><span class="ev-ep__date">May</span></div><h4>El Patio sin Plástico: +15%</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/lab-espacio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">21:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-agua">Agua</span><span class="ev-ep__date">Jun</span></div><h4>Sensores que Cuidan el Agua</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-laboratorio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">19:30</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-jard">Jardines</span><span class="ev-ep__date">Jul</span></div><h4>El Patio Reverdece</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:10</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-res">Residuos</span><span class="ev-ep__date">Ago</span></div><h4>EcoPuntos II: el reto crece</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/lab-espacio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-agua">Agua</span><span class="ev-ep__date">Sep</span></div><h4>Gotas III: ahorro acumulado</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-laboratorio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">19:45</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-jard">Jardines</span><span class="ev-ep__date">Sep</span></div><h4>Cosecha de Aprendizajes</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:30</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-res">Residuos</span><span class="ev-ep__date">Oct</span></div><h4>Medimos lo que Logramos</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-radio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">20:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-agua">Agua</span><span class="ev-ep__date">Nov</span></div><h4>Voces que Transforman</h4></div></a>
+              <a class="ev-ep" href="#lab"><div class="ev-ep__poster"><img src="src/assets/img/escena-radio.webp" alt="" loading="lazy"><span class="ev-ep__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-ep__dur">22:00</span></div><div class="ev-ep__body"><div class="ev-ep__meta"><span class="ev-ep__reto r-all">Balance</span><span class="ev-ep__date">Nov</span></div><h4>Donde se Escucha el Cambio</h4></div></a>
+            </div>
+              <button class="ev-parrilla__arrow ev-parrilla__arrow--next" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- 7 ROLES -->
+    <section class="ev-section" id="roles" aria-labelledby="roles-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="roles-eyebrow">El equipo radial</span>
+          <h2 class="ev-h2" id="roles-h">Siete roles, una redacción que rota.</h2>
+          <p class="ev-sub" id="roles-sub">Cada estudiante asume un rol con un entregable verificable. La rotación garantiza que todos ejerciten el espectro completo de competencias.</p>
+        </div>
+        <div class="ev-roles" style="margin-top:1.7rem">
+          <article class="ev-role ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4M12 17v4M8 21h8"/></svg></span><h3 id="rol-1-t">Director(a) de programa</h3><p id="rol-1-d">Define el tema, distribuye tareas y coordina los tiempos del equipo.</p><span class="ev-role__out" id="rol-1-o">Entregable: <b>escaleta + acta</b></span></article>
+          <article class="ev-role ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 4 4 5-6"/></svg></span><h3 id="rol-2-t">Investigador(a) de datos</h3><p id="rol-2-d">Busca, verifica y selecciona datos del reto. Distingue fuente confiable de rumor.</p><span class="ev-role__out" id="rol-2-o">Entregable: <b>ficha de datos verificados</b></span></article>
+          <article class="ev-role ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span><h3 id="rol-3-t">Guionista</h3><p id="rol-3-d">Convierte los datos en guion con gancho, desarrollo y llamado a la acción.</p><span class="ev-role__out" id="rol-3-o">Entregable: <b>guion del episodio</b></span></article>
+          <article class="ev-role ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3ZM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></span><h3 id="rol-4-t">Locutor(a) / Presentador(a)</h3><p id="rol-4-d">Ensaya y graba la locución: dicción, ritmo, entonación y pausas.</p><span class="ev-role__out" id="rol-4-o">Entregable: <b>pista de audio grabada</b></span></article>
+          <article class="ev-role ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM2 9h2M2 15h2M20 9h2M20 15h2M9 2v2M15 2v2M9 20v2M15 20v2"/></svg></span><h3 id="rol-5-t">Operador(a) y Maker</h3><p id="rol-5-d">Monta y prueba el cableado del sensor y opera la mezcla de audio en cabina.</p><span class="ev-role__out" id="rol-5-o">Entregable: <b>diagrama de cableado validado</b></span></article>
+          <article class="ev-role ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><h3 id="rol-6-t">Reportero(a) de campo</h3><p id="rol-6-d">Recoge testimonios y evidencia en el patio y la cafetería.</p><span class="ev-role__out" id="rol-6-o">Entregable: <b>audios de entrevista + bitácora</b></span></article>
+          <article class="ev-role ev-role--wide ev-reveal"><span class="ev-role__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4zM8 9h8M8 12h5"/></svg></span><div class="ev-role__txt"><h3 id="rol-7-t">Community / archivo</h3><p id="rol-7-d">Redacta la pieza de difusión y documenta el avance de la meta.</p></div><span class="ev-role__out" id="rol-7-o">Entregable: <b>pieza publicada + archivo</b></span></article>
+          <div class="ev-rot ev-reveal" id="rol-rot"><b>Rotación obligatoria:</b> cada estudiante pasa por al menos <b>3 roles distintos</b> en el semestre. Nadie se especializa temprano; todos acceden al micrófono, a la decisión y a la cabina.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVALUACIÓN -->
+    <section class="ev-section" id="evaluacion" aria-labelledby="eval-h">
+      <div class="ev-wrap ev-split">
+        <div class="ev-reveal">
+          <span class="ev-eyebrow" id="eval-eyebrow">Evaluación auténtica · diferenciador</span>
+          <h2 class="ev-h2" id="eval-h">¿Cómo sabemos que sí aprenden?</h2>
+          <p class="ev-sub" id="eval-sub">Una rúbrica formativa en tiempo real, alineada a competencias del MEN, que evalúa el guion mientras el estudiante escribe.</p>
+          <p style="color:var(--w11-text-2);margin-top:1rem" id="eval-proof">Determinista y transparente: el mismo guion recibe siempre la misma valoración, y el estudiante entiende cómo mejorar.</p>
+          <a class="ev-btn ev-btn--primary js-lab-link" href="#lab" id="eval-cta" style="margin-top:1.4rem">Velo en vivo en el laboratorio</a>
+        </div>
+        <div class="ev-rubric ev-reveal ev-reveal--right" aria-hidden="true">
+          <div class="ev-rubric__head"><b id="eval-card-title">Evaluación de la Orientadora</b><span class="ev-medal">Oro</span></div>
+          <ul>
+            <li><span id="eval-d1">Legibilidad</span><span class="ev-bar"><i data-val="88"></i></span><b>88</b></li>
+            <li><span id="eval-d2">Estructura</span><span class="ev-bar"><i data-val="80"></i></span><b>80</b></li>
+            <li><span id="eval-d3">Oralidad</span><span class="ev-bar"><i data-val="92"></i></span><b>92</b></li>
+            <li><span id="eval-d4">Evidencia ambiental</span><span class="ev-bar"><i data-val="84"></i></span><b>84</b></li>
+            <li><span id="eval-d5">Lenguaje inclusivo</span><span class="ev-bar"><i data-val="76"></i></span><b>76</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- METAS PILOTO -->
+    <section class="ev-section" id="metas" aria-labelledby="metas-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-head--center ev-reveal">
+          <span class="ev-metas-badge" id="metas-badge">METAS PILOTO 2026</span>
+          <h2 class="ev-h2" id="metas-h">Resultados que prometemos medir.</h2>
+          <p class="ev-sub" id="metas-sub">Metas honestas, no logros: cada una parte de cero y tiene su instrumento de medición.</p>
+        </div>
+        <div class="ev-kpis">
+          <article class="ev-kpi ev-reveal"><div class="ev-kpi__num"><span class="js-count" data-target="15">0</span><span class="u">%</span></div><p class="ev-kpi__label" id="kpi1-l">Menos residuos plásticos en patio y cafetería</p><p class="ev-kpi__inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg><span id="kpi1-i">Pesaje mensual vs. línea base</span></p></article>
+          <article class="ev-kpi ev-reveal"><div class="ev-kpi__num"><span class="js-count" data-target="80">0</span><span class="u">%</span></div><p class="ev-kpi__label" id="kpi2-l">Estudiantes en nivel Alto/Superior en la rúbrica</p><p class="ev-kpi__inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg><span id="kpi2-i">Rúbrica formativa de guion</span></p></article>
+          <article class="ev-kpi ev-reveal"><div class="ev-kpi__num"><span class="js-count" data-target="16">0</span></div><p class="ev-kpi__label" id="kpi3-l">Emisiones al año de Ondas Verdes</p><p class="ev-kpi__inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg><span id="kpi3-i">Registro de parrilla quincenal</span></p></article>
+          <article class="ev-kpi ev-reveal"><div class="ev-kpi__num">+<span class="js-count" data-target="1">0</span></div><p class="ev-kpi__label" id="kpi4-l">Nivel de avance en lectura crítica</p><p class="ev-kpi__inst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg><span id="kpi4-i">Pre/post-test a grupo focal</span></p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="ev-section" id="cronograma" aria-labelledby="crono-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="crono-eyebrow">Cronograma del piloto</span>
+          <h2 class="ev-h2" id="crono-h">Un año escolar, cuatro fases, hitos medibles.</h2>
+        </div>
+        <div class="ev-phases">
+          <div class="ev-phase ev-reveal"><div class="ev-phase__rail"><span class="ev-phase__dot">Feb</span><span class="ev-phase__line"></span></div><div class="ev-phase__card"><span class="ev-phase__when" id="fase1-w">Febrero 2026</span><h3 id="fase1-t">Línea base e instalación</h3><p id="fase1-d">Pesaje inicial de residuos, instalación de los contenedores con HC-SR04 y pre-test de lectura crítica.</p><span class="ev-phase__milestone" id="fase1-m">★ Hito: línea base registrada (27 feb)</span></div></div>
+          <div class="ev-phase ev-reveal"><div class="ev-phase__rail"><span class="ev-phase__dot">Mar</span><span class="ev-phase__line"></span></div><div class="ev-phase__card"><span class="ev-phase__when" id="fase2-w">Marzo 2026</span><h3 id="fase2-t">Roles y alfabetización Maker/IA</h3><p id="fase2-d">Conformación del equipo radial, simulador de cableado y primera corrida del evaluador de guion.</p><span class="ev-phase__milestone" id="fase2-m">★ Hito: parrilla anual aprobada (27 mar)</span></div></div>
+          <div class="ev-phase ev-reveal"><div class="ev-phase__rail"><span class="ev-phase__dot">Abr</span><span class="ev-phase__line"></span></div><div class="ev-phase__card"><span class="ev-phase__when" id="fase3-w">Abril – Septiembre 2026</span><h3 id="fase3-t">Ciclo ABP por reto + emisiones</h3><p id="fase3-d">Rotación de los tres retos con emisiones quincenales sostenidas de Ondas Verdes.</p><span class="ev-phase__milestone" id="fase3-m">★ Hito: ≥80% de guiones en Alto/Superior (30 sep)</span></div></div>
+          <div class="ev-phase ev-reveal"><div class="ev-phase__rail"><span class="ev-phase__dot">Oct</span><span class="ev-phase__line"></span></div><div class="ev-phase__card"><span class="ev-phase__when" id="fase4-w">Octubre – Noviembre 2026</span><h3 id="fase4-t">Evaluación, post-test y cierre</h3><p id="fase4-d">Pesaje final vs. línea base, post-test y rendición de cuentas con las cuatro metas medidas.</p><span class="ev-phase__milestone" id="fase4-m">★ Hito: 16 emisiones completadas (27 nov)</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAKER -->
+    <section class="ev-section" id="maker" aria-labelledby="maker-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="maker-eyebrow">Innovación Maker · viabilidad real</span>
+          <h2 class="ev-h2" id="maker-h">Aprender haciendo, resolver de verdad.</h2>
+          <p class="ev-sub" id="maker-sub">Sensores de bajo costo compatibles con Micro:bit y Arduino, al servicio de problemas reales del colegio.</p>
+        </div>
+        <div class="ev-maker">
+          <article class="ev-feature ev-reveal">
+            <div class="ev-feature__body"><div class="ev-feature__top"><span class="ev-feature__chip">HC-SR04 · ultrasónico</span></div><h3 id="mk-1-t">Contenedores que miden cuánto reciclamos</h3><p id="mk-1-d">El sensor ultrasónico lee el nivel de llenado; la campaña de EcoPuntos premia a los salones que más reducen.</p><a class="ev-btn ev-btn--ghost ev-btn--sm js-lab-link" href="#lab" id="mk-1-c">Ver demo</a></div>
+            <div class="ev-feature__media"><img src="src/assets/img/escena-maker.webp" alt="Recreación: estación maker con micro:bit y sensores (visualización)" data-parallax="24"></div>
+          </article>
+          <article class="ev-feature ev-reveal">
+            <div class="ev-feature__body"><div class="ev-feature__top"><span class="ev-feature__chip">YF-S201 · caudal</span></div><h3 id="mk-2-t">Válvulas que cuidan cada gota</h3><p id="mk-2-d">Un sensor de caudal y una electroválvula de corte automático evitan el desperdicio de agua en los grifos.</p><a class="ev-btn ev-btn--ghost ev-btn--sm js-lab-link" href="#lab" id="mk-2-c">Ver demo</a></div>
+            <div class="ev-feature__media"><img src="src/assets/img/lab-espacio.webp" alt="Recreación: laboratorio con zona maker (visualización)" data-parallax="24"></div>
+          </article>
+          <article class="ev-feature ev-reveal">
+            <div class="ev-feature__body"><div class="ev-feature__top"><span class="ev-feature__chip">Sensor de humedad · relé</span></div><h3 id="mk-3-t">Jardines verticales que se riegan solos</h3><p id="mk-3-d">Botellas PET recicladas, un sensor de humedad de suelo y una bomba por relé reverdecen el patio.</p><a class="ev-btn ev-btn--ghost ev-btn--sm js-lab-link" href="#lab" id="mk-3-c">Ver demo</a></div>
+            <div class="ev-feature__media"><img src="src/assets/img/escena-laboratorio.webp" alt="Recreación: el laboratorio en acción (visualización)" data-parallax="24"></div>
+          </article>
+        </div>
+        <div class="ev-tags ev-reveal">
+          <span class="ev-tag">Micro:bit / Arduino</span><span class="ev-tag">HC-SR04</span><span class="ev-tag">YF-S201</span><span class="ev-tag">Sensor de humedad</span><span class="ev-tag" id="mk-tag-pet">Botellas PET recicladas</span>
+        </div>
+        <div class="ev-ecovox ev-reveal" role="note"><img src="src/assets/img/ecovox-avatar.webp" alt=""><p id="ecovox-maker">Yo no doy sermones: hago preguntas.</p></div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="ev-section" id="galeria" aria-labelledby="galeria-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="galeria-eyebrow">Galería</span>
+          <h2 class="ev-h2" id="galeria-h">Así se ve y así suena.</h2>
+        </div>
+        <div class="ev-bento" style="margin-top:1.7rem">
+          <figure class="ev-cell ev-cell--lg ev-reveal"><span class="ev-cell__slot" id="slot-1">Reemplazar: video real</span><span class="ev-cell__type" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video</span><span class="ev-cell__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><video controls preload="none" playsinline poster="src/assets/img/escena-laboratorio.webp"><source src="src/assets/video/recorrido-laboratorio.mp4" type="video/mp4"></video><figcaption class="ev-cell__cap" id="gal-1">Recorrido por el laboratorio (visualización)</figcaption></figure>
+          <figure class="ev-cell ev-reveal"><span class="ev-cell__slot" id="slot-2">Reemplazar: foto equipo</span><img src="src/assets/img/lab-espacio.webp" alt="Recreación del espacio del laboratorio (visualización)"><figcaption class="ev-cell__cap" id="gal-2">Así se verá el espacio (visualización)</figcaption></figure>
+          <figure class="ev-cell ev-reveal"><img src="src/assets/img/orientadora.webp" alt="La orientadora del proyecto (ilustración 3D)"><figcaption class="ev-cell__cap" id="gal-3">La orientadora guía el proceso</figcaption></figure>
+          <figure class="ev-cell ev-cell--eco ev-reveal"><img src="src/assets/img/ecovox-retrato.webp" alt="EcoVox, la mascota de ECOVOCES IA"><figcaption class="ev-cell__cap" id="gal-4">EcoVox, nuestra voz verde</figcaption></figure>
+          <figure class="ev-cell ev-reveal"><span class="ev-cell__slot" id="slot-3">Reemplazar: foto cabina real</span><img src="src/assets/img/escena-radio.webp" alt="Recreación: estudiantes grabando en la cabina (visualización)"><figcaption class="ev-cell__cap" id="gal-5">Estudiantes al aire (visualización)</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIARIOS -->
+    <section class="ev-section" id="beneficiarios" aria-labelledby="benef-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="benef-eyebrow">A quién alcanza</span>
+          <h2 class="ev-h2" id="benef-h">Una voz para toda la comunidad.</h2>
+        </div>
+        <div class="ev-benef">
+          <div class="ev-benef__item ev-reveal"><span class="dot"></span><b id="benef1-t">Estudiantes</b><span id="benef1-d">Protagonistas que investigan, escriben y crean.</span></div>
+          <div class="ev-benef__item ev-reveal"><span class="dot"></span><b id="benef2-t">Docentes</b><span id="benef2-d">Una metodología viva, medible y replicable.</span></div>
+          <div class="ev-benef__item ev-reveal"><span class="dot"></span><b id="benef3-t">Familias</b><span id="benef3-d">Mensajes ambientales que llegan a casa.</span></div>
+          <div class="ev-benef__item ev-reveal"><span class="dot"></span><b id="benef4-t">Cartagena</b><span id="benef4-d">Una comunidad educativa que se escucha.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HONESTIDAD -->
+    <section class="ev-section" id="honestidad" aria-labelledby="hon-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="hon-eyebrow">Honestidad técnica</span>
+          <h2 class="ev-h2" id="hon-h">Lo que es real hoy, y lo que aún simulamos.</h2>
+          <p class="ev-sub" id="hon-sub">La transparencia no debilita el proyecto: lo blinda. Enseñamos a distinguir lo simulado de lo real.</p>
+        </div>
+        <div class="ev-honesty">
+          <div class="ev-honesty__col ev-honesty__col--real ev-reveal">
+            <h3 id="hon-real-h"><svg viewBox="0 0 24 24" fill="none" stroke="var(--w11-accent)" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Real y ejecutable hoy</h3>
+            <ul>
+              <li id="hon-r1">Grabación de micrófono en el navegador.</li>
+              <li id="hon-r2">Simulador de cableado de sensores.</li>
+              <li id="hon-r3">Evaluador de guion: rúbrica determinista (6 dimensiones, 0–100).</li>
+              <li id="hon-r4">Mezcladora de audio con Web Audio API.</li>
+              <li id="hon-r5">Sensores de bajo costo (HC-SR04, YF-S201, humedad).</li>
+            </ul>
+          </div>
+          <div class="ev-honesty__col ev-honesty__col--sim ev-reveal">
+            <h3 id="hon-sim-h"><svg viewBox="0 0 24 24" fill="none" stroke="var(--w11-text-3)" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Simulación didáctica</h3>
+            <ul>
+              <li id="hon-s1">El chat de IA: respuestas guionadas para enseñar el flujo.</li>
+              <li id="hon-s2">La voz (TTS) y el dictado: APIs del propio navegador.</li>
+              <li id="hon-s3">Las cifras de impacto: metas del piloto 2026, parten de cero.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNAL / NOTICIAS -->
+    <section class="ev-section" id="journal" aria-labelledby="journal-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-reveal">
+          <span class="ev-eyebrow" id="journal-eyebrow">El Journal</span>
+          <h2 class="ev-h2" id="journal-h">Noticias del proyecto, al aire y en texto.</h2>
+          <p class="ev-sub" id="journal-sub">Lo que ocurre en el laboratorio, en la cabina y en el patio de INSEMA — contado por el equipo de redacción de Ondas Verdes.</p>
+        </div>
+        <div class="ev-journal">
+          <article class="ev-jfeat ev-reveal">
+            <a class="ev-jfeat__media" href="#lab" aria-label="Leer la nota de portada">
+              <img src="src/assets/img/escena-radio.webp" alt="Recreación: estudiantes grabando la primera emisión (visualización)" loading="lazy">
+              <span class="ev-jchip ev-jchip--feat">Portada</span>
+            </a>
+            <div class="ev-jfeat__body">
+              <div class="ev-jmeta"><span class="ev-jcat c-res" id="jf-cat">Residuos</span><span class="ev-jdate" id="jf-date">12 feb 2026</span></div>
+              <h3 id="jf-t">EcoPuntos arranca: la primera línea base ya está pesada</h3>
+              <p id="jf-d">El equipo radial registró el peso inicial de los residuos del patio y la cafetería. Es el punto cero contra el que mediremos cada quincena la meta de −15%.</p>
+              <span class="ev-jread" id="jf-r">Leer la nota<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </article>
+          <div class="ev-jlist">
+            <a class="ev-jcard ev-reveal ev-reveal--right" href="#lab">
+              <span class="ev-jcard__thumb"><img src="src/assets/img/lab-espacio.webp" alt="" loading="lazy"></span>
+              <span class="ev-jcard__txt"><span class="ev-jmeta"><span class="ev-jcat c-agua">Agua</span><span class="ev-jdate">06 mar 2026</span></span><b id="jc-1-t">Gotas de Conciencia instala su primer sensor de caudal</b></span>
+            </a>
+            <a class="ev-jcard ev-reveal ev-reveal--right" href="#lab">
+              <span class="ev-jcard__thumb"><img src="src/assets/img/escena-maker.webp" alt="" loading="lazy"></span>
+              <span class="ev-jcard__txt"><span class="ev-jmeta"><span class="ev-jcat c-mak">Maker</span><span class="ev-jdate">21 mar 2026</span></span><b id="jc-2-t">Taller de cableado: 7º grado arma su primer contenedor inteligente</b></span>
+            </a>
+            <a class="ev-jcard ev-reveal ev-reveal--right" href="#lab">
+              <span class="ev-jcard__thumb"><img src="src/assets/img/escena-laboratorio.webp" alt="" loading="lazy"></span>
+              <span class="ev-jcard__txt"><span class="ev-jmeta"><span class="ev-jcat c-jard">Jardines</span><span class="ev-jdate">09 abr 2026</span></span><b id="jc-3-t">Mercedes Verde: las primeras botellas PET ya tienen raíces</b></span>
+            </a>
+            <a class="ev-jcard ev-reveal ev-reveal--right" href="#lab">
+              <span class="ev-jcard__thumb"><img src="src/assets/img/orientadora.webp" alt="" loading="lazy"></span>
+              <span class="ev-jcard__txt"><span class="ev-jmeta"><span class="ev-jcat c-com">Comunidad</span><span class="ev-jdate">18 abr 2026</span></span><b id="jc-4-t">Las familias se suman: primer foro ambiental con acudientes</b></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REDES SOCIALES -->
+    <section class="ev-section" id="redes" aria-labelledby="redes-h">
+      <div class="ev-wrap">
+        <div class="ev-head ev-head--center ev-reveal">
+          <span class="ev-eyebrow" id="redes-eyebrow">En redes</span>
+          <h2 class="ev-h2" id="redes-h">Lo que ponemos al aire, también se publica.</h2>
+          <p class="ev-sub" id="redes-sub">Seguimos el cambio en cada plataforma: clíps de la cabina, retos ambientales y la voz de los estudiantes.</p>
+        </div>
+        <div class="ev-social">
+          <article class="ev-post ev-reveal">
+            <header class="ev-post__head"><span class="ev-post__net ev-net--ig" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span><span class="ev-post__who"><b>ecovoces.ia</b><span>Instagram</span></span></header>
+            <div class="ev-post__media"><img src="src/assets/img/escena-radio.webp" alt="Publicación: estudiantes al aire (visualización)" loading="lazy"></div>
+            <div class="ev-post__body"><p id="post-1"><b>ecovoces.ia</b> ¡Hoy salimos al aire con la línea base de EcoPuntos! 🎙️♻️ #OndasVerdes #MercedesAbrego</p><span class="ev-post__stats"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>312<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>28</span></div>
+          </article>
+          <article class="ev-post ev-reveal">
+            <header class="ev-post__head"><span class="ev-post__net ev-net--tk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.9 4 4 4.3V10c-1.5 0-2.9-.5-4-1.3V15a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v2.8a2.7 2.7 0 1 0 1.9 2.6V3H16z"/></svg></span><span class="ev-post__who"><b>@ondasverdes</b><span>TikTok</span></span></header>
+            <div class="ev-post__media ev-post__media--tall"><img src="src/assets/img/escena-maker.webp" alt="Publicación: armando un sensor (visualización)" loading="lazy"><span class="ev-post__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+            <div class="ev-post__body"><p id="post-2">Así se arma un contenedor que cuenta botellas 🤖 #Maker #STEM</p><span class="ev-post__stats"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>1.2K</span></div>
+          </article>
+          <article class="ev-post ev-reveal">
+            <header class="ev-post__head"><span class="ev-post__net ev-net--yt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.4-5a2.8 2.8 0 0 0-2-2C18.8 4.5 12 4.5 12 4.5s-6.8 0-8.6.5a2.8 2.8 0 0 0-2 2C1 8.6 1 12 1 12s0 3.4.4 5a2.8 2.8 0 0 0 2 2c1.8.5 8.6.5 8.6.5s6.8 0 8.6-.5a2.8 2.8 0 0 0 2-2c.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"/></svg></span><span class="ev-post__who"><b>INSEMA STEREO</b><span>YouTube</span></span></header>
+            <div class="ev-post__media"><img src="src/assets/img/lab-espacio.webp" alt="Publicación: recorrido por el laboratorio (visualización)" loading="lazy"><span class="ev-post__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="ev-post__dur">4:08</span></div>
+            <div class="ev-post__body"><p id="post-3">Recorrido por el laboratorio ECOVOCES IA — episodio piloto</p><span class="ev-post__stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>2.4K</span></div>
+          </article>
+          <article class="ev-post ev-reveal">
+            <header class="ev-post__head"><span class="ev-post__net ev-net--fb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.5h-2.6C11.6 2.5 10 4.2 10 7v2H7.5v3H10v9.5h4V12h2.7l.3-3H14z"/></svg></span><span class="ev-post__who"><b>INSEMA</b><span>Facebook</span></span></header>
+            <div class="ev-post__media"><img src="src/assets/img/escena-laboratorio.webp" alt="Publicación: el jardín vertical reverdece (visualización)" loading="lazy"></div>
+            <div class="ev-post__body"><p id="post-4">🌱 Mercedes Verde ya reverdece el patio. Gracias a las familias que donaron botellas PET.</p><span class="ev-post__stats"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3zm4-7 1 .5c.6.3 1 1 1 1.7V9h5.5a1.5 1.5 0 0 1 1.5 1.7l-1.2 7A2 2 0 0 1 16.8 19H9V11l2-7z"/></svg>486</span></div>
+          </article>
+          <article class="ev-post ev-reveal">
+            <header class="ev-post__head"><span class="ev-post__net ev-net--x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 3H21l-6.4 7.3L22 21h-5.9l-4.2-5.5L7 21H4.2l6.8-7.8L3 3h6l3.8 5L18.2 3zm-2 16h1.6L8 4.7H6.3L16.2 19z"/></svg></span><span class="ev-post__who"><b>@ecovoces_ia</b><span>X</span></span></header>
+            <div class="ev-post__body ev-post__body--text"><p id="post-5">Dato del aire de hoy: cada grifo que queda abierto 1 minuto pierde ≈6 litros. Esta quincena los medimos con el YF-S201. 💧 #GotasDeConciencia</p><span class="ev-post__stats"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>97<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>54</span></div>
+          </article>
+          <div class="ev-social__follow ev-reveal">
+            <div class="ev-social__followhead">
+              <span class="ev-social__followk" id="redes-follow-k">En redes</span>
+              <b id="redes-follow-t">Síguenos</b>
+              <span id="redes-follow-h">@ecovoces.ia</span>
+            </div>
+            <div class="ev-social__netlist">
+              <a class="ev-social__netrow" href="#lab" aria-label="Instagram">
+                <span class="ev-social__netico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+                <b>Instagram</b>
+                <svg class="ev-social__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+              <a class="ev-social__netrow" href="#lab" aria-label="TikTok">
+                <span class="ev-social__netico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.9 4 4 4.3V10c-1.5 0-2.9-.5-4-1.3V15a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v2.8a2.7 2.7 0 1 0 1.9 2.6V3H16z"/></svg></span>
+                <b>TikTok</b>
+                <svg class="ev-social__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+              <a class="ev-social__netrow" href="#lab" aria-label="YouTube">
+                <span class="ev-social__netico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.4-5a2.8 2.8 0 0 0-2-2C18.8 4.5 12 4.5 12 4.5s-6.8 0-8.6.5a2.8 2.8 0 0 0-2 2C1 8.6 1 12 1 12s0 3.4.4 5a2.8 2.8 0 0 0 2 2c1.8.5 8.6.5 8.6.5s6.8 0 8.6-.5a2.8 2.8 0 0 0 2-2c.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"/></svg></span>
+                <b>YouTube</b>
+                <svg class="ev-social__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+              <a class="ev-social__netrow" href="#lab" aria-label="Facebook">
+                <span class="ev-social__netico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.5h-2.6C11.6 2.5 10 4.2 10 7v2H7.5v3H10v9.5h4V12h2.7l.3-3H14z"/></svg></span>
+                <b>Facebook</b>
+                <svg class="ev-social__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="ev-close" id="lab" aria-labelledby="cierre-h">
+      <div class="ev-wrap">
+        <div class="ev-close__card ev-reveal">
+          <h2 class="ev-close__phrase" id="cierre-h">En INSEMA no esperamos el cambio: lo ponemos al aire.</h2>
+          <a class="ev-btn ev-btn--on-dark ev-btn--primary js-bridge" href="#hero" id="cierre-cta">Vive el laboratorio ECOVOCES</a>
+          <p class="ev-close__sign" id="cierre-sign">ECOVOCES · Donde se escucha el cambio</p>
+          <p class="ev-close__note" id="cierre-note">Transparencia: en el laboratorio, la IA y la voz son simulación didáctica y las cifras son metas del piloto 2026.</p>
+          <div class="ev-ecovox" role="note"><img src="src/assets/img/ecovox-avatar.webp" alt=""><p id="ecovox-cierre">Tu voz también cuenta. Súbele.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ev-footer">
+    <div class="ev-wrap ev-footer__inner">
+      <div class="ev-footer__top">
+        <div class="ev-footer__brandcol">
+          <a class="ev-footer__brand" href="#hero" aria-label="INSEMA STEREO — inicio">
+            <span class="ev-footer__seal"><img src="src/assets/img/insema-logo-128.webp" width="52" height="52" alt=""></span>
+            <span class="ev-footer__brandtxt">
+              <b class="ev-footer__name">INSEMA STEREO</b>
+              <span class="ev-footer__slogan">Donde se escucha el cambio</span>
+            </span>
+          </a>
+          <p class="ev-footer__desc" id="footer-desc">Radio escolar, Inteligencia Artificial y cultura Maker para la sostenibilidad. Un proyecto de INSEMA — Cartagena de Indias.</p>
+          <div class="ev-footer__social" aria-label="Redes sociales">
+            <a href="#redes" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#redes" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.9 4 4 4.3V10c-1.5 0-2.9-.5-4-1.3V15a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v2.8a2.7 2.7 0 1 0 1.9 2.6V3H16z"/></svg></a>
+            <a href="#redes" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.4-5a2.8 2.8 0 0 0-2-2C18.8 4.5 12 4.5 12 4.5s-6.8 0-8.6.5a2.8 2.8 0 0 0-2 2C1 8.6 1 12 1 12s0 3.4.4 5a2.8 2.8 0 0 0 2 2c1.8.5 8.6.5 8.6.5s6.8 0 8.6-.5a2.8 2.8 0 0 0 2-2c.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+            <a href="#redes" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.5h-2.6C11.6 2.5 10 4.2 10 7v2H7.5v3H10v9.5h4V12h2.7l.3-3H14z"/></svg></a>
+          </div>
+        </div>
+        <nav class="ev-footer__nav" aria-label="Pie de página">
+          <div class="ev-footer__navcol">
+            <span class="ev-footer__navh" id="footer-c1">Proyecto</span>
+            <a href="#manifiesto" id="footer-l1">El proyecto</a>
+            <a href="#reto" id="footer-l2">El reto</a>
+            <a href="#metas" id="footer-l3">Impacto</a>
+          </div>
+          <div class="ev-footer__navcol">
+            <span class="ev-footer__navh" id="footer-c2">Método</span>
+            <a href="#metodo" id="footer-l4">Metodología</a>
+            <a href="#programa" id="footer-l5">Programación</a>
+            <a href="#maker" id="footer-l6">Maker</a>
+          </div>
+          <div class="ev-footer__navcol">
+            <span class="ev-footer__navh" id="footer-c3">Comunidad</span>
+            <a href="#emisora" id="footer-l7">Emisora</a>
+            <a href="#journal" id="footer-l8">Journal</a>
+            <a href="#redes" id="footer-l9">Redes</a>
+            <a href="#roles" id="footer-l10">Equipo</a>
+          </div>
+        </nav>
+      </div>
+      <div class="ev-footer__bar">
+        <p id="footer-text">© 2026 INSEMA STEREO · ECOVOCES IA — Cartagena de Indias.</p>
+        <nav class="ev-footer__legal" aria-label="Legal">
+          <a href="#" id="footer-legal1">Términos</a>
+          <a href="#" id="footer-legal2">Cookies</a>
+          <a href="#" id="footer-legal3">Privacidad</a>
+          <a href="#" id="footer-legal4">Tratamiento de datos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <button class="ev-fab" id="fab" type="button" aria-label="Escuchar Ondas Verdes en vivo y abrir la comunidad">
+    <span class="ev-fab__pulse" aria-hidden="true"><span class="ev-fab__dot"></span></span>
+    <span class="ev-fab__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="ev-fab__label" id="fab-label">En vivo</span>
+  </button>
+
+  <!-- DOCK ISLA — aparece al salir del hero; cumple las funciones del header -->
+  <nav class="ev-dock" id="dock-island" aria-label="Navegación rápida" aria-hidden="true">
+    <!-- Hoja de secciones (mega-menú del dock) -->
+    <div class="ev-dock__sheet" id="dock-sheet" role="menu" aria-hidden="true">
+      <span class="ev-dock__sheettitle" id="dock-sheet-title">Ir a una sección</span>
+      <div class="ev-dock__grid">
+        <a class="ev-dock__link" role="menuitem" href="#manifiesto" data-es="El proyecto" data-en="The project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>El proyecto</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#metodo" data-es="Metodología" data-en="Methodology"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg><span>Metodología</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#programa" data-es="Programación" data-en="Schedule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Programación</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#maker" data-es="Maker" data-en="Maker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></svg><span>Maker</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#metas" data-es="Impacto" data-en="Impact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg><span>Impacto</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#roles" data-es="Equipo" data-en="Team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><span>Equipo</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#journal" data-es="Journal" data-en="Journal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg><span>Journal</span></a>
+        <a class="ev-dock__link" role="menuitem" href="#redes" data-es="Redes" data-en="Social"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Redes</span></a>
+      </div>
+    </div>
+
+    <div class="ev-dock__bar">
+      <span class="ev-dock__indicator" id="dock-ind" aria-hidden="true"></span>
+      <a class="ev-dock__btn ev-dock__btn--logo" data-act="inicio" data-es="Inicio" data-en="Home" data-tip="Inicio" aria-label="Inicio" href="#hero">
+        <img src="src/assets/img/insema-logo-128.webp" width="40" height="40" alt="">
+      </a>
+      <button class="ev-dock__btn" type="button" data-act="secciones" data-es="Secciones" data-en="Sections" data-tip="Secciones" aria-label="Secciones" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg>
+      </button>
+      <button class="ev-dock__btn ev-dock__btn--live" type="button" data-act="emisora" data-es="Emisora en vivo" data-en="Live station" data-tip="Emisora en vivo" aria-label="Escuchar la emisora en vivo">
+        <span class="ev-dock__pulse" aria-hidden="true"></span>
+        <svg class="ev-dock__ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="ev-dock__ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+        <span class="ev-dock__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="ev-dock__livedot" aria-hidden="true"></span>
+      </button>
+      <button class="ev-dock__btn ev-dock__btn--lang" type="button" data-act="idioma" data-es="Cambiar idioma" data-en="Switch language" data-tip="Cambiar idioma" aria-label="Cambiar idioma">
+        <span class="ev-dock__langtxt" id="dock-langtxt">EN</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="3" x2="21" y1="12" y2="12"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+      </button>
+      <button class="ev-dock__btn ev-dock__btn--auth" type="button" data-act="ingresar" data-es="Ingresar" data-en="Sign in" data-tip="Ingresar" aria-label="Ingresar">
+        <svg class="ev-dock__ico-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <svg class="ev-dock__ico-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="ev-wipe" id="wipe" aria-hidden="true"></div>
+</body>
+</html>

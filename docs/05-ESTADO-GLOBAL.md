@@ -5,17 +5,17 @@
 
 | Señal | Valor (última actualización: **2026-06-19**) |
 |---|---|
-| **Build** | 🧠 **Cerebro instalado** (`CLAUDE.md` + 8 nodos + kernel byte-idéntico + manifest). 🚧 **Landing (mirror) AÚN NO construida** — Fase 3 pendiente. Laboratorio = futuro (ADR-B). |
-| **LIVE / publicado** | ❌ Nada público todavía. `https://insemastereo.github.io/` se activa al primer push + Settings>Pages (1er deploy ~10 min + 404 transitorio = normal, NO es fallo; L-01). |
-| **Cache vigente** | **N/A** — se fija `?v=w11-N` al primer build del mirror (la N vivirá SOLO aquí, ADR-A §4 · L-02). |
-| **Branch / git** | Local `main` (git init 2026-06-19); remoto `origin`=github.com/insemastereo/insemastereo.github.io **declarado, sin push**. Remoto VACÍO → push limpio sin reconciliación. Verificado vs git 2026-06-19 (§3.3). |
-| **Sustrato** | **Vanilla sin build** (ADR-A · comité ×3). Astro descartado. Vite CONDICIONAL (Action por escrito). |
+| **Build** | 🧠 Cerebro ✅. 🎨 **Mirror de la landing CONSTRUIDO y VERIFICADO** en navegador real: 18 secciones · GSAP corriendo · i18n ES↔EN · **0 errores de consola** · fuentes self-hosted (Outfit 800 + Plus Jakarta Sans) · assets cargan · hero video `readyState=4`. Laboratorio = futuro (ADR-B). |
+| **LIVE / publicado** | ⏳ Mirror verificado y commiteado. **Push a GitHub + Settings>Pages (Source=`main` /root, lo activa el dueño a mano) = Fase 4.** 1er deploy ~10 min + 404 transitorio = normal, NO es fallo (L-01). |
+| **Cache vigente** | **`w11-1`** (primer build del mirror). Vive SOLO aquí (SSoT). Bump en cada cambio de comportamiento (§4 · L-02). |
+| **Branch / git** | Local `main`; remoto `origin` declarado. Commit fundacional del cerebro + commit del mirror. Verificado vs git 2026-06-19 (§3.3). |
+| **Sustrato** | **Vanilla sin build** (ADR-A · comité ×3). Astro descartado. Vite CONDICIONAL. |
 
 ## ⚠️ Flags de riesgo activos
-- 🤖 **Modelo: Opus 4.8** (entregas marcadas `Modelo: Opus 4.8`).
-- 🔒 **ADR-B (futuro)**: Firebase client-side + datos de MENORES en repo público → Security Rules = única barrera (decidir desde el primer endpoint). Tensión repo público (Pages gratis) vs privado.
-- 📋 **Decisiones del dueño pendientes**: SEO bilingüe real vs toggle runtime (TODO-05) · 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta, TODO-06).
-- 🧹 Pre-publicación (L-01): `.nojekyll` en el commit · `git add` SELECTIVO · `Multimedia/` gitignored (✅ ya).
+- 🤖 **Modelo: Opus 4.8**.
+- 🔒 **ADR-B (futuro)**: Firebase client-side + datos de MENORES en repo público → Security Rules = única barrera. Tensión repo público vs privado.
+- 📋 **Decisiones del dueño**: SEO bilingüe (TODO-05; default adoptado = toggle runtime, fuera de alcance del demo) · 2ª opinión Gemini (TODO-06, opcional).
+- ✅ **Verificación del mirror (2026-06-19)**: corrige un supuesto del comité — el preview de Claude **SÍ corre GSAP**; lo que se cuelga es `preview_screenshot` (→ L-04).
 
 ## 🧩 Sub-sistemas
-cerebro ✅ · kernel byte-idéntico ×4 ✅ · landing mirror 🚧 (Fase 3) · laboratorio (ADR-B) 🔮 · publicación 🔮
+cerebro ✅ · kernel ×4 ✅ · **landing mirror ✅ (verificado)** · publicación 🚧 (Fase 4) · laboratorio (ADR-B) 🔮
