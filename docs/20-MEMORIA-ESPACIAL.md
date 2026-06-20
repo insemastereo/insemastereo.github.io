@@ -34,6 +34,7 @@ journal · redes (3×2) · cierre (CTA al laboratorio) · footer. (Detalle por s
     insemastereo.github.io/
       .nojekyll              (vacío, EN el commit de publicación)
       index.html            (espejo vanilla 1:1 del handoff)
+      ecovoces-ia.html      (presentación en video · YouTube embed NnoYIhtW9MA · AUTOCONTENIDA: solo tokens.css, CSS+JS inline, SIN el JS del mirror; enlazada desde el footer de index.html)
       404.html  sitemap.xml  robots.txt  README.md  LICENSE  .gitignore
       src/
         styles/  tokens.css  fonts.css  landing.css   (clases .ev-*)

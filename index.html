@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="src/styles/landing.css?v=w11-1">
   <script src="src/assets/js/vendor/gsap.min.js?v=w11-1" defer></script>
   <script src="src/assets/js/vendor/ScrollTrigger.min.js?v=w11-1" defer></script>
-  <script src="src/js/landing/landing2.i18n.js?v=w11-1" defer></script>
+  <script src="src/js/landing/landing2.i18n.js?v=w11-2" defer></script>
   <script src="src/js/landing/core.js?v=w11-1" defer></script>
   <script src="src/js/landing/magnet.js?v=w11-1" defer></script>
   <script src="src/js/landing/award.motion.js?v=w11-1" defer></script>
@@ -41,6 +41,19 @@
   <script src="src/js/landing/comunidad.js?v=w11-1" defer></script>
   <script src="src/js/landing/dock.js?v=w11-1" defer></script>
   <script src="src/js/landing/herosnap.js?v=w11-1" defer></script>
+  <!-- Apartado destacado del footer → página de presentación en video (aditivo, scoped) -->
+  <style>
+    .ev-footer__feature{display:flex;align-items:center;gap:1rem;margin-top:clamp(1.8rem,3.5vw,2.6rem);padding:1rem 1.25rem;border-radius:var(--w11-r-xl,18px);background:linear-gradient(135deg,rgba(15,122,73,.22),rgba(10,126,164,.16));border:1px solid rgba(255,255,255,.16);text-decoration:none;transition:transform .25s var(--w11-ease-out,ease),box-shadow .25s,background .25s;}
+    .ev-footer__feature:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(15,122,73,.32),rgba(10,126,164,.24));box-shadow:0 14px 30px rgba(0,0,0,.28);}
+    .ev-footer__feature:focus-visible{outline:2px solid #7be3b2;outline-offset:3px;}
+    .ev-footer__feature-ic{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0f7a49,#0a7ea4);box-shadow:0 6px 16px rgba(10,126,164,.4);}
+    .ev-footer__feature-ic svg{width:20px;height:20px;color:#fff;margin-left:2px;}
+    .ev-footer__feature-tx{display:flex;flex-direction:column;gap:.15rem;flex:1 1 auto;min-width:0;}
+    .ev-footer__feature-tx b{font-family:var(--w11-display);font-size:1.05rem;color:#fff;letter-spacing:-.2px;}
+    .ev-footer__feature-tx span{font-size:.85rem;color:rgba(255,255,255,.72);}
+    .ev-footer__feature-ar{flex:0 0 auto;width:22px;height:22px;color:#7be3b2;transition:transform .25s var(--w11-ease-out,ease);}
+    .ev-footer__feature:hover .ev-footer__feature-ar{transform:translateX(4px);}
+  </style>
 </head>
 
 <body class="ev">
@@ -722,6 +735,14 @@
           </div>
         </nav>
       </div>
+      <a class="ev-footer__feature" href="ecovoces-ia.html">
+        <span class="ev-footer__feature-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="ev-footer__feature-tx">
+          <b id="footer-feat-t">ECOVOCES IA</b>
+          <span id="footer-feat-d">Presentación del proyecto en video — míralo y compártelo</span>
+        </span>
+        <svg class="ev-footer__feature-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
       <div class="ev-footer__bar">
         <p id="footer-text">© 2026 INSEMA STEREO · ECOVOCES IA — Cartagena de Indias.</p>
         <nav class="ev-footer__legal" aria-label="Legal">

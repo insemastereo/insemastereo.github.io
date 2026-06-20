@@ -38,10 +38,12 @@
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
 | **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
+| **TODO-10** | **Página de presentación en video** `ecovoces-ia.html` (YouTube embed `NnoYIhtW9MA`) + apartado destacado en el footer de `index.html` (enlace de entrega al docente) | ✅ verificado | — |
 
 ---
 
 ## 📝 Bitácora (efímera)
+> - **2026-06-20 ⟦Opus 4.8⟧**: a pedido del dueño (entrega calificable al docente) → nueva página **`ecovoces-ia.html`** (autocontenida: solo `tokens.css`; video YouTube `NnoYIhtW9MA` en `youtube-nocookie` 16:9 + contexto del proyecto + CTAs + reveal propio degradable, SIN el JS frágil del mirror: loader/dock/GSAP) y **apartado destacado en el footer** de `index.html` ("ECOVOCES IA" → la página) con CSS scoped + clave i18n `footer-feat-d` (ES/EN). Cache bumpeado (N vigente → `05`). **Verificado en navegador real** (0 errores consola, iframe carga el video, i18n togglea ES↔EN, reveals OK). Enlace de entrega: `https://insemastereo.github.io/ecovoces-ia.html`. ⚠️ La PAUSA de `05` es anti-proactividad → este cambio fue SOLICITADO, no proactivo. (Candidato a ADR si se desea trazabilidad formal.)
 > - **2026-06-19 ⟦Opus 4.8⟧**: cerebro fundacional (commit `2f3e0bc`) + comité de sustrato (vanilla > Astro).
 >   Luego **mirror construido**: assets/CSS/JS verbatim del handoff → `src/`; `index.html` con rutas
 >   reescritas + `<head>` mejorado (drop Google Fonts → self-hosted + preloads + canonical + OG + JSON-LD +

@@ -1,0 +1,374 @@
+<!-- ECOVOCES IA — Presentación en video (página dedicada). Autocontenida: solo
+     depende de tokens.css (fuentes + variables). Sin JS frágil del mirror (loader/
+     dock/GSAP): un reveal propio degradable. Enlace de entrega para el docente:
+     https://insemastereo.github.io/ecovoces-ia.html  ·  Video: YouTube NnoYIhtW9MA -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script>document.documentElement.className += " js";</script>
+  <title>Presentación en video — ECOVOCES IA · INSEMA STEREO</title>
+  <meta name="description" content="Presentación narrada del proyecto ECOVOCES IA: radio escolar + Inteligencia Artificial + cultura Maker para la sostenibilidad en INSEMA STEREO, Cartagena. Míralo en video.">
+  <meta name="theme-color" content="#f4f6f9">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2315935a'/%3E%3Cpath d='M12 5a2.4 2.4 0 0 0-2.4 2.4v4.2a2.4 2.4 0 0 0 4.8 0V7.4A2.4 2.4 0 0 0 12 5Z' fill='white'/%3E%3Cpath d='M16.5 11v1a4.5 4.5 0 0 1-9 0v-1' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="canonical" href="https://insemastereo.github.io/ecovoces-ia.html">
+  <meta property="og:type" content="video.other">
+  <meta property="og:url" content="https://insemastereo.github.io/ecovoces-ia.html">
+  <meta property="og:title" content="Presentación en video — ECOVOCES IA">
+  <meta property="og:description" content="Una presentación narrada que recorre todo el proyecto ECOVOCES IA: radio escolar + IA + cultura Maker. INSEMA STEREO, Cartagena.">
+  <meta property="og:image" content="https://insemastereo.github.io/src/assets/img/escena-radio.webp">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fuentes self-hosted (offline, $0): preload del display del H1 + cuerpo -->
+  <link rel="preload" href="src/assets/fonts/Outfit-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="src/assets/fonts/PlusJakartaSans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Presentación del proyecto ECOVOCES IA","description":"Presentación narrada del proyecto ECOVOCES IA: radio escolar, Inteligencia Artificial y cultura Maker para la sostenibilidad en INSEMA STEREO, Cartagena de Indias.","thumbnailUrl":["https://i.ytimg.com/vi/NnoYIhtW9MA/hqdefault.jpg"],"uploadDate":"2026-06-20","embedUrl":"https://www.youtube-nocookie.com/embed/NnoYIhtW9MA","contentUrl":"https://youtu.be/NnoYIhtW9MA","publisher":{"@type":"Organization","name":"INSEMA STEREO"}}</script>
+
+  <link rel="stylesheet" href="src/styles/tokens.css?v=w11-2">
+
+  <style>
+    /* ====== Reset mínimo ====== */
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+    body{margin:0;min-height:100vh;font-family:var(--w11-font);color:var(--w11-text);
+      background:var(--bg-mica);background-attachment:fixed;line-height:var(--lh-body);
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;}
+    :focus-visible{outline:2px solid var(--w11-accent);outline-offset:3px;border-radius:4px;}
+
+    /* franja institucional Colombia */
+    .vp-flag{height:4px;background:var(--flag-strip);}
+
+    .vp-wrap{width:min(100% - 2.4rem, var(--w11-content));margin-inline:auto;}
+    .vp-narrow{width:min(100% - 2.4rem, var(--w11-narrow));margin-inline:auto;}
+
+    /* ====== Top bar (acrylic, sticky) ====== */
+    .vp-top{position:sticky;top:0;z-index:20;background:var(--w11-acrylic);
+      -webkit-backdrop-filter:blur(var(--blur-nav)) saturate(1.5);
+      backdrop-filter:blur(var(--blur-nav)) saturate(1.5);
+      border-bottom:1px solid var(--w11-stroke);}
+    .vp-top__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      padding:.7rem 0;}
+    .vp-brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit;}
+    .vp-brand__seal{width:40px;height:40px;border-radius:50%;background:#fff;overflow:hidden;
+      flex:0 0 auto;box-shadow:var(--w11-sh-2);border:1px solid var(--w11-stroke);}
+    .vp-brand__seal img{width:100%;height:100%;object-fit:cover;}
+    .vp-brand__txt{display:flex;flex-direction:column;line-height:1.15;}
+    .vp-brand__name{font-family:var(--w11-display);font-weight:800;font-size:.98rem;letter-spacing:-.2px;}
+    .vp-brand__sub{font-size:.74rem;color:var(--w11-text-2);font-weight:600;}
+    .vp-back{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;
+      font-size:.86rem;font-weight:600;color:var(--w11-text-2);padding:.5rem .85rem;
+      border-radius:var(--w11-r-pill);border:1px solid var(--w11-stroke);background:rgba(255,255,255,.5);
+      transition:color .2s,border-color .2s,transform .2s var(--w11-ease-out);}
+    .vp-back svg{width:16px;height:16px;}
+    .vp-back:hover{color:var(--w11-accent);border-color:var(--w11-accent-soft);transform:translateX(-2px);}
+
+    /* ====== Hero ====== */
+    .vp-hero{padding:clamp(2.6rem,7vw,4.6rem) 0 clamp(1.4rem,3vw,2rem);text-align:center;}
+    .vp-eyebrow{display:inline-flex;align-items:center;gap:.5rem;
+      font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+      font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--w11-accent);background:var(--w11-accent-soft);
+      padding:.4rem .8rem;border-radius:var(--w11-r-pill);}
+    .vp-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--w11-accent);
+      box-shadow:0 0 0 4px rgba(15,122,73,.16);}
+    .vp-hero__title{margin:1.1rem 0 0;font-family:var(--w11-display);font-weight:800;
+      line-height:var(--lh-hero);letter-spacing:var(--ls-hero);}
+    .vp-grad{display:block;font-size:var(--w11-fs-hero);
+      background:var(--w11-grad-heading);-webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;color:transparent;}
+    .vp-hero__title-2{display:block;font-size:clamp(1.3rem,3vw,2rem);color:var(--w11-text);
+      font-weight:700;letter-spacing:-.5px;margin-top:.2rem;}
+    .vp-lead{margin:1.1rem auto 0;max-width:62ch;font-size:var(--w11-fs-lead);color:var(--w11-text-2);}
+    .vp-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.5rem;}
+    .vp-chip{font-size:.8rem;font-weight:600;color:var(--w11-text-2);
+      background:var(--w11-acrylic);border:1px solid var(--w11-stroke);
+      padding:.4rem .8rem;border-radius:var(--w11-r-pill);box-shadow:var(--w11-sh-2);}
+    .vp-chip--accent{color:var(--w11-accent);background:var(--w11-accent-soft);border-color:transparent;}
+
+    /* ====== Video ====== */
+    .vp-stage{padding:clamp(.5rem,2vw,1rem) 0 clamp(2.4rem,5vw,3.4rem);}
+    .vp-videocard{position:relative;background:var(--w11-card);border:1px solid var(--w11-stroke);
+      border-radius:var(--r-section);box-shadow:var(--w11-sh-24);
+      padding:clamp(.7rem,1.6vw,1.1rem);overflow:hidden;}
+    .vp-videocard::before{content:"";position:absolute;inset:-40% 30% auto;height:60%;
+      background:radial-gradient(60% 100% at 50% 0,rgba(15,122,73,.16),transparent 70%);
+      pointer-events:none;}
+    .vp-videohead{display:flex;align-items:center;gap:.6rem;padding:.3rem .4rem .8rem;}
+    .vp-videohead__play{width:30px;height:30px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+      background:var(--w11-grad-heading);box-shadow:0 6px 16px rgba(10,126,164,.4);}
+    .vp-videohead__play svg{width:14px;height:14px;color:#fff;margin-left:2px;}
+    .vp-videohead__t{font-weight:700;font-size:.92rem;}
+    .vp-videohead__live{margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;
+      font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--w11-text-3);}
+    .vp-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0b0f14;
+      border-radius:var(--w11-r-lg);overflow:hidden;}
+    .vp-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .vp-fallback{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;
+      margin-top:.85rem;padding:.2rem .4rem;font-size:.84rem;color:var(--w11-text-3);}
+    .vp-fallback a{color:var(--w11-accent);font-weight:600;text-decoration:none;}
+    .vp-fallback a:hover{text-decoration:underline;text-underline-offset:3px;}
+
+    /* ====== Botones ====== */
+    .vp-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--w11-font);
+      font-size:.92rem;font-weight:600;text-decoration:none;cursor:pointer;
+      padding:.72rem 1.25rem;border-radius:var(--w11-r-pill);border:1px solid transparent;
+      transition:transform .2s var(--w11-ease-out),box-shadow .2s,background .2s,color .2s,border-color .2s;}
+    .vp-btn svg{width:18px;height:18px;}
+    .vp-btn--primary{background:var(--w11-accent);color:#fff;box-shadow:0 8px 20px rgba(15,122,73,.28);}
+    .vp-btn--primary:hover{background:var(--w11-accent-2);transform:translateY(-2px);box-shadow:0 12px 26px rgba(15,122,73,.34);}
+    .vp-btn--ghost{background:var(--w11-card);color:var(--w11-text);border-color:var(--w11-stroke-2);box-shadow:var(--w11-sh-2);}
+    .vp-btn--ghost:hover{transform:translateY(-2px);border-color:var(--w11-accent);color:var(--w11-accent);box-shadow:var(--w11-sh-8);}
+    .vp-btn--yt:hover{color:#c4302b;border-color:#f3b3b1;}
+
+    /* ====== Sección "qué verás" ====== */
+    .vp-sec{padding:clamp(2.4rem,6vw,4rem) 0;}
+    .vp-head{text-align:center;max-width:60ch;margin-inline:auto;}
+    .vp-h2{font-family:var(--w11-display);font-weight:800;font-size:var(--w11-fs-h2);
+      line-height:var(--lh-heading);letter-spacing:-.5px;margin:.6rem 0 0;}
+    .vp-sub{color:var(--w11-text-2);font-size:var(--w11-fs-lead);margin:.7rem auto 0;max-width:54ch;}
+    .vp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+      gap:var(--w11-gap);margin-top:clamp(1.6rem,3vw,2.4rem);}
+    .vp-card{background:var(--w11-card);border:1px solid var(--w11-stroke);
+      border-radius:var(--w11-r-xl);padding:1.4rem 1.3rem;box-shadow:var(--w11-sh-2);
+      transition:transform .25s var(--w11-ease-out),box-shadow .25s,border-color .25s;}
+    .vp-card:hover{transform:translateY(-4px);box-shadow:var(--w11-sh-16);border-color:var(--w11-accent-soft);}
+    .vp-card__ic{width:46px;height:46px;border-radius:var(--w11-r-lg);display:grid;place-items:center;
+      background:var(--w11-accent-soft);color:var(--w11-accent);margin-bottom:.95rem;}
+    .vp-card__ic svg{width:24px;height:24px;}
+    .vp-card--blue .vp-card__ic{background:var(--w11-blue-soft);color:var(--w11-blue);}
+    .vp-card--amber .vp-card__ic{background:var(--w11-amber-soft);color:var(--w11-amber);}
+    .vp-card--violet .vp-card__ic{background:var(--w11-violet-soft);color:var(--w11-violet);}
+    .vp-card h3{margin:0 0 .35rem;font-family:var(--w11-display);font-size:1.08rem;font-weight:700;}
+    .vp-card p{margin:0;color:var(--w11-text-2);font-size:.92rem;}
+
+    /* ====== Banda CTA ====== */
+    .vp-cta{background:linear-gradient(135deg,#0c2a22,#0b3a4a);color:#fff;
+      border-radius:var(--r-section);padding:clamp(2rem,4vw,3rem);text-align:center;
+      box-shadow:var(--w11-sh-24);position:relative;overflow:hidden;}
+    .vp-cta::after{content:"";position:absolute;inset:auto -10% -60% -10%;height:80%;
+      background:radial-gradient(50% 100% at 50% 100%,rgba(123,227,178,.22),transparent 70%);}
+    .vp-cta h2{font-family:var(--w11-display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2.3rem);
+      margin:0;letter-spacing:-.5px;}
+    .vp-cta p{color:rgba(255,255,255,.78);margin:.8rem auto 0;max-width:50ch;}
+    .vp-cta__row{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.6rem;position:relative;z-index:1;}
+    .vp-cta .vp-btn--ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.22);box-shadow:none;}
+    .vp-cta .vp-btn--ghost:hover{background:rgba(255,255,255,.16);color:#fff;border-color:#7be3b2;}
+
+    /* ====== EcoVox nota ====== */
+    .vp-ecovox{display:flex;align-items:center;gap:.9rem;justify-content:center;
+      margin-top:clamp(1.8rem,4vw,2.6rem);}
+    .vp-ecovox img{width:54px;height:54px;border-radius:50%;object-fit:cover;
+      border:2px solid var(--w11-card);box-shadow:var(--w11-sh-8);flex:0 0 auto;}
+    .vp-ecovox p{margin:0;font-family:var(--w11-display);font-weight:600;font-size:1.02rem;
+      color:var(--w11-text);max-width:36ch;}
+
+    /* ====== Footer ====== */
+    .vp-foot{margin-top:clamp(2rem,5vw,3.4rem);background:#0e1b16;color:#fff;}
+    .vp-foot__in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      gap:1.2rem;padding:2rem 0;}
+    .vp-foot__brand{display:inline-flex;align-items:center;gap:.8rem;text-decoration:none;color:#fff;}
+    .vp-foot__seal{width:46px;height:46px;border-radius:50%;background:#fff;overflow:hidden;flex:0 0 auto;
+      box-shadow:0 4px 14px rgba(0,0,0,.3);}
+    .vp-foot__seal img{width:100%;height:100%;object-fit:cover;}
+    .vp-foot__name{font-family:var(--w11-display);font-weight:800;font-size:1.05rem;}
+    .vp-foot__slogan{display:block;font-size:.8rem;color:#7be3b2;font-weight:600;}
+    .vp-foot__links{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;}
+    .vp-foot__links a{font-size:.86rem;font-weight:500;color:rgba(255,255,255,.78);text-decoration:none;}
+    .vp-foot__links a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+    .vp-foot__bar{border-top:1px solid rgba(255,255,255,.12);padding:1rem 0 1.6rem;}
+    .vp-foot__note{font-size:.78rem;color:rgba(255,255,255,.55);margin:0 0 .5rem;}
+    .vp-foot__copy{font-size:.8rem;color:rgba(255,255,255,.7);margin:0;}
+
+    /* ====== Reveal (degradable; respeta reduced-motion) ====== */
+    .js .vp-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--w11-ease-out),transform .7s var(--w11-ease-out);}
+    .js .vp-reveal.is-in{opacity:1;transform:none;}
+    @media (prefers-reduced-motion:reduce){.js .vp-reveal{opacity:1;transform:none;transition:none;}}
+  </style>
+</head>
+
+<body>
+  <div class="vp-flag" aria-hidden="true"></div>
+
+  <!-- TOP BAR -->
+  <header class="vp-top">
+    <div class="vp-wrap vp-top__bar">
+      <a class="vp-brand" href="index.html" aria-label="INSEMA STEREO — inicio">
+        <span class="vp-brand__seal"><img src="src/assets/img/insema-logo-128.webp" width="40" height="40" alt=""></span>
+        <span class="vp-brand__txt">
+          <span class="vp-brand__name">INSEMA&nbsp;STEREO</span>
+          <span class="vp-brand__sub">Proyecto ECOVOCES IA</span>
+        </span>
+      </a>
+      <a class="vp-back" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Volver al inicio
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="vp-hero">
+      <div class="vp-narrow">
+        <span class="vp-eyebrow"><span class="dot" aria-hidden="true"></span>Sustentación en video · Proyecto</span>
+        <h1 class="vp-hero__title">
+          <span class="vp-grad">ECOVOCES&nbsp;IA</span>
+          <span class="vp-hero__title-2">La presentación del proyecto, en video.</span>
+        </h1>
+        <p class="vp-lead">Una presentación narrada que recorre todo el proyecto: cómo la radio escolar de
+          <b>INSEMA STEREO</b> se convierte en un laboratorio de <b>Radio + Inteligencia Artificial + cultura Maker</b>
+          para la sostenibilidad. Dale play y conócelo completo.</p>
+        <div class="vp-chips">
+          <span class="vp-chip vp-chip--accent">Donde se escucha el cambio</span>
+          <span class="vp-chip">INSEMA STEREO</span>
+          <span class="vp-chip">I.E. Mercedes Abrego</span>
+          <span class="vp-chip">Cartagena de Indias</span>
+          <span class="vp-chip">Piloto 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="vp-stage">
+      <div class="vp-wrap">
+        <div class="vp-videocard vp-reveal">
+          <div class="vp-videohead">
+            <span class="vp-videohead__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="vp-videohead__t">Presentación del proyecto ECOVOCES IA</span>
+            <span class="vp-videohead__live">Video</span>
+          </div>
+          <div class="vp-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/NnoYIhtW9MA?rel=0&modestbranding=1&playsinline=1"
+              title="Presentación en video del proyecto ECOVOCES IA"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <p class="vp-fallback">
+            <span>¿No carga el video?</span>
+            <a href="https://youtu.be/NnoYIhtW9MA" target="_blank" rel="noopener">Ábrelo directamente en YouTube ↗</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUÉ VERÁS -->
+    <section class="vp-sec">
+      <div class="vp-wrap">
+        <div class="vp-head vp-reveal">
+          <span class="vp-eyebrow">Qué vas a ver</span>
+          <h2 class="vp-h2">Todo el proyecto, explicado paso a paso.</h2>
+          <p class="vp-sub">El video recorre las piezas clave de ECOVOCES IA. Este es el mapa de lo que vas a escuchar.</p>
+        </div>
+        <div class="vp-grid">
+          <article class="vp-card vp-reveal">
+            <span class="vp-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>
+            <h3>El reto local</h3>
+            <p>Residuos plásticos, agua que se desperdicia y patios que piden verde: lo que se vive cada día en INSEMA.</p>
+          </article>
+          <article class="vp-card vp-card--blue vp-reveal">
+            <span class="vp-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3ZM19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></span>
+            <h3>Radio + IA + Maker</h3>
+            <p>El método de Aprendizaje Basado en Proyectos que convierte una pregunta en una emisión al aire.</p>
+          </article>
+          <article class="vp-card vp-card--violet vp-reveal">
+            <span class="vp-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11a7 7 0 0 1 14 0M8 11a4 4 0 0 1 8 0M12 11v9M9 20h6"/></svg></span>
+            <h3>Ondas Verdes</h3>
+            <p>La emisora del proyecto: 16 emisiones quincenales al año, con 7 bloques fijos por programa.</p>
+          </article>
+          <article class="vp-card vp-reveal">
+            <span class="vp-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+            <h3>Los 3 retos</h3>
+            <p>EcoPuntos, Gotas de Conciencia y Mercedes Verde: cada uno con su solución Maker de bajo costo y sensores.</p>
+          </article>
+          <article class="vp-card vp-card--amber vp-reveal">
+            <span class="vp-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg></span>
+            <h3>Metas del piloto 2026</h3>
+            <p>Honestas y medibles: cada meta parte de cero y tiene su instrumento de medición.</p>
+          </article>
+          <article class="vp-card vp-reveal">
+            <span class="vp-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3>Honestidad técnica</h3>
+            <p>Lo que es real hoy y lo que aún es simulación didáctica. La transparencia blinda el proyecto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="vp-sec" style="padding-top:0">
+      <div class="vp-wrap">
+        <div class="vp-cta vp-reveal">
+          <h2>¿Quieres ver la experiencia completa?</h2>
+          <p>El video resume el proyecto. La web te deja explorarlo y vivir el laboratorio interactivo por dentro.</p>
+          <div class="vp-cta__row">
+            <a class="vp-btn vp-btn--primary" href="index.html">Explorar la web del proyecto
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="vp-btn vp-btn--ghost" href="index.html#lab">Entrar al laboratorio</a>
+            <a class="vp-btn vp-btn--ghost vp-btn--yt" href="https://youtu.be/NnoYIhtW9MA" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.4-5a2.8 2.8 0 0 0-2-2C18.8 4.5 12 4.5 12 4.5s-6.8 0-8.6.5a2.8 2.8 0 0 0-2 2C1 8.6 1 12 1 12s0 3.4.4 5a2.8 2.8 0 0 0 2 2c1.8.5 8.6.5 8.6.5s6.8 0 8.6-.5a2.8 2.8 0 0 0 2-2c.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+              Ver en YouTube</a>
+          </div>
+        </div>
+
+        <div class="vp-ecovox vp-reveal">
+          <img src="src/assets/img/ecovox-avatar.webp" alt="EcoVox, la mascota de ECOVOCES IA">
+          <p>Dale play: en un solo video te cuento de qué se trata todo.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="vp-foot">
+    <div class="vp-wrap vp-foot__in">
+      <a class="vp-foot__brand" href="index.html" aria-label="INSEMA STEREO — inicio">
+        <span class="vp-foot__seal"><img src="src/assets/img/insema-logo-128.webp" width="46" height="46" alt=""></span>
+        <span>
+          <span class="vp-foot__name">INSEMA STEREO</span>
+          <span class="vp-foot__slogan">Donde se escucha el cambio</span>
+        </span>
+      </a>
+      <nav class="vp-foot__links" aria-label="Pie de página">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#manifiesto">El proyecto</a>
+        <a href="index.html#maker">Maker</a>
+        <a href="index.html#lab">Laboratorio</a>
+        <a href="https://youtu.be/NnoYIhtW9MA" target="_blank" rel="noopener">Video ↗</a>
+      </nav>
+    </div>
+    <div class="vp-wrap vp-foot__bar">
+      <p class="vp-foot__note">Transparencia: las cifras del proyecto son metas del piloto 2026 (parten de cero) y, en el laboratorio, la IA y la voz son simulación didáctica.</p>
+      <p class="vp-foot__copy">© 2026 INSEMA STEREO · ECOVOCES IA — Cartagena de Indias.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Reveal on-scroll autocontenido (sin dependencias). Degrada: si no hay
+       IntersectionObserver o el usuario pide menos motion, se muestra todo. */
+    (function () {
+      var els = document.querySelectorAll(".vp-reveal");
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+      if (reduce || !("IntersectionObserver" in window)) {
+        for (var i = 0; i < els.length; i++) els[i].classList.add("is-in");
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>

@@ -192,6 +192,7 @@ window.landingTranslations = {
     "footer-l4": "Methodology", "footer-l5": "Schedule", "footer-l6": "Maker",
     "footer-l7": "Station", "footer-l8": "Journal", "footer-l9": "Social", "footer-l10": "Team",
     "footer-legal1": "Terms", "footer-legal2": "Cookies", "footer-legal3": "Privacy", "footer-legal4": "Data processing",
+    "footer-feat-d": "The project's video presentation — watch it and share it",
     "footer-b1": "School Radio", "footer-b2": "Artificial Intelligence", "footer-b3": "Maker Methodology",
 
     "journal-eyebrow": "The Journal",

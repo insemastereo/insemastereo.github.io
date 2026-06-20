@@ -3,11 +3,11 @@
 > **Nodo: signos vitales.** AUTO-CARGA (con `CLAUDE.md` + `10`). Tablero, no bitácora: solo señales
 > ACTUALES (pisar, no apilar); lo histórico → `99` (ADR). Tope ~25 líneas / ~4k chars (§G.5).
 
-| Señal | Valor (última actualización: **2026-06-19**) |
+| Señal | Valor (última actualización: **2026-06-20**) |
 |---|---|
-| **Build** | 🧠 Cerebro ✅. 🎨 **Mirror de la landing CONSTRUIDO y VERIFICADO** en navegador real: 18 secciones · GSAP corriendo · i18n ES↔EN · **0 errores de consola** · fuentes self-hosted (Outfit 800 + Plus Jakarta Sans) · assets cargan · hero video `readyState=4`. Laboratorio = futuro (ADR-B). |
-| **LIVE / publicado** | ✅ **AL AIRE** en `https://insemastereo.github.io/` (verificado 2026-06-19: H1 "La radio que enciende el cambio" + INSEMA STEREO/ECOVOCES/Ondas Verdes; assets `src/` sirviendo). GitHub Pages activo desde `main` /root. Repo en GitHub Desktop (altorracars). |
-| **Cache vigente** | **`w11-1`** (primer build del mirror). Vive SOLO aquí (SSoT). Bump en cada cambio de comportamiento (§4 · L-02). |
+| **Build** | 🧠 Cerebro ✅. 🎨 **Mirror de la landing CONSTRUIDO y VERIFICADO** en navegador real: 18 secciones · GSAP corriendo · i18n ES↔EN · **0 errores de consola** · fuentes self-hosted (Outfit 800 + Plus Jakarta Sans) · assets cargan · hero video `readyState=4`. Laboratorio = futuro (ADR-B). 🎬 **`ecovoces-ia.html`** (presentación del proyecto en video, YouTube embed) AÑADIDA y verificada 2026-06-20. |
+| **LIVE / publicado** | ✅ **AL AIRE** en `https://insemastereo.github.io/` (verificado 2026-06-19: H1 "La radio que enciende el cambio" + INSEMA STEREO/ECOVOCES/Ondas Verdes; assets `src/` sirviendo). GitHub Pages activo desde `main` /root. Repo en GitHub Desktop (altorracars). **+ `/ecovoces-ia.html`** (video del proyecto, enlace de entrega al docente) 2026-06-20. |
+| **Cache vigente** | **`w11-2`** (bump 2026-06-20: `landing2.i18n.js` +clave `footer-feat-d`; `ecovoces-ia.html` enlaza `tokens.css?v=w11-2`). Vive SOLO aquí (SSoT). Bump en cada cambio de comportamiento (§4 · L-02). |
 | **Branch / git** | Local `main` == `origin/main` (**pusheado ✓** 2026-06-19, 3 commits). `altorracars` = colaborador del repo. Verificado vs git real (§3.3). |
 | **Sustrato** | **Vanilla sin build** (ADR-A · comité ×3). Astro descartado. Vite CONDICIONAL. |
 
