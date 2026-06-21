@@ -24,6 +24,7 @@
 | 🔵 UX / SEO / Performance / Accesibilidad | 🎯 `40-LOBULOS` → 43/44/45/48 + skills (`frontend-design`, `seo-audit`, `accessibility-audit`) |
 | 🧠 Monta el comité / mejora ×3 / 2ª opinión interna | Skill **`comite-expertos`** (+ `15` para Gemini) |
 | 🛰️ Decisión fuerte / cara de revertir | 🛰️ `docs/15-CONSEJO-EXTERNO.md` |
+| Video del proyecto / página de presentación / enlace de entrega al docente | 📚 `99` §3 (ADR-C) + 🗺️ `20` → `ecovoces-ia.html` |
 | ¿Qué hay pendiente? estado del sprint | ⚡ `10` (TODO-NN) |
 | El "por qué" de una decisión / detalle de un § | tabla § → ADR abajo → 📚 `99` |
 
@@ -37,3 +38,4 @@
 |---|---|---|
 | §1 | ADR-A — Sustrato landing: vanilla sin build; Astro descartado; Vite condicional | comité 2026-06-19 |
 | §2 | ADR-B — Laboratorio + backend (futuro): reescritura de estado + seguridad Firebase/menores | comité 2026-06-19 |
+| §3 | ADR-C — Página de presentación en video (`ecovoces-ia.html`, YouTube `NnoYIhtW9MA`) + enlace en footer; contenido leído vía Canva MCP | dueño 2026-06-20 |

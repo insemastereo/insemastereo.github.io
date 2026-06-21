@@ -34,6 +34,12 @@
 - En esta máquina, Git Credential Manager (`credential.helper=manager`) cachea la cuenta **`altorracars`**, que NO tiene escritura en el repo de la cuenta **`insemastereo`** → push 403. `gh` NO está instalado.
 - **No lo resuelve Claude** (autenticarse = acción del dueño). Fix (uno de): (a) añadir `altorracars` como **colaborador** del repo `insemastereo` (GitHub → repo → Settings → Collaborators); (b) limpiar la credencial cacheada (Windows → Administrador de credenciales → quitar `git:https://github.com`) y re-loguear como `insemastereo` en el próximo push; (c) usar un **PAT** de `insemastereo`. Luego `git push -u origin main`.
 
+### L-06 — Leer el contenido REAL de una fuente externa antes de describirla (Canva / video / PDF)
+**Disparador**: vas a describir/resumir lo que dice un video, una presentación de Canva o un PDF que NO has leído.
+- **NUNCA lo infieras del proyecto** (la landing ≠ el video): produce afirmaciones falsas. El dueño detectó tarjetas inventadas en `ecovoces-ia.html` que no reflejaban su video (→ `99 §3` ADR-C). Companion de **M-01**.
+- **Receta Canva (MCP)**: `resolve-shortlink <id>` → diseño `D…` → `get-presenter-notes` (guion, si existe) + `get-design-content richtexts`. Si vienen VACÍOS (narración por voz / texto incrustado en gráficos) → **`export-design` a JPG por página** → `curl` para descargar → `Read` cada imagen. (El `Read` de PDF necesita `pdftoppm`, AUSENTE en esta máquina, y `pdftotext` no extrae texto de gráficos → exporta JPG, no PDF.)
+- **YouTube**: `WebFetch` a la página del video devuelve solo el footer (la página es JS) → NO sirve para el contenido; ve a la fuente (Canva) o pide el guion al dueño.
+
 ---
 
 ## §Meta — Meta-lecciones del cerebro

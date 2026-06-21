@@ -208,6 +208,7 @@ MUEVE el recuerdo a `99` como ADR `§NN` (formato §2) + fila en `00`, marca su 
   → `30`. Cambio de arquitectura/sección → `20`. WIP → `10`. Decisión cerrada → `99` (ADR) + fila en `00`.
   **Deliberación** (comité / consejo externo / workflow, cara de reproducir) → CRUDO al `archiveDir` +
   SÍNTESIS (adoptado / refutado-y-por-qué / **callejones probados**) ANTES de cerrar.
+- **Reflejo de Caza-bugs (verificar el camino vivo, no solo el diff)**: al TOCAR o ROZAR un subsistema con estado observable por el usuario (render / listener / CRUD / flujo), recorre su comportamiento END-TO-END antes de cerrar, en especial las dos fronteras del estado-cero (crear el 1er ítem y verlo aparecer en vivo Y al recargar; borrar el último y ver colapsar limpio). 'Rozar' = mi diff cambia una entrada/salida/contrato O el estado compartido que otro subsistema lee, aunque no edite su archivo. Escala a maquinaria pesada SOLO si es no-trivial/caro de revertir; NUNCA en lo trivial. Capacidad portátil: skill `caza-bugs`. [HONOR] (no hay gate de linter; honor como el resto de §G.4).
 - **Neurogénesis**: si un conocimiento reutilizable NO encaja Y crecerá, CREA `docs/NN-NOMBRE.md` y en el
   mismo acto: (1) fila en §0, (2) registro en `00`, (3) bitácora. Anti-fragmentación: si dudas, apéndalo.
   Lóbulos hijos (`41`+) nacen SOLO con contenido real de una auditoría concreta.
