@@ -18,7 +18,7 @@
 La numeración 41+ está reservada para lóbulos de dominio. No reutilizar.
 
 ## 🛠️ Recursos Externos (skills)
-`skills/` + tool Skill = **expertise general de terceros** (NO es neurona; recurso paralelo). Al disparar
+`skills/` + tool Skill = **expertise general de terceros** (NO es neurona; recurso paralelo). **Catálogo → `docs/skills-inventory.md`** (79 carpetas, set canónico ×4 incl. `caza-bugs`). Al disparar
 Trigger 🔵, revisar la lista de skills disponibles (system reminders del arranque) y elegir la del dominio.
 Relevantes para este proyecto: `arquitecto-software`, `comite-expertos`, `frontend-design`, `seo-audit`,
 `accessibility-audit`, `legal-colombia`, `publicar-web-produccion`, `auditoria-cerebro`, `skill-creator`.

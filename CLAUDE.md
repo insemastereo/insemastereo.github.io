@@ -45,7 +45,7 @@ Auto-cargas SOLO `CLAUDE.md` + `05` + `10` (§G.1); el resto se lee on-demand po
 | 🎯 **Lóbulos de Dominio** | `docs/40-LOBULOS-DOMINIO.md` | ❌ on-demand | Trigger 🔵: registry de dominios especializados; lóbulos hijos (`41-SEGURIDAD`, `42-LEGAL`, `43-UX`, `44-SEO`, `48-A11Y`…) nacen on-demand con contenido real. |
 | 🛠️ **Skills externas** | tool Skill | ❌ on-demand | Expertise de terceros (arquitecto-software, comite-expertos, frontend-design, seo-audit, accessibility-audit, legal-colombia, publicar-web-produccion…). Consultar al disparar Trigger 🔵. |
 
-**Hojas de detalle** (on-demand): `design_handoff_ecovoces_landing/README.md` (especificación pixel-perfect
+**Hojas de detalle** (on-demand): `docs/skills-inventory.md` (catálogo de las 79 skills de `skills/`, set canónico ×4 incl. `caza-bugs`) · `design_handoff_ecovoces_landing/README.md` (especificación pixel-perfect
 del diseño + tokens + 18 secciones + interacciones — la fuente de verdad visual del mirror).
 
 ### 🏆 Regla de oro anti-saturación (CÓMO leer el Largo Plazo)
