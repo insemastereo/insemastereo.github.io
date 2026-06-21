@@ -12,12 +12,12 @@ como peer review (adopto lo correcto, refuto con razones). **Asesora, NUNCA edit
 ## §2 — Cuándo SÍ / cuándo NO
 **SÍ** (vale la fricción + tokens): arquitectura/datos cara de revertir · fork 50/50 · operación irreversible ·
 seguridad/legal (datos de menores, Firebase rules) · incertidumbre que quiera un desempate.
-**NO**: trabajo rutinario/reversible · hechos/código de NUESTRO repo (Gemini no lo ve → alucina; eso lo
-verifico YO leyendo código, §3.3) · cuando los tokens estén bajos.
+**NO**: trabajo rutinario/reversible · trabajo que el comité interno (automático) ya cubre · cuando los tokens estén bajos.
+(Vía Antigravity, Gemini SÍ ve el repo/cerebro local solo-lectura → PUEDE revisar código real; aun así verifico YO sus afirmaciones, §3.3.)
 
 ## §3 — Anti-anclaje
 En decisiones TOP, el prompt al externo NO incluye mi postura (que critique desde cero) y es autocontenido
-(el modelo no ve el repo ni el cerebro: todo el contexto va en el prompt).
+— vía Antigravity el modelo SÍ ve el repo/cerebro local (solo-lectura), así que el prompt **apunta a rutas/archivos reales** (no se pega el código a mano).
 
 ## §4 — Estado / bitácora de consultas
 - **2026-06-19 · Sustrato del proyecto** (Decisión Fuerte): resuelta por **comité interno ×3** (`comite-expertos`,
