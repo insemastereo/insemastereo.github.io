@@ -40,3 +40,4 @@
 | §2 | ADR-B — Laboratorio + backend (futuro): reescritura de estado + seguridad Firebase/menores | comité 2026-06-19 |
 | §3 | ADR-C — Página de presentación en video (`ecovoces-ia.html`, YouTube `NnoYIhtW9MA`) + enlace en footer; contenido leído vía Canva MCP | dueño 2026-06-20 |
 | §4 | ADR-D — Consejo Externo: Gemini vía Antigravity SÍ ve el código (solo-lectura); §15 corregido. De cars §224. ⟦OPUS-4.8⟧ | 2026-06-21 |
+| §5 | ADR-E — Guardián del índice (cars TODO-32) **N/A aquí**: índice por-proveniencia, sin columna de línea por diseño (`99` corto). De cars §229. ⟦OPUS-4.8⟧ | 2026-06-22 |
