@@ -40,6 +40,7 @@ Auto-cargas SOLO `CLAUDE.md` + `05` + `10` (§G.1); el resto se lee on-demand po
 | 🛰️ **Consejo Externo** | `docs/15-CONSEJO-EXTERNO.md` | ❌ on-demand | Trigger de Decisión Fuerte: antes de algo caro de revertir (arquitectura, datos, seguridad/legal, fork 50/50), pedir crítica adversarial externa (Gemini/Antigravity). |
 | 🗺️ **Espacial** | `docs/20-MEMORIA-ESPACIAL.md` | ❌ on-demand | Trigger de Desorientación: dónde vive un componente, sección, flujo, asset, el handoff de diseño, arquitectura del mirror. |
 | 🧪 **Procedimental (experiencia)** | `docs/30-LECCIONES.md` | ❌ on-demand | Trigger de Experiencia: ANTES de una op riesgosa/repetitiva (publicar a Pages, git add, cache-bust, GSAP). Gotchas + recetas. |
+| 🔁 **Workflows reutilizables** | `docs/60-WORKFLOWS.md` | ❌ on-demand | Trigger de Experiencia/Auditoría: catálogo W-01..W-11. **W-11 = SSoT del flujo fuerte** (Decisión Fuerte/Diseño-UI → COMPLETO o nada + 3 artefactos: mockup·prompt-Gemini·prompt-Chrome). |
 | 🗂️ **Índice sináptico** | `docs/00-INDICE.md` | ❌ on-demand | ANTES de leer el historial (offset exacto) Y para el enrutamiento semántico (síntoma → neurona). |
 | 📚 **Largo Plazo** | `docs/99-HISTORIAL-ADR.md` | ❌ on-demand | Trigger de Error / detalle histórico de un §/ADR. NUNCA completo — usa offset/limit vía 00. |
 | 🎯 **Lóbulos de Dominio** | `docs/40-LOBULOS-DOMINIO.md` | ❌ on-demand | Trigger 🔵: registry de dominios especializados; lóbulos hijos (`41-SEGURIDAD`, `42-LEGAL`, `43-UX`, `44-SEO`, `48-A11Y`…) nacen on-demand con contenido real. |

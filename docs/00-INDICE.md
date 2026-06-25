@@ -2,7 +2,7 @@
 
 > **Nodo: índice sináptico.** Capa "síntoma/tema → neurona" (consulta rápida) + índice de los ADR del
 > Largo Plazo (`99`). On-demand (Trigger de Error/Historia, `CLAUDE.md §G`).
-> **Cerebro**: 🧠 `CLAUDE.md` · 🩺 `05` · ⚡ `10` · 🛰️ `15` · 🗺️ `20` · 🧪 `30` · 🗂️ este · 🎯 `40` · 📚 `99`.
+> **Cerebro**: 🧠 `CLAUDE.md` · 🩺 `05` · ⚡ `10` · 🛰️ `15` · 🗺️ `20` · 🧪 `30` · 🔁 `60` (workflows; W-11=flujo fuerte) · 🗂️ este · 🎯 `40` · 📚 `99`.
 > Regla de oro: para leer `99`, busca el § aquí y `Read docs/99-HISTORIAL-ADR.md offset=<línea> limit=~150`
 > (regenera líneas con `grep -n "^## " docs/99-HISTORIAL-ADR.md`).
 
@@ -12,6 +12,7 @@
 
 | Tu situación / síntoma | Ve a |
 |---|---|
+| Decisión Fuerte / auditoría / revisión / diseño-UI no trivial (¿aplico el flujo del dueño?) | 🔁 `60-WORKFLOWS` **W-11** (COMPLETO o nada + 3 artefactos: mockup·prompt-Gemini·prompt-Chrome) + skill `proceso-decision-fuerte` |
 | ¿Dónde vive una sección / asset / módulo JS / el handoff? | 🗺️ `20-MEMORIA-ESPACIAL` |
 | Especificación pixel-perfect del diseño (tokens, 18 secciones, interacciones) | `design_handoff_ecovoces_landing/README.md` |
 | Voy a **publicar** a GitHub Pages / `.nojekyll` / 404 transitorio | 🧪 `30` L-01 + `CLAUDE.md §3.5` |
