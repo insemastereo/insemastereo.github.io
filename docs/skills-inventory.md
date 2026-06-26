@@ -223,3 +223,7 @@ de mis capacidades. Implicaciones:
 - **Anomalías**: 4/7 resueltas el 2026-06-03 (2 borradas + 2 renombradas); 3 quedan (2 = contenido real no-skill, 1 = bundles cosméticos).
 - El cerebro ahora **mapea el 100%** del contenido de `skills/` (antes solo nombraba ~12 en ejemplos + 2 creadas).
 | `auditoria-cerebro` (2026-06-09) | 🔬 Auditoría Nivel-2 del cerebro (sondas falsables: fidelidad/frescura/retrieval-drill/MEMORY.md; cierra con GC pareado + deepAudit). Nace del comité v6 (ADR §173 cars). Byte-idéntica ×3. |
+| `anti-codigo-muerto` (2026-06-26) | 🧹 Detección/erradicación de código muerto (anti-Knight-Capital). Global (`~/.claude/skills`). |
+| `meta-ads-diagnostico` (2026-06-26) | 📊 Diagnóstico de campañas Meta Ads. Global. |
+| `proceso-decision-fuerte` (2026-06-26) | 🛡️ Pipeline de Decisión Fuerte (verificar→comité→Gemini→veredicto). Global. |
+| `validacion-live-chrome` (2026-06-26) | 🔭 Validación live vía extensión Claude-in-Chrome (post-merge). Global. |
