@@ -44,6 +44,7 @@
 ---
 
 ## 📝 Bitácora (efímera)
+> - **2026-07-18 ⟦sinapsis desde inmobiliaria, FABLE-5⟧**: payloads liderazgo aplicados (60-WORKFLOWS: escritor único kernel/§G = inmobiliaria-operador) + 15 skills re-sincronizadas con verdad de producción SEO (Offer-sin-price inválido, FAQPage sin rich result, AEM muerto, objetivo Mensajes retirado — detalle: inmobiliaria ADR §33-§37). Novedades disponibles para catalogar: refreshes paid-ads v2.2/ad-creative v2.8 (+ nuevas video/offers/marketing-loops/image en inmobiliaria).
 > - **2026-06-20 ⟦Opus 4.8⟧**: `ecovoces-ia.html` (video del proyecto, entrega al docente) + apartado "ECOVOCES IA" en el footer. 1er intento con tarjetas inventadas desde la web → corregido leyendo el video REAL vía Canva MCP (diseño `DAHMtlst19U`, 15 diapositivas, export JPG). **Consolidado en `99 §3` (ADR-C)** + lección **L-06**. Commits `dfcec2e` + `07117cc`.
 > - **2026-06-19 ⟦Opus 4.8⟧**: cerebro fundacional (commit `2f3e0bc`) + comité de sustrato (vanilla > Astro).
 >   Luego **mirror construido**: assets/CSS/JS verbatim del handoff → `src/`; `index.html` con rutas
