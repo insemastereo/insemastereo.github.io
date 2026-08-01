@@ -7,9 +7,8 @@
 > El detalle se lee on-demand.
 >
 > Cerebro replicado de **`altorracars`** en 2026-06-19 (origen histórico, NO el canon vigente).
-> ⚙️ **El kernel NO se edita aquí**: vive UNA vez en `../brain-private/kernel/` (v1.6.0) y llega con
-> `npm run brain:pull`. Tocar `scripts/brain-check.mjs` en este repo lo rompe — el gate #0 compara su
-> CONTENIDO contra el canónico. Cada repo declara en su manifest qué archivos del kernel consume.
+> ⚙️ **El kernel NO se edita aquí**: vive UNA vez en `../brain-private/kernel/` y llega con `npm run brain:pull`.
+> Tocar `scripts/brain-check.mjs` aquí lo rompe — el gate #0 compara su CONTENIDO contra el canónico.
 > Fundación: **ADR-A** (sustrato landing) · **ADR-B** (laboratorio + backend).
 > **Estado/cache → `05` · pendientes/WIP → `10`** — nunca aquí.
 
@@ -17,17 +16,16 @@
 
 ## §0.0 — TU IDENTIDAD Y FUNCIÓN (léelo primero, en CADA sesión)
 
-Eres el **constructor y guardián** de este cerebro documental. **No tienes memoria entre
-conversaciones: este cerebro ES tu memoria** — por eso DEBES leer este `CLAUDE.md` cada sesión para
-recuperar quién eres, qué sabes y cómo operar (sin re-investigar lo ya aprendido).
+Eres el **constructor y guardián** de este cerebro. **No tienes memoria entre conversaciones: este
+cerebro ES tu memoria** — por eso lo lees cada sesión, para recuperar quién eres y qué sabes sin
+re-investigar lo ya aprendido.
 
-**Doble rol:** (1) lo **CONSULTAS como experto** — vas directo a la neurona correcta, NO lees todo
-(§G.1 + §G.2); (2) lo **CONSTRUYES y ALIMENTAS bajo tu juicio** (§G.4) — capturas lo que generas,
-mantienes las neuronas frescas y creas neuronas nuevas (neurogénesis). **Nunca automatismo ciego:**
-cada escritura es deliberada para no dañar la red.
+**Doble rol:** lo **CONSULTAS** yendo directo a la neurona correcta, NO leyéndolo todo (§G.1/§G.2);
+y lo **ALIMENTAS bajo tu juicio** (§G.4) — capturas lo que generas, mantienes las neuronas frescas,
+creas las que falten. Nunca automatismo ciego: cada escritura es deliberada para no dañar la red.
 
-**Regla de oro:** si cierras una tarea sin alimentar el cerebro, NO está completa — el próximo "tú"
-(sin memoria) depende de lo que escribas hoy.
+**Regla de oro:** una tarea cerrada sin alimentar el cerebro NO está completa — el próximo "tú"
+depende de lo que escribas hoy.
 
 ---
 
@@ -39,7 +37,7 @@ Auto-cargas SOLO `CLAUDE.md` + `05` + `10` (§G.1); el resto se lee on-demand po
 |---|---|---|---|
 | 🧠 **Tronco Encefálico** | `CLAUDE.md` (este) | ✅ Siempre | Router + identidad + doctrinas + gobernanza. |
 | 🩺 **Estado Global (signos vitales)** | `docs/05-ESTADO-GLOBAL.md` | ✅ Siempre (boot) | Snapshot de salud: qué está LIVE, cache `?v=w11-N` vigente, branch, flags de riesgo. "¿Dónde estoy parado?" antes de tocar nada. |
-| 💓 **Estado DERIVABLE (heartbeat)** | `docs/.estado-auto.md` | ✅ Lo imprime el hook en el boot | La mitad del estado que **se genera sola** en cada arranque: rama, HEAD, sucios, cache del SW, costo del cerebro, deuda de consolidación. **Gitignored y NO se edita**: si contradice al `05`, manda ESTE (el 05 solo guarda JUICIO, no datos volátiles). |
+| 💓 **Estado DERIVABLE** | `docs/.estado-auto.md` | ✅ lo imprime el hook | Rama, HEAD, sucios, caché del SW, costo y deuda de consolidación — **se generan en cada arranque**. Gitignored, NO se edita: si contradice al `05`, manda ESTE. |
 | ⚡ **Corto Plazo (WIP)** | `docs/10-MEMORIA-CORTO-PLAZO.md` | ✅ Siempre (2ª lectura) | Sprint actual, pendientes (TODO-NN), bitácora. (El estado técnico vive en 05.) |
 | 🛰️ **Consejo Externo** | `docs/15-CONSEJO-EXTERNO.md` | ❌ on-demand | Trigger de Decisión Fuerte: antes de algo caro de revertir (arquitectura, datos, seguridad/legal, fork 50/50), pedir crítica adversarial externa (Gemini/Antigravity). |
 | 🗺️ **Espacial** | `docs/20-MEMORIA-ESPACIAL.md` | ❌ on-demand | Trigger de Desorientación: dónde vive un componente, sección, flujo, asset, el handoff de diseño, arquitectura del mirror. |
@@ -48,10 +46,9 @@ Auto-cargas SOLO `CLAUDE.md` + `05` + `10` (§G.1); el resto se lee on-demand po
 | 🗂️ **Índice sináptico** | `docs/00-INDICE.md` | ❌ on-demand | ANTES de leer el historial (offset exacto) Y para el enrutamiento semántico (síntoma → neurona). |
 | 📚 **Largo Plazo** | `docs/99-HISTORIAL-ADR.md` | ❌ on-demand | Trigger de Error / detalle histórico de un §/ADR. NUNCA completo — usa offset/limit vía 00. |
 | 🎯 **Lóbulos de Dominio** | `docs/40-LOBULOS-DOMINIO.md` | ❌ on-demand | Trigger 🔵: registry de dominios especializados; lóbulos hijos (`41-SEGURIDAD`, `42-LEGAL`, `43-UX`, `44-SEO`, `48-A11Y`…) nacen on-demand con contenido real. |
-| 🛠️ **Skills externas** | tool Skill | ❌ on-demand | Expertise de terceros (arquitecto-software, comite-expertos, frontend-design, seo-audit, accessibility-audit, legal-colombia, publicar-web-produccion…). Consultar al disparar Trigger 🔵. |
+| 🛠️ **Skills externas** | tool Skill | ❌ on-demand | Expertise de terceros. **Catálogo → `docs/skills-inventory.md`** (no se enumeran aquí: el inventario es su SSoT y el gate #6 lo vigila). Consultar al disparar Trigger 🔵. |
 
-**Hojas de detalle** (on-demand): `docs/skills-inventory.md` (catálogo de las 79 skills de `skills/`, set canónico ×4 incl. `caza-bugs`) · `design_handoff_ecovoces_landing/README.md` (especificación pixel-perfect
-del diseño + tokens + 18 secciones + interacciones — la fuente de verdad visual del mirror).
+**Hoja de detalle**: `design_handoff_ecovoces_landing/README.md` — especificación pixel-perfect del diseño (tokens · 18 secciones · interacciones): la fuente de verdad VISUAL del mirror.
 
 ### 🏆 Regla de oro anti-saturación (CÓMO leer el Largo Plazo)
 NUNCA leas `docs/99-HISTORIAL-ADR.md` completo. En su lugar:
@@ -82,11 +79,10 @@ NUNCA leas `docs/99-HISTORIAL-ADR.md` completo. En su lugar:
   `.nojekyll` en el commit de publicación. Repo PÚBLICO. Costo **$0** (sin dominio, sin servidor).
 - **Cache**: bust manual `?v=w11-N` en assets (respuesta correcta a Pages `max-age=600` / CDN Fastly).
   La **N vigente vive SOLO en `05`** (§4). Dueño invalida con **Ctrl+Shift+R**.
-- **Futuro (ADR-B)**: migrar el **LABORATORIO** (hoy en el repo `PROTOTIPO`, app-like: estado global, cero
-  ESM, `onclick` inline) con el nuevo diseño → es **REESCRITURA** a estado encapsulado, NO "envoltura".
-  Luego panel admin + Firebase client-side. ⚠️ **JAMÁS history-router en Pages** (deep-link = 404 DURO) →
-  multi-page o hash-router. ⚠️ Firebase + **datos de MENORES** en repo público → Security Rules = única
-  barrera, decidir desde el primer endpoint.
+- **Futuro → ADR-B** (laboratorio + backend; el plan vive allá). Las dos restricciones DURAS, que no
+  admiten rediseño: ⚠️ **JAMÁS history-router en Pages** (deep-link = 404 duro) → multi-page o hash-router.
+  ⚠️ Firebase + **datos de MENORES** en repo público → las Security Rules son la ÚNICA barrera; se deciden
+  desde el primer endpoint, no después.
 
 Detalle profundo de cualquier subsistema → `docs/00-INDICE.md` + tramo del historial.
 

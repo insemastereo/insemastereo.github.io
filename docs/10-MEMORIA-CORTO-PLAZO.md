@@ -39,14 +39,14 @@
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
-| **TODO-10** | 🔀 **Rama `cerebro/todo-32` sin mergear**: 7+ commits SOLO ahí (kernel v1.4.1→v1.6.0, `brain:pull`, heartbeat, sync de skills). `origin/main` no tiene ni `scripts/.kernel-version.json` ni `brain:pull` → un clon nuevo desde `main` corre un kernel viejo. **El merge lo hace el dueño** (regla git de este repo). | 🔴 abierto | dueño mergea |
+| **TODO-10** | 🔀 **Rama `cerebro/todo-32` sin mergear** — 14+ commits SOLO ahí (kernel, `brain:pull`, heartbeat, la auditoría). `origin/main` corre un kernel viejo y un clon nuevo desde `main` nace roto. **El merge lo hace el dueño** (regla git de este repo). Detalle → ADR-F §6.5. | 🔴 abierto | dueño mergea |
 | **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
 
 ---
 
 ## 📝 Bitácora (efímera)
-> - **2026-08-01 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #1 REAL** (7 sondas + drill de retrieval, 36 hallazgos → 14 curados; tabla en la bóveda, síntesis en `99`). Lo gordo: el `05` mentía sobre git desde hacía 42 días y el cerebro nombraba **dos canones del kernel, ambos falsos**. Además llegó el **heartbeat** (`session-handoff` v1.6.0): rama/HEAD/sucios/deuda ya NO se copian a mano. Sync de la skill `meta-ads-diagnostico`.
-> - **2026-07-20 → 07-23 ⟦FABLE-5⟧**: kernel **v1.4.1 → v1.6.0** vía `brain:pull` (F1 canónico único · F2 heartbeat+archive · F3 gate #14 con gracia). El canónico pasó a `../brain-private/kernel/`; este repo solo CONSUME sus `kernelFiles`.
+> - **2026-08-01 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #1** (36 hallazgos → 14) + **heartbeat** instalado → **ADR-F**. Lo que cambia para ti: rama/HEAD/sucios ya NO se copian al `05`, los genera `docs/.estado-auto.md`.
+> - **2026-07-20 → 07-23 ⟦FABLE-5⟧**: kernel v1.4.1 → v1.6.0 vía `brain:pull`; el canónico pasó a `../brain-private/kernel/` y este repo solo CONSUME sus `kernelFiles`.
 > - **2026-07-18 ⟦sinapsis desde inmobiliaria, FABLE-5⟧**: payloads liderazgo aplicados (60-WORKFLOWS: escritor único kernel/§G = inmobiliaria-operador) + 15 skills re-sincronizadas con verdad de producción SEO (Offer-sin-price inválido, FAQPage sin rich result, AEM muerto, objetivo Mensajes retirado — detalle: inmobiliaria ADR §33-§37). Novedades disponibles para catalogar: refreshes paid-ads v2.2/ad-creative v2.8 (+ nuevas video/offers/marketing-loops/image en inmobiliaria).
 > - **2026-06-19 ⟦Opus 4.8⟧**: cerebro fundacional (commit `2f3e0bc`) + comité de sustrato (vanilla > Astro).
 >   Luego **mirror construido**: assets/CSS/JS verbatim del handoff → `src/`; `index.html` con rutas
