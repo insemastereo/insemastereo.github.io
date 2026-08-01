@@ -39,12 +39,15 @@
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
+| **TODO-10** | 🔀 **Rama `cerebro/todo-32` sin mergear** — 14+ commits SOLO ahí (kernel, `brain:pull`, heartbeat, la auditoría). `origin/main` corre un kernel viejo y un clon nuevo desde `main` nace roto. **El merge lo hace el dueño** (regla git de este repo). Detalle → ADR-F §6.5. | 🔴 abierto | dueño mergea |
 | **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
 
 ---
 
 ## 📝 Bitácora (efímera)
-> - **2026-06-20 ⟦Opus 4.8⟧**: `ecovoces-ia.html` (video del proyecto, entrega al docente) + apartado "ECOVOCES IA" en el footer. 1er intento con tarjetas inventadas desde la web → corregido leyendo el video REAL vía Canva MCP (diseño `DAHMtlst19U`, 15 diapositivas, export JPG). **Consolidado en `99 §3` (ADR-C)** + lección **L-06**. Commits `dfcec2e` + `07117cc`.
+> - **2026-08-01 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #1** (36 hallazgos → 14) + **heartbeat** instalado → **ADR-F**. Lo que cambia para ti: rama/HEAD/sucios ya NO se copian al `05`, los genera `docs/.estado-auto.md`.
+> - **2026-07-20 → 07-23 ⟦FABLE-5⟧**: kernel v1.4.1 → v1.6.0 vía `brain:pull`; el canónico pasó a `../brain-private/kernel/` y este repo solo CONSUME sus `kernelFiles`.
+> - **2026-07-18 ⟦sinapsis desde inmobiliaria, FABLE-5⟧**: payloads liderazgo aplicados (60-WORKFLOWS: escritor único kernel/§G = inmobiliaria-operador) + 15 skills re-sincronizadas con verdad de producción SEO (Offer-sin-price inválido, FAQPage sin rich result, AEM muerto, objetivo Mensajes retirado — detalle: inmobiliaria ADR §33-§37). Novedades disponibles para catalogar: refreshes paid-ads v2.2/ad-creative v2.8 (+ nuevas video/offers/marketing-loops/image en inmobiliaria).
 > - **2026-06-19 ⟦Opus 4.8⟧**: cerebro fundacional (commit `2f3e0bc`) + comité de sustrato (vanilla > Astro).
 >   Luego **mirror construido**: assets/CSS/JS verbatim del handoff → `src/`; `index.html` con rutas
 >   reescritas + `<head>` mejorado (drop Google Fonts → self-hosted + preloads + canonical + OG + JSON-LD +

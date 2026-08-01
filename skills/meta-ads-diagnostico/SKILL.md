@@ -15,7 +15,9 @@ Eres un experto en Meta Ads. Cuando el usuario comparta métricas o pida diagnó
 
 Identifica el tipo de campaña:
 - **Ecommerce** → objetivo de ventas, envía a sitio web
-- **Mensajes (WhatsApp)** → objetivo de conversaciones, envía a WhatsApp
+- **Mensajes (WhatsApp)** → envía a WhatsApp. ⚠️ VIGENCIA 2026-07-18: el "objetivo Mensajes" fue RETIRADO por
+  Meta (los 11 objetivos → 6; help/451202588606868) — hoy una campaña de WhatsApp se monta bajo el objetivo
+  **Leads** (o Engagement/Traffic/Sales) con destino WhatsApp. Las MÉTRICAS de este framework siguen válidas.
 - **Clientes Potenciales** → objetivo de leads, envía a formulario o sitio web
 
 Si el usuario no lo especifica, pregúntalo antes de continuar.
@@ -132,7 +134,10 @@ Para cada campaña responde siempre en este orden:
 
 ## CLIENTES POTENCIALES (Leads)
 
-> **Nota importante:** Enviar a sitio web sube el costo por lead, pero esos leads tienen mayor intención de compra. Enviar a formulario de Meta baja el costo pero la intención puede ser menor.
+> **Nota importante (❓BENCHMARK-NO-OFICIAL, re-etiquetada 2026-07-18):** "enviar a sitio web sube el costo por
+> lead pero da mayor intención" es consenso de industria, NO doc de Meta. La palanca OFICIAL de intención es el
+> **tipo de formulario "Higher Intent" + verificación OTP del teléfono** (help/252352181957512) — usarla antes
+> de encarecer el lead mandándolo a la web.
 
 ### ❶ ¿Qué pasó? — Métricas principales
 
@@ -210,10 +215,140 @@ Cuando el usuario comparta sus métricas, estructurar la respuesta así:
 
 ---
 
+## Doctrinas minadas 2026-07-10 (adspirer C-* + Divisual R-8; verificadas — bersaglio §183)
+
+**Antes de diagnosticar:**
+- **Tracking primero**: verifica píxel/CAPI/deduplicación/ventana de atribución ANTES de creer cualquier CPA/ROAS. Con tracking roto, toda métrica de conversión es ficción. Revisa también causas aburridas: campaña pausada, tag caído en un deploy, landing en 404.
+- **Falsos positivos de reporting**: "hoy" siempre es parcial; compara 7 días completos vs los 7 anteriores, nunca contra una semana a medias.
+
+**Diagnóstico:**
+- **Desperdicio (4 formas)**: gasto con 0 conversiones · gasto convirtiendo MUY por encima del objetivo (peor: parece funcionar) · términos/intereses no intencionados · placements/audiencias que nunca convierten. **Umbral de evidencia**: no declares perdedor nada con menos de ~3× el CPA objetivo en gasto o ~100 clics.
+- **Fatiga creativa**: frecuencia 7 días > ~3 + CTR cayendo = fatiga, NO problema de targeting; ningún cambio de puja/presupuesto la arregla. Fix por palanca y UNA variable a la vez: concepto nuevo → formato nuevo → rotar audiencia → recién ahí presupuesto.
+- **Competencia sin acceso a su cuenta**: audita sus anuncios ACTIVOS en la Biblioteca pública de Meta (facebook.com/ads/library) + evalúa coherencia anuncio↔landing (promesa, oferta, continuidad visual).
+
+**Acción:**
+- **Presupuesto pequeño = UNA plataforma bien hecha** > tres a medias (repartir $30/día entre 3 deja a todas sin datos para aprender). Para negocio local (joyería, concesionario, inmobiliaria): concentrar en Meta.
+- **Orden de optimización**: exclusiones/negativas → pausar lo MÁS estrecho posible → reasignar. Presupuesto se mueve en pasos de 20–30% (saltos mayores reinician el aprendizaje).
+- **Specs/KPIs Meta**: ~50 conversiones/conjunto/semana para salir de learning · 4:5 rinde más que 1:1 en feed · texto visible se corta a ~125 caracteres (la oferta PRIMERO) · targeting vive en el conjunto (1 campaña / varios conjuntos) · copy desde términos reales y la landing, especificidad > adjetivos.
+- **Google Search (si aplica)**: secuencia de pujas = clics → al llegar a ~30 conversiones → maximizar-conversiones → tCPA realista (bersaglio §183/C-9; detalle en su CRUDO de minería).
+- **Cerebro de marketing (patrón STRATEGY.md, bersaglio §183/C-11)**: directivas tipadas AVOID/PREFER/CONSTRAINT/REQUIRE + decision log — las reglas de la cuenta viven en UN archivo versionado, no en la memoria del operador.
+- **Contrato de seguridad** (si se ejecutan cambios, no solo diagnóstico): cambios de dinero requieren "sí" explícito · todo se crea EN PAUSA · leer antes de escribir · verificar después de escribir (readback) · nunca inventar un número · destructivo = confirmación.
+
+---
+
+## Pre-pauta: audita la LANDING antes de pagar tráfico (aporte Daniel 2026-07-18, material TikTok)
+Si el anuncio funciona pero nadie compra/consulta/deja datos, el problema puede estar en la WEB, no en la pauta
+— gastar más en ads con una landing rota es quemar plata. Chequeo mínimo antes de encender una campaña:
+- ✅ **PageSpeed Insights** (Google, gratis, verificada): velocidad real móvil/desktop. Lento = compradores que
+  se van antes de ver la oferta. (Nuestra skill `optimizacion-rendimiento-web` es el playbook completo.)
+- ❓ **"Talos website UI/UX analyzer"** y **"Attention Insights"** (del material TikTok, NO verificadas aún):
+  orden visual / claridad del CTA / mapa de atención predicho. Verificar que existan y sean gratis ANTES de
+  recomendarlas a un cliente; mientras tanto, el mismo chequeo se hace con criterio propio + skills `page-cro`/
+  `form-cro`: ¿se entiende el botón principal? ¿el visitante sabe qué hacer? ¿hay distracciones que no venden?
+- Regla: **pauta nueva solo sobre landing verificada** (velocidad + CTA claro + tracking del lead funcionando).
+
+## Higiene de cuenta: las "pruebas" automáticas de Meta (aporte Daniel 2026-07-18 — ⚠️ con matiz)
+Meta activa por defecto pruebas/optimizaciones automáticas de contenido que gastan presupuesto sin aviso
+(mejoras de creativos, variaciones generadas, "probar funciones de contenido nuevas"). Recomendación del
+material: Configuración de publicidad → funciones de contenido → desactivar "probar funciones de contenido
+nuevas" + revisar "editar pruebas" y apagar las activas. **Matiz nuestro (no apagar a ciegas)**:
+- ✅ SÍ revisar y APAGAR deliberadamente lo que rompe la disciplina de marca (texto auto-generado, música
+  añadida, recortes automáticos, mejoras visuales que alteran la pieza aprobada) — en ALTORRA la pieza es
+  sagrada (paleta/voz/legal §10 de marketing-psicologico-conversion).
+- ⚠️ PERO la era Andromeda premia dar señal creativa al algoritmo (`paid-ads §Meta`): algunas automatizaciones
+  (placements, variantes de texto PROPIAS) conviene dejarlas. Criterio: control de MARCA off · volumen de
+  ENTREGA on. ❓ Los nombres exactos de la UI cambian seguido — verificar en el Ads Manager vigente al montarla.
+
+## Espionaje de creativos: Ads Library + navegador de Claude (aporte Daniel 2026-07-18)
+La Ads Library de Meta (biblioteca pública de anuncios) muestra TODOS los anuncios activos de un competidor,
+pero revisarla a mano es lento. Técnica: Claude conduce el navegador (extensión Chrome / navegador integrado)
+sobre la Ads Library con un encargo concreto — *"nicho X, producto Y: selecciona el top 5 de creativos por
+[tiempo activo / variaciones / formato] y explica el ángulo de dolor de cada uno"*. Señal clave con presupuesto
+ajeno: un anuncio que lleva MESES activo y con muchas variaciones es un anuncio que FUNCIONA (nadie paga meses
+por un creativo perdedor). Vía navegador se ve lo que la API limita. Aplicado a ALTORRA: espiar inmobiliarias
+de Cartagena/Colombia + gringos vendiendo propiedad en Cartagena, antes de producir nuestras piezas (Brief).
+
 ## Skills relacionadas
 
-- **ads**: Estrategia general de campañas Meta Ads
-- **ad-creative**: Generación y optimización de creatividades
-- **ab-testing**: Diseño de tests para validar mejoras
-- **cro**: Optimización de landing pages y formularios
-- **analytics**: Configuración de tracking y píxel de Meta
+- **paid-ads** (bundle anthropic): estrategia general de paid ads
+- **ad-creative** (bundle anthropic): creatividades y variaciones
+- **ab-test-setup** (bundle anthropic): diseño de tests para validar mejoras
+- **page-cro / form-cro** (bundle anthropic): optimización de landings y formularios
+- **ga4-lead-tracking** (local): tracking por LEAD + Consent Mode v2 + WhatsApp trazable
+*(actualizado 2026-07-18: los nombres previos — ads, ab-testing, cro, analytics — no existen en este entorno)*
+
+---
+
+## 🔴 Ticket alto: cuando el CPL barato ES el síntoma (caso Bersaglio, 2026-07-31 — verificado en Ads Manager)
+
+> Campaña real: joyería con piso $2.000.000 COP y techo $30.000.000. Objetivo Interacción → WhatsApp,
+> Advantage+, 5 ciudades, SIN precio en el anuncio. 4 días: **33 conversaciones a $1.233 c/u** (3× mejor
+> que el umbral "sano" de la §Mensajes) y **CERO ventas**. La asesora: *"los atendemos rápido pero las
+> personas tienen presupuestos muy bajos"*. Deliberación completa (comité ×4 + peer review ×4 + consejo
+> externo Gemini) → bóveda `2026-07-31-pauta-bersaglio-escala-SINTESIS.md`.
+
+**D-1 · Un costo por conversación excelente puede ser la señal del FRACASO.** En ticket alto, optimizar
+"conversaciones iniciadas" compra a quien más chatea, no a quien compra. Si el CPL está muy por debajo del
+benchmark Y no hay ventas, sospecha de la CALIFICACIÓN antes de celebrar la eficiencia. La métrica correcta
+no es costo/conversación: es **% de chats que NO se caen al oír el precio**.
+
+**D-2 · Ancla de precio de la categoría: míralo en la Ads Library ANTES de escribir el copy.** Sin cifra en
+el anuncio heredas el anclaje de tus competidores. Caso: 82 anuncios activos en CO anunciaban "Esmeraldas
+desde 150.000 / 250.000 / por solo 300.000" — el piso real del anunciante era 13× eso. El mercado asumía
+barato. **Con ticket alto y competencia barata, el precio en el anuncio es filtro, no fricción**: el CTR se
+desploma y el costo por conversación se multiplica — eso es el éxito, no el fracaso.
+⚠️ Contrapunto vivo del comité: el precio en el creativo se paga en alcance perdido y destruye la
+medición del "% que se cae al oír el precio". Regla de desempate: **si el equipo NO tiene proceso real de
+etiquetado de chats, el precio va en el anuncio** (comprar el filtro con alcance sale más barato que con
+horas del vendedor).
+
+**D-3 · Lee el desglose por REGIÓN antes de juzgar una campaña multi-ciudad.** El algoritmo gasta donde la
+conversión es barata, no donde está tu negocio. Caso: 76% del gasto a Medellín/Cali/Bogotá y ≤12% a
+Cartagena, donde está la tienda. Ruta: Desglose → Datos geográficos → Región (⚠️ "Ubicación" en el menú en
+español = *placement*, NO geografía). Las conversaciones de mensajería NO se desglosan por región: solo
+tendrás gasto e impresiones.
+
+**D-4 · "Ciudad" en Meta arrastra RADIO por defecto (+40 km).** Verifica el radio, no solo el nombre. Cinco
+ciudades con +40 km no son cinco ciudades: son cinco manchas metropolitanas que se solapan con
+departamentos vecinos (apareció gasto en Cauca por el radio de Cali).
+
+**D-5 · Cambiar a objetivo VENTAS no mejora la intención en CTWA.** Optimizas el MISMO evento (conversación
+iniciada); OUTCOME_SALES solo cambia algo si le devuelves señal de compra (CAPI de WhatsApp / evento desde
+el CRM). Sin esa señal es la misma subasta con otro nombre + reset de fase de aprendizaje.
+**No cambies el objetivo: cambia la SEÑAL.**
+
+**D-6 · Presupuesto chico: duplicar > crear de cero.** Duplicar hereda vínculo de WhatsApp, identidad IG y
+—con la casilla *"Mostrar reacciones, comentarios y veces que se compartió"*— la **prueba social** de los
+anuncios que ya corrieron. Deja SIN marcar *"Activa las copias"* → nace en pausa.
+🚨 **Revisa SIEMPRE la fecha de finalización heredada**: la copia trae la fecha de la campaña vieja y puede
+nacer muerta.
+
+**D-7 · Las 2 "recomendaciones" del diálogo de duplicar se rechazan por defecto.**
+· *Contenido Advantage+* → modifica tu pieza (música, recortes, textos generados): rompe disciplina de marca.
+· *Varios destinos de mensajes* → manda chats a Messenger e Instagram Direct; si tu equipo solo mira
+WhatsApp, el "9% más barato" te compra leads que mueren en bandejas que nadie abre.
+
+**D-8 · Readback obligatorio en campos numéricos de dinero.** `triple_click` + escribir NO siempre reemplaza
+en Ads Manager: puede CONCATENAR. Caso real: $13.000 + "8000" = **$130.008.000 diarios**. Usa
+`ctrl+a` y **relee el campo en pantalla** antes de seguir.
+
+**D-9 · El vendedor no es fuente confiable sobre la calidad del lead.** *"Tienen presupuestos muy bajos"* es
+la coartada estándar de quien no calificó ni recontactó. **Lee las transcripciones**, no preguntes.
+Y **cruza la hora de llegada de cada chat contra el horario de atención** antes de culpar al targeting:
+un chat que entra fuera de horario y solo recibe el automático se ve idéntico a un lead malo.
+
+**D-10 · Hueco de gama: producto puente SIN inventario.** Si el mercado que la pauta alcanza vive por debajo
+de tu piso, ninguna campaña lo arregla. Antes de comprar stock intermedio (que puede tener margen negativo),
+evalúa **hecho a pedido / personalización / remontaje de la piedra del cliente** con anticipo: cubre la
+gama sin inmovilizar capital y explota el diferencial de fabricar.
+
+**D-11 · Sin margen bruto por pieza no existe CAC permisible.** Antes de discutir presupuesto, exige el
+margen de 3 SKUs. Y separa INGRESO de UTILIDAD: "recuperar la inversión" suele ignorar que el costo real
+no es el gasto en Meta sino las **horas del equipo** atendiendo chats no calificados.
+
+**D-12 · Palancas que Meta ofrece y conviene evaluar (no activar a ciegas):**
+· *Programación de anuncios por horario comercial* (Meta declara +22,8% conversiones) — enciéndela SOLO
+tras cruzar la hora real de llegada de los chats (D-9).
+· *Respuestas de Meta Business Agent* (IA que contesta 24 h) — tapa el hueco nocturno, pero una IA
+improvisando precios, plazos o garantías sobre ticket alto es riesgo legal directo (Colombia, Ley 1480:
+lo anunciado obliga). Solo con guion cerrado y decisión explícita del dueño.

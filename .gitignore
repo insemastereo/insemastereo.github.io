@@ -20,3 +20,8 @@ _archive/
 
 # Handoff de diseño = fuente de referencia (el sitio servido vive en src/). No al repo público.
 design_handoff_ecovoces_landing/
+
+# Sidecars GENERADOS por session-handoff.mjs (estado derivable, §52) — nunca fuente
+docs/.handoff-auto.md
+docs/.boot-marker
+docs/.estado-auto.md

@@ -1,7 +1,7 @@
 {
   "brainTemplateVersion": "1.1.0",
   "repo": "insemastereo",
-  "_comment": "Config INSTANCE del cerebro (topes/budgets). El linter scripts/brain-check.mjs es KERNEL idéntico ×4 repos (canon = bersaglio); estos budgets son por-repo. Replicado de altorracars 2026-06-19 (ADR-A/ADR-B del comité de sustrato). chars = unidad real de contexto. NO auto-cargado: solo lo lee el linter.",
+  "_comment": "Config INSTANCE del cerebro (topes/budgets por-repo). El KERNEL no vive aquí: canon único en ../brain-private/kernel/ (v1.6.0), se trae con npm run brain:pull y el gate #0 compara contenido. Replicado de altorracars 2026-06-19 (ADR-A/ADR-B del comité de sustrato). chars = unidad real de contexto. NO auto-cargado: solo lo lee el linter.",
   "bootCharsTarget": 28000,
   "alwaysOn": [
     "CLAUDE.md",
@@ -10,25 +10,49 @@
   ],
   "_caps_trinquete": "Trinquete: bajar el cap es libre; SUBIRLO exige ADR citado. Topes iniciales = familia hermana (bersaglio/inmobiliaria) ajustados a un cerebro recién nacido.",
   "caps": {
-    "CLAUDE.md": { "lines": 320, "chars": 27000 },
-    "docs/05-ESTADO-GLOBAL.md": { "lines": 25, "chars": 4000 },
-    "docs/10-MEMORIA-CORTO-PLAZO.md": { "lines": 110, "chars": 12000 },
-    "docs/20-MEMORIA-ESPACIAL.md": { "lines": 280, "chars": 16000 },
-    "docs/30-LECCIONES.md": { "lines": 350, "chars": 40000 },
-    "docs/00-INDICE.md": { "lines": 450, "chars": 16000 },
-    "docs/40-LOBULOS-DOMINIO.md": { "lines": 280, "chars": 14000 }
+    "CLAUDE.md": {
+      "lines": 320,
+      "chars": 27000
+    },
+    "docs/05-ESTADO-GLOBAL.md": {
+      "lines": 40,
+      "chars": 4000
+    },
+    "docs/10-MEMORIA-CORTO-PLAZO.md": {
+      "lines": 110,
+      "chars": 12000
+    },
+    "docs/20-MEMORIA-ESPACIAL.md": {
+      "lines": 210,
+      "chars": 16000
+    },
+    "docs/30-LECCIONES.md": {
+      "lines": 370,
+      "chars": 40000
+    },
+    "docs/00-INDICE.md": {
+      "lines": 200,
+      "chars": 16000
+    },
+    "docs/40-LOBULOS-DOMINIO.md": {
+      "lines": 160,
+      "chars": 14000
+    },
+    "docs/15-CONSEJO-EXTERNO.md": {
+      "lines": 50,
+      "chars": 5000
+    },
+    "docs/60-WORKFLOWS.md": {
+      "lines": 90,
+      "chars": 10000
+    }
   },
   "archiveDir": "../brain-private/insemastereo/research-archive",
-  "specsDir": "docs/superpowers/specs",
   "staleDays": 10,
-  "peers": [
-    "../altorracars.github.io",
-    "../bersagliojewelry.github.io",
-    "../altorrainmobiliaria.github.io"
-  ],
   "kernelFiles": [
     "scripts/brain-check.mjs",
-    "scripts/brain-diff.mjs"
+    "scripts/brain-diff.mjs",
+    "scripts/session-handoff.mjs"
   ],
   "ssotFacts": [
     {
@@ -42,11 +66,21 @@
     }
   ],
   "deepAudit": {
-    "last": "2026-06-19",
-    "coveredHeaderCount": 3,
+    "last": "2026-08-01",
+    "coveredHeaderCount": 6,
     "maxAdrGap": 12,
     "maxDays": 30,
-    "_que": "Cerebro instalado 2026-06-19 (baseline, sin auditoría Nivel-2 aún). coveredHeaderCount = headers '## ' actuales en 99 (§0 Génesis + ADR-A + ADR-B)."
+    "_que": "Auditoría Nivel-2 #1 REAL el 2026-08-01 (la anterior era la fecha de instalación, sin auditoría). 36 hallazgos brutos → 14 curados; tabla en el archiveDir.",
+    "tableFile": "2026-08-01-auditoria-nivel2-hallazgos.md"
   },
-  "orphanAllowlist": []
+  "orphanAllowlist": [
+    ".handoff-auto.md",
+    ".estado-auto.md"
+  ],
+  "_orphanAllowlist_que": "Sidecars GENERADOS por session-handoff (gitignored). Van en allowlist porque el gate #10 NO PUEDE verlos: su regex de aristas exige que el nombre empiece por caracter de palabra y estos empiezan por punto. El RUTEO real si existe: fila en el §0 de CLAUDE.md. Arreglo de fondo (kernel #17-bis): admitir el punto inicial en edgeRe.",
+  "noCap": {
+    "docs/99-HISTORIAL-ADR.md": "Largo Plazo: NUNCA se lee entero, solo offset/limit vía el índice. Un cap aquí no significaría nada.",
+    "docs/skills-inventory.md": "Registro 1:1 con las carpetas de skills/ — su tamaño lo fija el inventario real, no una decisión editorial. Lo vigila el gate #6."
+  },
+  "_caps_que": "Topes por-repo. Cada neurona tiene cap MEDIDO (tamano real + ~35% de holgura) o entrada en noCap CON RAZON — nunca por omision (chequeo #23, kernel v1.7.0). Los caps NO se inventan: inmobiliaria ADR §74.3/§75.4 documenta como una cifra a ojo creo dos veces un gate bloqueante falso. Los dos ejes se derivan uno del otro (lines = chars/densidad-real) para que ambos aprieten en el mismo punto: un par incoherente hace que dispare el eje equivocado (N2-13 de la auditoria de insemastereo, inmobiliaria §77.5). El cap de CHARS es el vinculante y NO se toca."
 }

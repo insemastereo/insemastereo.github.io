@@ -42,3 +42,4 @@
 | §3 | ADR-C — Página de presentación en video (`ecovoces-ia.html`, YouTube `NnoYIhtW9MA`) + enlace en footer; contenido leído vía Canva MCP | dueño 2026-06-20 |
 | §4 | ADR-D — Consejo Externo: Gemini vía Antigravity SÍ ve el código (solo-lectura); §15 corregido. De cars §224. ⟦OPUS-4.8⟧ | 2026-06-21 |
 | §5 | ADR-E — Guardián del índice (cars TODO-32) **N/A aquí**: índice por-proveniencia, sin columna de línea por diseño (`99` corto). De cars §229. ⟦OPUS-4.8⟧ | 2026-06-22 |
+| §6 | ADR-F — **Auditoría Nivel-2 #1 REAL**: el `05` mentía sobre git 42 días (decía main sincronizado; el trabajo vivía en `cerebro/todo-32`). El heartbeat ya generaba la verdad y ningún nodo la enrutaba. Kernel sin gobernanza: 2 canones declarados, ambos falsos. 36 hallazgos → 14. | auditoría 2026-08-01 |
