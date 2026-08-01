@@ -6,8 +6,11 @@
 > NUNCA contiene historial ni tareas — cada pieza de información vive en su nodo (ver §0).
 > El detalle se lee on-demand.
 >
-> Cerebro replicado del canon **`altorracars`** (2026-06-19); kernel `scripts/brain-check.mjs`
-> byte-idéntico ×4 repos. Fundación: **ADR-A** (sustrato landing) · **ADR-B** (laboratorio + backend).
+> Cerebro replicado de **`altorracars`** en 2026-06-19 (origen histórico, NO el canon vigente).
+> ⚙️ **El kernel NO se edita aquí**: vive UNA vez en `../brain-private/kernel/` (v1.6.0) y llega con
+> `npm run brain:pull`. Tocar `scripts/brain-check.mjs` en este repo lo rompe — el gate #0 compara su
+> CONTENIDO contra el canónico. Cada repo declara en su manifest qué archivos del kernel consume.
+> Fundación: **ADR-A** (sustrato landing) · **ADR-B** (laboratorio + backend).
 > **Estado/cache → `05` · pendientes/WIP → `10`** — nunca aquí.
 
 ---
@@ -36,6 +39,7 @@ Auto-cargas SOLO `CLAUDE.md` + `05` + `10` (§G.1); el resto se lee on-demand po
 |---|---|---|---|
 | 🧠 **Tronco Encefálico** | `CLAUDE.md` (este) | ✅ Siempre | Router + identidad + doctrinas + gobernanza. |
 | 🩺 **Estado Global (signos vitales)** | `docs/05-ESTADO-GLOBAL.md` | ✅ Siempre (boot) | Snapshot de salud: qué está LIVE, cache `?v=w11-N` vigente, branch, flags de riesgo. "¿Dónde estoy parado?" antes de tocar nada. |
+| 💓 **Estado DERIVABLE (heartbeat)** | `docs/.estado-auto.md` | ✅ Lo imprime el hook en el boot | La mitad del estado que **se genera sola** en cada arranque: rama, HEAD, sucios, cache del SW, costo del cerebro, deuda de consolidación. **Gitignored y NO se edita**: si contradice al `05`, manda ESTE (el 05 solo guarda JUICIO, no datos volátiles). |
 | ⚡ **Corto Plazo (WIP)** | `docs/10-MEMORIA-CORTO-PLAZO.md` | ✅ Siempre (2ª lectura) | Sprint actual, pendientes (TODO-NN), bitácora. (El estado técnico vive en 05.) |
 | 🛰️ **Consejo Externo** | `docs/15-CONSEJO-EXTERNO.md` | ❌ on-demand | Trigger de Decisión Fuerte: antes de algo caro de revertir (arquitectura, datos, seguridad/legal, fork 50/50), pedir crítica adversarial externa (Gemini/Antigravity). |
 | 🗺️ **Espacial** | `docs/20-MEMORIA-ESPACIAL.md` | ❌ on-demand | Trigger de Desorientación: dónde vive un componente, sección, flujo, asset, el handoff de diseño, arquitectura del mirror. |
@@ -117,8 +121,10 @@ doctrina + cache bump. Si hubo deliberación: línea-ancla `Deliberación: <crud
 - NUNCA `transition: all` ni `* { transition }` global. NUNCA animar layout props (width/height/top/left/
   margin/padding) — solo `transform`/`opacity`. NUNCA `backdrop-filter` en grids/listas de N elementos.
 - Imágenes: `loading="lazy"` + `decoding="async"` below-fold; `fetchpriority="high"` solo LCP.
-- **Preloads de LCP (fix del comité, hoy ausente)**: `<link rel=preload as=font crossorigin>` de la woff2
-  del H1 (Outfit 800) + `<link rel=preload as=image fetchpriority=high>` del hero (ecovox-cuerpo.webp).
+- **Preloads de LCP** (fix del comité): `<link rel=preload as=font crossorigin>` de la woff2 del H1 +
+  `<link rel=preload as=image fetchpriority=high>` de la imagen LCP **real de la página** — mírala, no la
+  supongas. (El estado de si están puestos vive en `05`/`10`, no aquí: esta línea decía "hoy ausente"
+  durante 6 semanas en las que sí estaban, y nombraba un asset que no es el LCP.)
 - `<picture>` srcset: verifica FÍSICAMENTE que las variantes existan (el optimizer no hace upscaling).
 
 ### 3.2 HTML/CSS estable

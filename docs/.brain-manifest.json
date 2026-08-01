@@ -1,7 +1,7 @@
 {
   "brainTemplateVersion": "1.1.0",
   "repo": "insemastereo",
-  "_comment": "Config INSTANCE del cerebro (topes/budgets). El linter scripts/brain-check.mjs es KERNEL idéntico ×4 repos (canon = bersaglio); estos budgets son por-repo. Replicado de altorracars 2026-06-19 (ADR-A/ADR-B del comité de sustrato). chars = unidad real de contexto. NO auto-cargado: solo lo lee el linter.",
+  "_comment": "Config INSTANCE del cerebro (topes/budgets por-repo). El KERNEL no vive aquí: canon único en ../brain-private/kernel/ (v1.6.0), se trae con npm run brain:pull y el gate #0 compara contenido. Replicado de altorracars 2026-06-19 (ADR-A/ADR-B del comité de sustrato). chars = unidad real de contexto. NO auto-cargado: solo lo lee el linter.",
   "bootCharsTarget": 28000,
   "alwaysOn": [
     "CLAUDE.md",
@@ -40,13 +40,7 @@
     }
   },
   "archiveDir": "../brain-private/insemastereo/research-archive",
-  "specsDir": "docs/superpowers/specs",
   "staleDays": 10,
-  "peers": [
-    "../altorracars.github.io",
-    "../bersagliojewelry.github.io",
-    "../altorrainmobiliaria.github.io"
-  ],
   "kernelFiles": [
     "scripts/brain-check.mjs",
     "scripts/brain-diff.mjs",
@@ -64,11 +58,16 @@
     }
   ],
   "deepAudit": {
-    "last": "2026-06-19",
-    "coveredHeaderCount": 3,
+    "last": "2026-08-01",
+    "coveredHeaderCount": 6,
     "maxAdrGap": 12,
     "maxDays": 30,
-    "_que": "Cerebro instalado 2026-06-19 (baseline, sin auditoría Nivel-2 aún). coveredHeaderCount = headers '## ' actuales en 99 (§0 Génesis + ADR-A + ADR-B)."
+    "_que": "Auditoría Nivel-2 #1 REAL el 2026-08-01 (la anterior era la fecha de instalación, sin auditoría). 36 hallazgos brutos → 14 curados; tabla en el archiveDir.",
+    "tableFile": "2026-08-01-auditoria-nivel2-hallazgos.md"
   },
-  "orphanAllowlist": []
+  "orphanAllowlist": [
+    ".handoff-auto.md",
+    ".estado-auto.md"
+  ],
+  "_orphanAllowlist_que": "Sidecars GENERADOS por session-handoff (gitignored). Van en allowlist porque el gate #10 NO PUEDE verlos: su regex de aristas exige que el nombre empiece por caracter de palabra y estos empiezan por punto. El RUTEO real si existe: fila en el §0 de CLAUDE.md. Arreglo de fondo (kernel #17-bis): admitir el punto inicial en edgeRe."
 }

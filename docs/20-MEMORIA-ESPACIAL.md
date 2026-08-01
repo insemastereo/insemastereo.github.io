@@ -7,7 +7,9 @@
 - **`insemastereo.github.io/`** (ESTE) — repo público, GitHub Pages **user-site** (sirve en la raíz). Aquí vive el mirror + el cerebro.
 - **`brain-private/insemastereo/`** — bóveda privada (`research-archive` = `archiveDir` del manifest). NUNCA público.
 - **`altorracars.github.io` · `bersagliojewelry.github.io` · `altorrainmobiliaria.github.io`** — hermanos
-  (kernel byte-idéntico; `peers` del manifest). Canon del cerebro = bersaglio.
+  (kernel distribuido, no copiado a mano). **Canon del kernel = `../brain-private/kernel/`** (v1.6.0,
+  con su `VERSION` y `pull.mjs`); el escritor único es inmobiliaria. Flujo: editar el canónico → bump
+  `VERSION` → `npm run brain:pull` en cada repo. Ni cars ni bersaglio son canon: eso era de la era v1.x.
 - **`PROTOTIPO/`** (en `Desktop/`, repo aparte) — proyecto ECOVOCES EVOLUCIONADO: landing vieja + **laboratorio**
   (`laboratorio.html` + `src/js/laboratorio/app.js` 1427L + módulos ecovoz/conecta-sensor/evaluador-guion) + su
   propio cerebro (`docs/CEREBRO.md`, **NO replicar** — menos avanzado que el de los hermanos). **Fuente del

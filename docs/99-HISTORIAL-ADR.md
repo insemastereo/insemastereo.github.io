@@ -60,3 +60,53 @@ Propagación cross-repo desde **cars §224**. El `docs/15` (§2 y §3) afirmaba 
 ## 5. ADR-E — Guardián del índice (cars TODO-32) N/A: índice por-proveniencia, sin columna de línea por diseño (`99` corto) ⟦OPUS-4.8⟧ (2026-06-22)
 
 Propagación cross-repo de **cars TODO-32/§229**. El guardián `scripts/brain-index.mjs` (auto-reconcilia la columna §→línea del `00`) **NO se instala aquí** — sería código muerto. El índice de insema **no tiene columna de línea por diseño**: su última columna es "Origen"/proveniencia y el `99` es tan corto que se navega con `grep -n "^## "`, no por offset (así lo dice el propio `00`). El reconcile parsearía 0 filas con línea → 0 trabajo pero *parecería instalado* (falsa cobertura). **Decisión**: NO script, NO `kernelFiles`/`package.json`; si algún día `99` crece y se adopta el mapa §→línea, se reevalúa. **Tombstone** (`> ⛔ REEMPLAZADO POR §M`) queda como convención manual disponible (el validador vive en el guardián, ausente aquí). Kernel (`brain-check`/`brain-diff`) y `§G` INTACTOS. Sin cache bump. Matriz de compatibilidad ×4 cerebros → **cars §229**.
+
+## 6. ADR-F — Auditoría Nivel-2 #1 REAL: el tablero mentía sobre git desde hacía 42 días ⟦OPUS-5⟧ (2026-08-01)
+
+**Deliberación:** `research-archive/2026-08-01-auditoria-nivel2-hallazgos.md` (tabla curada, = `deepAudit.tableFile`)
+· `-CRUDO.json` (7 sondas + drill de retrieval) · `-workflow.js` (reejecutable).
+
+**6.1 Contexto.** El cerebro se instaló el 2026-06-19 y **nunca se había auditado en Nivel-2**: el `deepAudit.last`
+del manifest era la fecha de instalación, no de una auditoría. A los 43 días el gate escaló a warn y empezó a
+bloquear commits del cerebro. El linter estructural daba SANO en sus 16 chequeos — y aun así el nodo de arranque
+mentía. Esa brecha es justo la razón de ser del Nivel-2.
+
+**6.2 El hallazgo que manda (N2-01).** `05` declaraba *«Local `main` == `origin/main` (pusheado ✓ 2026-06-19,
+3 commits) … Verificado vs git real»*. La realidad: HEAD en `cerebro/todo-32`, `main` local **24 commits detrás**
+y `origin/main` con **45** commits, no 3. **Cinco sondas lo reportaron por separado** sin verse entre ellas. La
+causa raíz no es descuido: es que un dato **volátil** vivía copiado a mano en un nodo que se lee en cada arranque.
+
+**6.3 La ironía útil (N2-02).** La respuesta correcta **ya existía en el repo**: el heartbeat instalado ese mismo
+día (§ADR de inmobiliaria §72) genera `docs/.estado-auto.md` con rama, HEAD, sucios y deuda de consolidación en
+cada boot. Pero **ningún nodo de ruteo llegaba a él** — el gate #10 lo marcaba como huérfano. *El cerebro generaba
+la verdad y no la entregaba.* Arreglo: la fila de git de `05` se sustituye por un puntero al sidecar, y el sidecar
+entra al §0 de `CLAUDE.md` con la regla de desempate: **si contradice al `05`, manda el sidecar**.
+
+**6.4 El kernel sin gobernanza (N2-03).** El cerebro nombraba **dos canones distintos y ambos falsos**
+(`CLAUDE.md` decía cars, `20` y el manifest decían bersaglio) mientras el canon real es `../brain-private/kernel/`
+v1.6.0. El procedimiento (`npm run brain:pull`) no existía en ninguna neurona: solo en `package.json`. Una sesión
+que quisiera tocar el linter lo habría editado en el repo y roto el gate #0. Corregido en los tres sitios.
+
+**6.5 Lo demás aplicado.** Tag de modelo desfasado (`Opus 4.8` → Fable 5 planifica / Opus 5 implementa) y su
+footer `Modelo:` que llevaba muerto desde el 9-jul (N2-04) · bitácora congelada el 18-jul, ahora con el salto de
+kernel v1.4.1→v1.6.0 y el trabajo del 1-ago (N2-06) · **TODO-10** declara los 7+ commits sin mergear y que
+`origin/main` no tiene ni el stamp del kernel ni `brain:pull` (N2-05) · doctrina de preloads LCP que afirmaba
+*«hoy ausente»* con 3 preloads puestos y nombraba un asset que no es el LCP (N2-07) · **lápida honesta** al crudo
+del comité, que no existe y tres punteros prometían (N2-08) · la refutación del *«el preview no corre GSAP»*
+retroanotada EN la síntesis, no solo en `05` (N2-14) · deliberación importada de cars indexada (N2-10) ·
+config-teatro fuera del manifest: `peers` y `specsDir` no los lee ningún gate (N2-12) · entrada ya consolidada en
+§3 retirada del `10`, que la conservaba contra §G.3 (N2-11).
+
+**6.6 Lo que se auditó y NO está roto** (verificado, no cortesía). La **web publicada no está desactualizada**:
+los 7 commits sin mergear son todos de cerebro, cero cambios en HTML/CSS/JS/assets. El `ssotFact` `w11-2` es real
+en `index.html:36` y `ecovoces-ia.html:31`. Las 18 secciones son 18 y las fuentes son self-hosted sin Google
+Fonts. El kernel local está íntegro y al día. Ningún `TODO-NN` abierto estaba en realidad resuelto. Y el bloque
+**«🚫 Callejones sin salida» del `10` es el mejor activo del cerebro**: el drill de retrieval respondió *«¿qué NO
+debo reintentar?»* con **cero saltos**, completo y correcto.
+
+**6.7 Doctrina.** **Un dato volátil copiado a mano miente; el estado derivable se GENERA o no se guarda.** Y su
+corolario, que es el que costó: **generar la verdad no basta — hay que ENRUTARLA**. Un artefacto correcto al que
+ningún nodo apunta es, para el cerebro, como si no existiera. Los 6 chequeos de kernel que esta auditoría propone
+(#17 git del propio repo · #18 cambio sin consolidar · #19 cobertura de fiabilidad invertida · #20 anclas fuera
+de `archiveDir` · #21 `deepAudit` sin `tableFile` · #22 `ssotFact` del tag de modelo) suben al escritor único del
+kernel — **inmobiliaria TODO-23**, porque el #17 habría cazado N2-01 el primer día.
