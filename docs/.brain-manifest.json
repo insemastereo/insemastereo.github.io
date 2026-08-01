@@ -37,6 +37,14 @@
     "docs/40-LOBULOS-DOMINIO.md": {
       "lines": 280,
       "chars": 14000
+    },
+    "docs/15-CONSEJO-EXTERNO.md": {
+      "lines": 50,
+      "chars": 5000
+    },
+    "docs/60-WORKFLOWS.md": {
+      "lines": 90,
+      "chars": 10000
     }
   },
   "archiveDir": "../brain-private/insemastereo/research-archive",
@@ -69,5 +77,10 @@
     ".handoff-auto.md",
     ".estado-auto.md"
   ],
-  "_orphanAllowlist_que": "Sidecars GENERADOS por session-handoff (gitignored). Van en allowlist porque el gate #10 NO PUEDE verlos: su regex de aristas exige que el nombre empiece por caracter de palabra y estos empiezan por punto. El RUTEO real si existe: fila en el §0 de CLAUDE.md. Arreglo de fondo (kernel #17-bis): admitir el punto inicial en edgeRe."
+  "_orphanAllowlist_que": "Sidecars GENERADOS por session-handoff (gitignored). Van en allowlist porque el gate #10 NO PUEDE verlos: su regex de aristas exige que el nombre empiece por caracter de palabra y estos empiezan por punto. El RUTEO real si existe: fila en el §0 de CLAUDE.md. Arreglo de fondo (kernel #17-bis): admitir el punto inicial en edgeRe.",
+  "noCap": {
+    "docs/99-HISTORIAL-ADR.md": "Largo Plazo: NUNCA se lee entero, solo offset/limit vía el índice. Un cap aquí no significaría nada.",
+    "docs/skills-inventory.md": "Registro 1:1 con las carpetas de skills/ — su tamaño lo fija el inventario real, no una decisión editorial. Lo vigila el gate #6."
+  },
+  "_caps_que": "Topes por-repo. Cada neurona tiene cap MEDIDO (tamano real + ~35% de holgura) o entrada en noCap CON RAZON — nunca por omision (chequeo #23, kernel v1.7.0). Los caps NO se inventan: inmobiliaria ADR §74.3/§75.4 documenta como una cifra a ojo creo dos veces un gate bloqueante falso."
 }
