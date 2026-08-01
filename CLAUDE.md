@@ -239,8 +239,6 @@ NO la dejes engordar: extrae una sub-categoría coherente a una neurona hermana 
 
 ---
 
-## §7 — Cómo retomar (recap)
-1. **Boot** (§G.1): `CLAUDE.md`+`05`+`10` + `npm run brain:check`; imprime signos vitales; pendientes → TODO-NN.
-2. **Triggers** §G.2 · antes de código: IAP §3.4 · antes de commit: §2 · tras CADA tarea: §G.4 + cache §4.
-3. **Entorno**: Windows + PowerShell; working dir ya en el repo (no `cd`); dueño invalida con **Ctrl+Shift+R**.
-4. **Fase actual** → `10`. **Fundación** → `99` ADR-A/ADR-B. **Diseño a espejar** → `design_handoff_ecovoces_landing/README.md`.
+## §7 — Contexto de retomada (lo que no vive en otro §)
+- **Entorno**: Windows + PowerShell; working dir ya en el repo (no `cd`); el dueño invalida con **Ctrl+Shift+R**.
+- **Fase actual** → `10`. **Fundación** → `99` ADR-A/ADR-B. **Diseño a espejar** → `design_handoff_ecovoces_landing/README.md`.
