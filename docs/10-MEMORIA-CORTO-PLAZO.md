@@ -31,13 +31,18 @@
 
 | ID | Item | Estado | Bloqueo |
 |---|---|---|---|
-| ✅ **CERRADOS** | TODO-01 cerebro fundacional · TODO-02 mirror de la landing (18 secciones, dock, hero-snap, i18n, GSAP) · TODO-03 fixes ortogonales (preload · canonical · sitemap · robots · 404 · OG+JSON-LD) · TODO-04 publicación en Pages. Detalle → `99` ADR-A/ADR-C vía `00`. | ✅ | — |
 | **TODO-05** | **Decisión dueño**: SEO bilingüe real vs toggle runtime (default adoptado = toggle, fuera de alcance demo) | ⏳ dueño | — |
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
-| **TODO-10** | 🔀 **Rama `cerebro/todo-32` sin mergear** — 14+ commits SOLO ahí (kernel, `brain:pull`, heartbeat, la auditoría). `origin/main` corre un kernel viejo y un clon nuevo desde `main` nace roto. **El merge lo hace el dueño** (regla git de este repo). Detalle → ADR-F §6.5. | 🔴 abierto | dueño mergea |
 | **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
+
+> ✅ **CERRADOS y fuera del ledger** (§G.3) — dónde vive el registro de cada uno, sin inventar punteros:
+> **TODO-01** cerebro fundacional → `99 §0` · **TODO-02** mirror de la landing → `99 ADR-A` (la decisión de
+> sustrato) + bitácora 19-jun · **TODO-03** fixes ortogonales (preload · canonical · sitemap · robots · 404 ·
+> OG+JSON-LD) → **sin ADR**: viven en los commits y en la bitácora · **TODO-04** publicación en Pages →
+> estado LIVE en `05` + bitácora. **TODO-10** la rama del cerebro → **MERGEADA** en `094b08f` (el dueño la
+> mergeó; la fila que lo daba por pendiente era stale).
 
 ---
 
