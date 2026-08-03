@@ -7,8 +7,8 @@
 - **`insemastereo.github.io/`** (ESTE) — repo público, GitHub Pages **user-site** (sirve en la raíz). Aquí vive el mirror + el cerebro.
 - **`brain-private/insemastereo/`** — bóveda privada (`research-archive` = `archiveDir` del manifest). NUNCA público.
 - **`altorracars.github.io` · `bersagliojewelry.github.io` · `altorrainmobiliaria.github.io`** — hermanos
-  (kernel distribuido, no copiado a mano). **Canon del kernel = `../brain-private/kernel/`** (v1.6.0,
-  con su `VERSION` y `pull.mjs`); el escritor único es inmobiliaria. Flujo: editar el canónico → bump
+  (kernel distribuido, no copiado a mano). **Canon del kernel = `../brain-private/kernel/`**
+  (su `VERSION` manda; NO se copia aquí); el escritor único es inmobiliaria. Flujo: editar el canónico → bump
   `VERSION` → `npm run brain:pull` en cada repo. Ni cars ni bersaglio son canon: eso era de la era v1.x.
 - **`PROTOTIPO/`** (en `Desktop/`, repo aparte) — proyecto ECOVOCES EVOLUCIONADO: landing vieja + **laboratorio**
   (`laboratorio.html` + `src/js/laboratorio/app.js` 1427L + módulos ecovoz/conecta-sensor/evaluador-guion) + su
@@ -49,5 +49,5 @@ Reglas duras: **rutas RELATIVAS** (user-site en raíz, sin base-path) · **orden
 **ids i18n únicos globales** · `?v=w11-N` en assets · **NO fragmentar en componentes/islas ahora** (espejo 1:1, riesgo mínimo).
 
 ## §5 — Contrato landing ↔ lab (respetar en la migración)
-La landing propaga `?lang=` a `laboratorio.html` vía enlaces `.js-lab-link`; el lab lee `?lang=` por
+La landing propaga `?lang=` al laboratorio del PROTOTIPO (repo aparte) vía enlaces `.js-lab-link`; el lab lee `?lang=` por
 `URLSearchParams`. Si el lab migra a otro toolchain/router, ese contrato `?lang=` se rompe → **restricción dura (ADR-B)**.
