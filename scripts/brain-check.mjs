@@ -25,9 +25,12 @@
 //   (6) Skills↔inventario [warn, --full]                (15) Schema del manifest: clave desconocida [warn]
 //   (7) archiveDir íntegro [warn, --full]               (16) Fiabilidad M-22: `verificado-vivo` stale [info, --full]
 //       (0-canónico, 7, 7b, 14-tableFile) DEGRADAN si la bóveda o el canónico no están clonados
+//       v1.12.0: (8-dueño, 16-sin-marcadores, 27-sin-rutas) DEGRADAN si el gate no comparó NADA
+//       (29) v1.13.0: cifras CONTABLES del cerebro vs el código (cura «CF 9» contra 11 reales)
+//       (el ✅ INMERECIDO, §120) · (26) trinquete de filas gordas del índice
 //       + 7b) bóveda: commits ≠ origin vía fs [warn]
 // ===========================================================
-const KERNEL_VERSION = '1.10.3';
+const KERNEL_VERSION = '1.16.0';
 import { readFileSync, readdirSync, existsSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -75,9 +78,23 @@ const KNOWN_KEYS = new Set([
   'downgrades', 'orphanAllowlist', 'verifiedLiveStaleDays', 'verifiedLiveScan', 'lastOffsiteBackup',
   'harnessCanary', // v1.10.3 (#24): declara si este repo DEBE tener el SessionStart cableado
   'noCap', // v1.7 (#23): { "docs/X.md": "razón" } — declarar SIN tope es una decisión, no un olvido
+  // v1.11.0 (#28): directorios de TRABAJO fuera de `docs/` (planes, specs) que el cerebro debe citar,
+  // su allowlist y la RAZÓN de esa allowlist (una excepción sin razón es una fuga con permiso).
+  'workDirs', 'workAllowlist', 'workAllowlistRazon',
+  // v1.12.0 (#26): deuda CONGELADA de filas gordas del índice. Trinquete: solo puede bajar.
+  'indexRowOverLimitBaseline',
+  // v1.13.0 (#29): cifras que el cerebro afirma y el kernel puede CONTAR en el repo.
+  'countableFacts',
 ]);
+// v1.14.0: prefijo `x-` para la config de gates PROPIOS de un repo (como las cabeceras de
+// extensión de HTTP). Sin él había dos malas salidas: meter una clave de un solo proyecto en
+// KNOWN_KEYS —que es compartida por los cuatro repos y acabaría siendo un cajón de sastre— o
+// disfrazarla de comentario con `_`, que la hace invisible para quien lea el manifest buscando
+// qué gates hay. Con `x-` la clave se declara, se ve, y el kernel no finge conocerla.
 for (const k of Object.keys(manifest)) {
-  if (!k.startsWith('_') && !KNOWN_KEYS.has(k)) warn(`manifest: clave desconocida "${k}" (¿typo? un typo apaga gates en silencio) — schema v1.2`);
+  if (!k.startsWith('_') && !k.startsWith('x-') && !KNOWN_KEYS.has(k)) {
+    warn(`manifest: clave desconocida "${k}" (¿typo? un typo apaga gates en silencio) — schema v1.2. Si es config de un gate PROPIO de este repo, nómbrala "x-${k}".`);
+  }
 }
 // v1.9.0 (§83) — el schema vigilaba las claves de MÁS y era ciego a las de MENOS. Cada gate
 // abajo hace `if (manifest.X)`, así que BORRAR una clave no rompe nada: apaga el gate y el
@@ -164,6 +181,19 @@ head('\n2) Capacidad de neuronas (§G.5 · chars = unidad real de contexto):');
 let bootChars = 0;
 const preShard = [];
 let okCaps = 0, capCount = 0;
+// (ADR §193) Para un nodo always-on su `cap` NO es el techo que aprieta: los tres caps suman
+// 39000c sobre un presupuesto de 31500, asi que ninguno puede alcanzarse a la vez. El `10` decia
+// "9331c/16000 · 58%" cuando su margen REAL era 124c — un numero que se LEE como holgura y
+// significa lo contrario (familia `38-GATES-QUE-MIENTEN`). Se publica el techo EFECTIVO =
+// presupuesto - lo que ocupan los OTROS always-on. Solo se REPORTA: el candado sigue siendo UNO
+// (el total), porque repartir la culpa entre nodos no tiene respuesta objetiva — por eso §G.5
+// dice "paga donde esta el peso" y el pre-aviso del 97% vive en el bloque del boot, no aqui.
+const bootReal = {};
+if (BOOT_CHARS_TARGET) for (const rel of ALWAYS_ON) {
+  const p = join(ROOT, rel);
+  if (existsSync(p)) bootReal[rel] = read(p).length;
+}
+const bootTotalAO = Object.values(bootReal).reduce((a, b) => a + b, 0);
 for (const [rel, cap] of Object.entries(CAPS)) {
   const p = join(ROOT, rel);
   if (!existsSync(p)) continue;
@@ -176,7 +206,11 @@ for (const [rel, cap] of Object.entries(CAPS)) {
   const over = (lc && nLines > Math.round(lc * 1.1)) || (cc && chars > Math.round(cc * 1.1));
   const nudge = (lc && nLines > lc) || (cc && chars > cc);
   const near = (cc && chars >= Math.round(cc * 0.9)) || (lc && nLines >= Math.round(lc * 0.9));
-  const tag = cc ? `${chars}c/${cc} · ${nLines}L/${lc}` : `${nLines}L/${lc} (${chars}c)`;
+  let tag = cc ? `${chars}c/${cc} · ${nLines}L/${lc}` : `${nLines}L/${lc} (${chars}c)`;
+  if (cc && rel in bootReal) {
+    const efectivo = BOOT_CHARS_TARGET - (bootTotalAO - bootReal[rel]);
+    if (efectivo < cc) tag += ` · ⚠️ tope REAL ${efectivo}c (lo fija el BOOT, no su cap)`;
+  }
   if (over) warn(`${rel}: ${tag} → SHARD/poda (excede tope)`);
   else if (nudge) say(`  ↗  ${rel}: ${tag} (leve exceso — destilar)`);
   else { ok(`${rel}: ${tag}`); okCaps++; if (near) preShard.push(rel); }
@@ -184,6 +218,12 @@ for (const [rel, cap] of Object.entries(CAPS)) {
 if (BOOT && okCaps) say(`  ✅ ${okCaps}/${capCount} neuronas dentro de tope`);
 if (preShard.length) info(`pre-shard: ${preShard.length} neurona(s) ≥90% de su cap (${preShard.join(', ')}) — planear shard/GC ANTES de reventar`);
 if (BOOT_CHARS_TARGET) {
+  // (ADR §193) Aviso estructural: si los caps de los always-on suman mas que el presupuesto,
+  // esos topes son DECORATIVOS y hay que decirlo — es la premisa que hacia enganosa la linea de
+  // arriba. No bloquea: no es un error, es una eleccion (dar holgura nominal a la pizarra).
+  const sumaAO = ALWAYS_ON.reduce((a, rel) => a + ((CAPS[rel] && CAPS[rel].chars) || 0), 0);
+  if (sumaAO > BOOT_CHARS_TARGET)
+    info(`los caps de los always-on suman ${sumaAO}c sobre un presupuesto de ${BOOT_CHARS_TARGET}c → NINGUNO de esos topes es el que aprieta; manda el TOTAL. Leer "x% de su cap" como holgura es justo el error que evita el «tope REAL» de arriba.`);
   const bootTok = Math.round(bootChars / 3.5);
   // 🔒 GATE DE BOOT — BLOQUEANTE desde v1.8.0 (inmobiliaria ADR §81).
   // Fue INFORMATIVO por diseño mientras algún repo estuviera sobre presupuesto (condición §173);
@@ -451,6 +491,21 @@ else {
       warn(`ssotFacts: la regex "${fact.regex}" parece tener los escapes COMIDOS (\\d/\\s/\\w sin barra invertida). Es válida pero no matchea nada → el gate daría ✅ en falso.`), hits++;
     try {
       const re = new RegExp(fact.regex, 'g');
+      // v1.12.0 (inmobiliaria §120, TODO-45b): el ✅ INMERECIDO. Este gate buscaba el hecho en los
+      // nodos NO-dueños y, al no encontrarlo, aprobaba. Pero si el DUEÑO tampoco lo contiene —el
+      // archivo se renombró, la cifra se reescribió, la regex quedó vieja— no hay nada que
+      // duplicar y el gate vigila un hecho que ya no existe. Aprobar eso es afirmar sin comparar.
+      // `ownerRegex` (opcional): hay hechos cuya forma PROHIBIDA fuera no es la forma en que el
+      // dueño los guarda. El stamp del kernel tiene `"version": "1.12.0"` en JSON, mientras que lo
+      // que no debe duplicarse por ahí es la PROSA «kernel v1.12.0». Sin esta distinción el gate
+      // exigía al dueño una cadena que nunca iba a tener, y degradaba un fact perfectamente vivo.
+      const ownerP = fact.owner ? join(ROOT, fact.owner) : null;
+      const anclaje = fact.ownerRegex || fact.regex;
+      if (!ownerP || !existsSync(ownerP)) {
+        degrade(`ssotFacts: el dueño "${fact.owner}" NO EXISTE → "${fact.regex}" no vigila nada`);
+      } else if (!new RegExp(anclaje).test(read(ownerP))) {
+        degrade(`ssotFacts: el dueño "${fact.owner}" ya NO contiene ${fact.ownerRegex ? `su anclaje "${anclaje}"` : `"${fact.regex}"`} → el hecho se movió o cambió de forma; este gate compara contra el vacío`);
+      }
       for (const rel of fact.scan || []) {
         if (rel === fact.owner) continue;
         const p = join(ROOT, rel);
@@ -524,16 +579,27 @@ else {
   const staleDays = manifest.staleDays || 10;
   const today = new Date();
   let oldest = null, oldestWhere = '';
-  for (const rel of ['docs/05-ESTADO-GLOBAL.md', 'docs/10-MEMORIA-CORTO-PLAZO.md']) {
+  const NODOS_FECHA = ['docs/05-ESTADO-GLOBAL.md', 'docs/10-MEMORIA-CORTO-PLAZO.md'];
+  const sinFecha = [];
+  for (const rel of NODOS_FECHA) {
     const p = join(ROOT, rel);
     if (!existsSync(p)) continue;
     const m = read(p).match(/(?:última actualización[:* ]*|\(al |actualizado )\**(\d{4}-\d{2}-\d{2})/i);
     if (m) { const d = new Date(m[1]); if (!oldest || d < oldest) { oldest = d; oldestWhere = rel; } }
+    else sinFecha.push(rel);
   }
   if (oldest) {
     const days = Math.floor((today - oldest) / 86400000);
     if (days > staleDays) info(`frescura: ${oldestWhere} sellado hace ${days} días (> ${staleDays}) → re-verificar vs git real y re-sellar`);
   }
+  // v1.16.0 (K-01+K-04, §208.3): el gate tomaba la fecha MÁS VIEJA de los nodos que la tuvieran, y
+  // al que no aportaba ninguna lo saltaba EN SILENCIO. Justo el `10` —la pizarra del WIP, el nodo
+  // que más rápido caduca— no usa ninguno de los formatos, así que llevaba un año fuera del gate
+  // sin que nada lo dijera. El arreglo NO es teclearle una fecha (eso sería jugar con el gate, que
+  // es lo que K-04 denunciaba): es que la COBERTURA se publique, para que un nodo cayéndose en
+  // silencio se VEA. M-27 mecanizada.
+  if (sinFecha.length)
+    info(`frescura — COBERTURA: ${NODOS_FECHA.length - sinFecha.length}/${NODOS_FECHA.length} nodo(s) always-on aportan fecha legible; NO la aportan → ${sinFecha.join(" · ")}. El «sellado hace N días» de arriba NO los cubre. Formatos que lee: «última actualización: YYYY-MM-DD» · «(al YYYY-MM-DD» · «actualizado YYYY-MM-DD».`);
 }
 
 // 13) Specs: checklist con evidencia [--full]
@@ -601,9 +667,11 @@ else {
   const vlScan = manifest.verifiedLiveScan || ['docs/05-ESTADO-GLOBAL.md', 'docs/10-MEMORIA-CORTO-PLAZO.md'];
   const today = new Date();
   let total = 0, stale = 0;
+  const sinMarcador = [];
   for (const rel of vlScan) {
     const p = join(ROOT, rel);
     if (!existsSync(p)) continue;
+    if (!/verificado-vivo:/i.test(read(p))) sinMarcador.push(rel);
     for (const m of read(p).matchAll(/verificado-vivo:\s*(\d{4}-\d{2}-\d{2})/gi)) {
       total++;
       const days = Math.floor((today - new Date(m[1])) / 86400000);
@@ -611,7 +679,16 @@ else {
     }
   }
   if (total && !stale) ok(`${total} claim(s) \`verificado-vivo\` vigentes (≤ ${vlStaleDays}d)`);
-  else if (!total) ok('check de fiabilidad activo (sin marcadores `verificado-vivo:` aún — opt-in M-22/§257)');
+  // v1.16.0 (K-01, §208.2): el otro lado del mismo hueco. Un nodo con CERO marcadores no producía
+  // hallazgos, así que el gate pasaba en verde sin haberlo mirado nunca. No se EXIGE marcador —no
+  // todo nodo afirma sobre realidad externa—, pero la cobertura se PUBLICA: es lo que distingue
+  // «no tiene claims que verificar» de «se cayó del gate y nadie lo vio».
+  if (total && sinMarcador.length)
+    info(`fiabilidad — COBERTURA: ${vlScan.length - sinMarcador.length}/${vlScan.length} nodo(s) escaneados llevan algún «verificado-vivo»; CERO en → ${sinMarcador.join(" · ")} (a esos este gate no los compara con nada).`);
+  // v1.12.0 (§120): sin marcadores este gate imprimía «check activo» — un ✅ por CERO comparaciones.
+  // Y encima mide solo la EDAD del marcador, nunca el hecho: por eso el 05 pudo sostener «CF 9»
+  // contra 11 exports reales con el claim fresquísimo. Que no verificó nada tiene que verse.
+  else if (!total) degrade('fiabilidad: 0 marcadores `verificado-vivo:` en los nodos escaneados → este gate NO comparó nada. Marca los claims sobre realidad externa (desplegado/live/datos) o retíralos.');
 }
 
 // 17) Git del PROPIO repo (auditoría Nivel-2 insemastereo 2026-08-01, N2-01) [--boot y --full]
@@ -743,7 +820,23 @@ else {
     // trabajando aquí y los hooks no dispararon → eso sí es la avería. Sin actividad → informativo.
     const reflog = join(ROOT, '.git', 'logs', 'HEAD');
     const actividadH = existsSync(reflog) ? (Date.now() - statSync(reflog).mtimeMs) / 3.6e6 : Infinity;
-    const trabajandoAqui = actividadH < ageH;         // hubo git DESPUÉS del último arranque
+    // v1.16.0 (§216.9): la premisa «hubo commits ⇒ alguien trabajó AQUÍ en sesión» la rompió una
+    // práctica adoptada DESPUÉS de escribir el gate: la distribución del kernel compartido, que
+    // commitea en un repo hermano desde la sesión de OTRO. En un repo congelado eso deja al canario
+    // gritando para siempre y bloqueando cada commit. No se apaga (BOOT_CANARY_SKIP es ceguera
+    // permanente): se MIDE. El reflog lleva el mensaje de cada entrada, así que se puede preguntar
+    // si TODO lo posterior al marker fue distribución de kernel — y entonces no es trabajo aquí.
+    // El predicado NO se adivinó: se MIDIÓ sobre los cuatro repos hermanos. Esos commits usan tres
+    // prefijos distintos —`chore(kernel)`, `chore(cerebro)`, `docs(cerebro)`— y lo ÚNICO que los 15
+    // comparten es la palabra «kernel» en el mensaje. La primera versión de este gate casó solo con
+    // `chore(kernel)` (una convención recordada de memoria) y dejó fuera al repo que más lo
+    // necesitaba. La guarda `length > 0` importa: `[].every()` es true y convertiría «sin actividad»
+    // en «solo kernel».
+    const marcaMs = existsSync(markerP) ? statSync(markerP).mtimeMs : 0;
+    const posteriores = (existsSync(reflog) ? read(reflog).split('\n') : [])
+      .filter((l) => { const t = l.match(/>\s(\d{9,})\s[+-]\d{4}\t/); return t && Number(t[1]) * 1000 > marcaMs; });
+    const soloKernel = posteriores.length > 0 && posteriores.every((l) => /\bkernel\b/i.test(l));
+    const trabajandoAqui = actividadH < ageH && !soloKernel;   // git posterior al arranque Y no es distribución
     // Umbral CRÓNICO (168h), no agudo: un repo hermano se mantiene a ráfagas desde la sesión de
     // OTRO —ahí el pre-commit sí corre; lo que no dispara es el SessionStart, que no existe— y con
     // 48h eso gritaba en cada mantenimiento cruzado. Una semana de actividad sin un solo arranque
@@ -751,7 +844,7 @@ else {
     if (ageH > 168 && trabajandoAqui && !process.env.BOOT_CANARY_SKIP)
       warn(`una SEMANA de actividad git (última hace ${Math.round(actividadH)}h) sin que ningún SessionStart escriba docs/.boot-marker (${ageH === Infinity ? 'NUNCA' : Math.round(ageH) + 'h'}) — los hooks del harness NO disparan aquí. Verifica .claude/settings.json (o: node scripts/session-handoff.mjs --boot-echo). Intencional → BOOT_CANARY_SKIP=1.`);
     else if (ageH > 48)
-      info(`canario en reposo: marker de hace ${ageH === Infinity ? 'nunca' : Math.round(ageH) + 'h'}${trabajandoAqui ? ' (mantenido desde otra sesión: el pre-commit sí corre)' : ' y sin actividad git posterior'}`);
+      info(`canario en reposo: marker de hace ${ageH === Infinity ? "nunca" : Math.round(ageH) + "h"}${soloKernel ? ` — las ${posteriores.length} entrada(s) de git posteriores son SOLO distribución de kernel (no es trabajo en este repo, §216.9)` : trabajandoAqui ? " (mantenido desde otra sesión: el pre-commit sí corre)" : " y sin actividad git posterior"}`);
     else ok(`canario vivo (marker de hace ${Math.round(ageH)}h)`);
   }
 }
@@ -797,11 +890,24 @@ else {
       if (m && l.length > RUIDO) gordas.push({ f: p.split(/[\\/]/).pop(), n: i + 1, s: m[1], c: l.length });
     });
   }
+  // v1.12.0 (§120, TODO-45c): era `info` puro, así que la regla «≤200c» llevaba 52 filas
+  // incumpliéndose sin que nada pasara — una intención con impresora. Ahora es un TRINQUETE: la
+  // deuda vieja se congela en un número declarado y una fila gorda NUEVA lo supera y BLOQUEA.
+  // El número solo puede BAJAR; subirlo para dejar de ver el aviso es exactamente [[M-05]].
+  const baseline = manifest.indexRowOverLimitBaseline;
   if (!gordas.length) ok(`filas §NN del índice dentro de ${LIMITE}c (+holgura)`);
   else {
     gordas.sort((a, b) => b.c - a.c);
     const top = gordas.slice(0, 5).map((g) => `§${g.s} (${g.c}c)`).join(' · ');
-    info(`${gordas.length} fila(s) §NN por encima de ${RUIDO}c (objetivo ${LIMITE}c): ${top}${gordas.length > 5 ? ' …' : ''} → el detalle va al ADR; la fila enruta`);
+    const detalle = `${gordas.length} fila(s) §NN por encima de ${RUIDO}c (objetivo ${LIMITE}c): ${top}${gordas.length > 5 ? ' …' : ''}`;
+    if (typeof baseline !== 'number') {
+      info(`${detalle} → el detalle va al ADR; la fila enruta. (Declara \`indexRowOverLimitBaseline\` en el manifest para congelar esta deuda y bloquear las nuevas.)`);
+    } else if (gordas.length > baseline) {
+      warn(`${detalle} → son ${gordas.length - baseline} MÁS que la deuda congelada (${baseline}). Acorta la fila nueva: el detalle va al ADR, la fila enruta.`);
+    } else {
+      if (gordas.length < baseline) info(`${detalle} → por DEBAJO de la deuda congelada (${baseline}): baja \`indexRowOverLimitBaseline\` a ${gordas.length} para que el trinquete no se afloje.`);
+      else info(`${detalle} → deuda congelada en ${baseline}; una fila gorda nueva bloquea.`);
+    }
   }
 }
 
@@ -840,6 +946,7 @@ else {
   const AMBITO = /^(05|10|20|21|22|50)[-.]/;
   const PLANTILLA = /(^|[/_-])[A-Z]([./_-]|$)|^[-.]/;   // `admin-X.js`, `X.ui.js`, `.dc.html`: patrón, no ruta
   const fantasmas = [];
+  let comparadas = 0, perdonadas = 0;
   for (const f of readdirSync(DOCS).filter((x) => AMBITO.test(x) && x.endsWith('.md'))) {
     const lineas = read(join(DOCS, f)).split('\n');
     // Contexto EXTERNO: una neurona describe legítimamente cosas que viven fuera del repo (la
@@ -854,17 +961,95 @@ else {
         const ruta = m[1];
         if (ruta.startsWith('..') || /^[A-Za-z]:/.test(ruta)) continue;   // cross-repo: no es asunto de este linter
         if (PLANTILLA.test(ruta)) continue;                               // ruta-plantilla, no ruta real
+        comparadas++;
         if (existsSync(join(ROOT, ruta))) continue;
-        if (porNombre.has(ruta.split('/').pop())) continue;               // existe, aunque el nodo cite otra ruta
+        // v1.12.0 (§120): perdonar por BASENAME es una comparación DÉBIL — dice «existe un archivo
+        // que se llama así en alguna parte», no «la ruta que citas es correcta». Se sigue
+        // perdonando (un nodo puede citar `utils.js` sin su carpeta), pero se CUENTA y se dice:
+        // un ✅ que calla cuántas veces bajó el listón no es un ✅, es una media verdad.
+        if (porNombre.has(ruta.split('/').pop())) { perdonadas++; continue; }
         fantasmas.push(`${f}:${i + 1} → \`${ruta}\``);
       }
     });
   }
-  if (!fantasmas.length) ok('ninguna neurona cita archivos inexistentes');
-  else { warn(`${fantasmas.length} ruta(s) FANTASMA citadas por neuronas (el archivo no existe en el repo): ${fantasmas.slice(0, 6).join(' · ')}${fantasmas.length > 6 ? ' …' : ''} → corregir el nodo o marcar la ruta como retirada`); }
+  if (!comparadas) degrade('rutas fantasma: 0 rutas citadas en el ámbito (05/10/20/21/22/50) → este gate NO comparó nada');
+  else if (!fantasmas.length) {
+    ok(`ninguna de las ${comparadas} ruta(s) citadas es fantasma`);
+    if (perdonadas) info(`${perdonadas} de esas ${comparadas} se aceptaron solo por COINCIDENCIA DE NOMBRE (existe un archivo así, pero en otra carpeta) → la ruta del nodo puede estar mal aunque el gate pase`);
+  } else { warn(`${fantasmas.length} ruta(s) FANTASMA citadas por neuronas (el archivo no existe en el repo): ${fantasmas.slice(0, 6).join(' · ')}${fantasmas.length > 6 ? ' …' : ''} → corregir el nodo o marcar la ruta como retirada`); }
+}
+
+// 29) Cifras VERIFICABLES: lo que el cerebro AFIRMA vs lo que hay [--full] (v1.13.0, §121)
+//     El #16 vigila la EDAD de un claim; nunca el claim. Por eso el `05` de inmobiliaria sostuvo
+//     «CF 9 en código» contra 11 exports reales con el marcador fresquísimo: fresco y falso a la vez.
+//     Este gate cierra ese hueco para las afirmaciones CONTABLES — las que se pueden resolver
+//     contando algo en el repo. No es genérico por diseño: cada cifra se declara, y declararla es
+//     aceptar que alguien la va a comprobar. Una cifra sin declarar sigue siendo palabra de nadie.
+head('\n29) Cifras verificables del cerebro (¿lo que afirma es lo que hay?):');
+if (BOOT) head('  ⏭️  omitido en --boot');
+else if (!Array.isArray(manifest.countableFacts) || !manifest.countableFacts.length) {
+  info('manifest sin countableFacts — gate omitido (declarar las cifras que el cerebro afirma)');
+} else {
+  for (const f of manifest.countableFacts) {
+    const fp = join(ROOT, f.countFile || '');
+    if (!f.countFile || !existsSync(fp)) { degrade(`cifra "${f.id}": el archivo a contar (${f.countFile}) no existe → nada que comparar`); continue; }
+    const src = read(fp);
+    // Los nombres pueden venir sueltos (`export const X`) o en lista (`export { a, b } from`).
+    const nombres = new Set();
+    for (const pat of f.countPatterns || []) {
+      for (const m of src.matchAll(new RegExp(pat, 'gm'))) {
+        for (const n of String(m[1] || '').split(',')) { const t = n.trim(); if (t) nombres.add(t); }
+      }
+    }
+    const real = nombres.size;
+    let visto = 0, malos = [];
+    for (const rel of f.claimScan || []) {
+      const p = join(ROOT, rel);
+      if (!existsSync(p)) continue;
+      for (const m of read(p).matchAll(new RegExp(f.claimRegex, 'g'))) {
+        visto++;
+        if (Number(m[1]) !== real) malos.push(`${rel} dice ${m[1]}`);
+      }
+    }
+    if (!visto) degrade(`cifra "${f.id}": el cerebro NO afirma nada que comparar (hay ${real} ${f.label}). Escríbelo donde toque o retira la cifra del manifest.`);
+    else if (malos.length) warn(`cifra "${f.id}": ${malos.join(' · ')} pero hay ${real} ${f.label} → corregir el nodo (contadas en ${f.countFile})`);
+    else ok(`${real} ${f.label} == lo que afirma el cerebro`);
+  }
 }
 
 // ---- salida (presupuesto de stdout en --boot) ----
+// 28) Trabajo PENDIENTE fuera de `docs/` que NADIE cita (anti-fuga) [--full]
+//     Nace de un fallo REAL (inmobiliaria, 2026-08-20): el MEGA-PLAN del portal —el documento que
+//     define TODO el trabajo del proyecto: 4 olas, 13 superficies y los gates del dueño— vive en
+//     `specs/` y NINGÚN nodo del cerebro lo citaba. El operador arrancó en frío, leyó CLAUDE.md +
+//     05 + 10 como manda §G.1, y se dispuso a improvisar un plan que YA EXISTÍA. El gate #10 no lo
+//     caza porque su universo es solo `docs/`. Mandato del dueño: «debe haber una forma de verificar
+//     todo lo pendiente, porque si al operador se le olvida queda en el olvido».
+//     Un plan que nadie cita no está guardado: está perdido con copia de seguridad.
+head('\n28) Planes/specs alcanzables desde el cerebro (anti-fuga):');
+if (BOOT) head('  ⏭️  omitido en --boot');
+else {
+  const workDirs = manifest.workDirs || ['specs'];
+  const allowW = new Set(manifest.workAllowlist || []);
+  let brainText = claude;
+  for (const f of readdirSync(DOCS).filter((f) => f.endsWith('.md'))) brainText += read(join(DOCS, f));
+  const sueltos = []; let total = 0;
+  for (const d of workDirs) {
+    const p = join(ROOT, d);
+    if (!existsSync(p)) continue;
+    let ents = []; try { ents = readdirSync(p).filter((f) => f.endsWith('.md')); } catch { continue; }
+    for (const f of ents) {
+      total++;
+      if (allowW.has(`${d}/${f}`)) continue;
+      if (!brainText.includes(f)) sueltos.push(`${d}/${f}`);
+    }
+  }
+  if (sueltos.length)
+    warn(`${sueltos.length} documento(s) de trabajo que NINGÚN nodo cita → INVISIBLES al arrancar en frío: ${sueltos.slice(0, 6).join(' · ')}${sueltos.length > 6 ? ' …' : ''} → cítalos desde su nodo dueño, o decláralos en manifest.workAllowlist CON razón`);
+  else if (total) ok(`${total} documento(s) de trabajo citados desde el cerebro`);
+  else head('  ℹ️  sin directorios de trabajo declarados (manifest.workDirs)');
+}
+
 const sano = '✅ CEREBRO SANO (estructura íntegra' + (manifest.deepAudit && manifest.deepAudit.last ? ' · auditoría semántica: ' + manifest.deepAudit.last : '') + ')';
 const parcial = `🟠 ESTRUCTURA ÍNTEGRA, pero ${degraded} gate(s) DEGRADADOS (no pudieron correr) — NO es un cerebro verificado: clona la bóveda / el canónico y re-corre`;
 lines.push(`\n${problems ? '⚠️  ' + problems + ' problema(s) — revisar antes de avanzar' : (degraded ? parcial : sano)}\n`);

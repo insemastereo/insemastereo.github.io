@@ -47,6 +47,12 @@
 ---
 
 ## 📝 Bitácora (efímera)
+
+> 🐤 **26-ago — el canario acusó 19 commits sin arranque**; queda escrito ANTES de refrescar el
+> marcador, que borra la señal. Los hooks están BIEN cableados: los 19 son previos al commit que
+> instaló el heartbeat, o mantenimiento de flota desde la sesión de un repo hermano. El kernel ya
+> no acusa a la distribución (§219 de inmobiliaria); este caso es más ancho y se juzga, no se
+> regexea. Si vuelve a salir con trabajo LOCAL detrás, es real.
 > - **2026-08-01 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #1** (36 hallazgos → 14) + **heartbeat** instalado → **ADR-F**. Lo que cambia para ti: rama/HEAD/sucios ya NO se copian al `05`, los genera `docs/.estado-auto.md`.
 > - **2026-07-20 → 07-23 ⟦FABLE-5⟧**: el kernel saltó del v1.4.1 al v1.6.0 vía `brain:pull`; el canónico pasó a `../brain-private/kernel/` y este repo solo CONSUME sus `kernelFiles`.
 > - **2026-07-18 ⟦sinapsis desde inmobiliaria, FABLE-5⟧**: payloads liderazgo aplicados (60-WORKFLOWS: escritor único kernel/§G = inmobiliaria-operador) + 15 skills re-sincronizadas con verdad de producción SEO (Offer-sin-price inválido, FAQPage sin rich result, AEM muerto, objetivo Mensajes retirado — detalle: inmobiliaria ADR §33-§37). Novedades disponibles para catalogar: refreshes paid-ads v2.2/ad-creative v2.8 (+ nuevas video/offers/marketing-loops/image en inmobiliaria).
