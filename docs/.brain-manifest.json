@@ -69,13 +69,14 @@
     {
       "regex": "[Kk]ernel\\s*\\**\\s*v?\\d+\\.\\d+\\.\\d+",
       "owner": "scripts/.kernel-version.json",
+      "ownerRegex": "\"version\"\\s*:\\s*\"\\d+\\.\\d+\\.\\d+\"",
       "scan": [
         "CLAUDE.md",
         "docs/05-ESTADO-GLOBAL.md",
         "docs/10-MEMORIA-CORTO-PLAZO.md",
         "docs/20-MEMORIA-ESPACIAL.md"
       ],
-      "_que": "version del kernel (ADR inmobiliaria 83, TODO-37): el dueno es el STAMP que escribe brain:pull. Copiarla a un nodo always-on la desincroniza en el primer bump — paso 2 veces el mismo dia (insema declaraba v1.6.0 con el stamp en v1.9.0). El gate #8 lo caza solo si el hecho esta DECLARADO: no era un gate inutil, era un gate sin datos. | 2026-08-03: la regex nacio CIEGA a las negritas — `kernel **v1.7.2**` no matcheaba y el 05 de bersaglio llevaba un dato stale que el gate no veia. Corolario de LD-07: quitar/tolerar el markdown antes de comparar prosa."
+      "_que": "version del kernel (ADR inmobiliaria 83, TODO-37): el dueno es el STAMP que escribe brain:pull. Copiarla a un nodo always-on la desincroniza en el primer bump — paso 2 veces el mismo dia (insema declaraba v1.6.0 con el stamp en v1.9.0). El gate #8 lo caza solo si el hecho esta DECLARADO: no era un gate inutil, era un gate sin datos. | 2026-08-03: la regex nacio CIEGA a las negritas — `kernel **v1.7.2**` no matcheaba y el 05 de bersaglio llevaba un dato stale que el gate no veia. Corolario de LD-07: quitar/tolerar el markdown antes de comparar prosa. | 2026-08-26: el gate DEGRADABA aqui («el dueno ya NO contiene …») porque el stamp guarda {\"version\":\"1.19.0\"} y la regex busca la PROSA «kernel v1.19.0». El kernel ya preveia el caso con `ownerRegex`, y este repo no lo declaraba: el fact estaba VIVO y el gate lo daba por muerto. Inmobiliaria si lo tenia — la correccion no se propago a las hermanas (ADR 226)."
     }
   ],
   "deepAudit": {
