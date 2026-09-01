@@ -43,3 +43,4 @@
 | §4 | ADR-D — Consejo Externo: Gemini vía Antigravity SÍ ve el código (solo-lectura); §15 corregido. De cars §224. ⟦OPUS-4.8⟧ | 2026-06-21 |
 | §5 | ADR-E — Guardián del índice (cars TODO-32) **N/A aquí**: índice por-proveniencia, sin columna de línea por diseño (`99` corto). De cars §229. ⟦OPUS-4.8⟧ | 2026-06-22 |
 | §6 | ADR-F — **Auditoría Nivel-2 #1 REAL**: el `05` mentía sobre git 42 días (decía main sincronizado; el trabajo vivía en `cerebro/todo-32`). El heartbeat ya generaba la verdad y ningún nodo la enrutaba. Kernel sin gobernanza: 2 canones declarados, ambos falsos. 36 hallazgos → 14. | auditoría 2026-08-01 |
+| §7 | ADR-G — **Lote 3 del CEREBRO MAESTRO**: `L-04`, `L-05` y `M-01` mudan su cuerpo a la bóveda; aquí quedan titular + stub + `_legacy/`. Censo sha 3/3; kernel v1.20 MEDIDO. | rama `f2/lote-inse` 2026-09-01 |
