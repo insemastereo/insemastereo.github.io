@@ -151,6 +151,10 @@ kernel — **inmobiliaria TODO-23**, porque el #17 habría cazado N2-01 el prime
   sería un conflicto en un fichero que el dueño no puede juzgar. Consecuencia honesta: este ADR y su
   lote quedan **preparados y staged en la rama**, y el commit espera a que alguien salde una deuda
   que no es suya. La bóveda, en cambio, ya tiene los tres cuerpos empujados: nada es irrecuperable.
+  **⇒ Deuda SALDADA el mismo día, en esta rama y ANTES de este commit: §8 (ADR-H).** Este punto
+  queda como el estado en que se escribió, no como el vigente: el commit ya no espera a nadie, y
+  el `.4` de abajo describe el kernel v1.20 que este repo YA NO corre — se conserva porque su
+  medición es lo que prueba por qué había que subirlo.
 - **.4 Compatibilidad con el kernel v1.20 — MEDIDA, no supuesta.** Este es el único de los cuatro
   repos que sigue SIN el lookbehind `(?<![A-Z]{2,}:)` que estrenó v1.29. Sonda: linter REAL sobre una
   copia sandbox, con el regex EXTRAÍDO del propio fichero del kernel (`/\b([LM]-\d{2,})\b/g`), no
@@ -187,3 +191,77 @@ kernel — **inmobiliaria TODO-23**, porque el #17 habría cazado N2-01 el prime
   aprieta sería vender un alivio que no existe. Estado: lote **MIGRADO, no SELLADO** —los drills de
   ambigüedad, contexto y ruteo (D10 §5.3-§5.5) los corren agentes fríos ajenos a la migración— y su
   sello queda además **CONDICIONADO al merge de esta rama por el dueño**.
+## 8. ADR-H — La deuda ajena que bloqueaba el lote se PAGA: kernel a v1.29.0 y 14 skills reconciliadas ⟦OPUS-5⟧ (2026-09-01)
+
+> Decisión de Fable ante las dos salidas que el ADR-G dejó abiertas y excluyentes: (1) autorizar
+> `--no-verify` para el commit del lote, o (2) saldar la deuda antes. **Se eligió la 2.** La 1 habría
+> puesto el lote dentro, pero al precio de estrenar en este repo el precedente de saltarse el hook
+> por una deuda "que no es mía" — y esa frase la puede decir cualquiera, siempre.
+
+- **.1 Causa raíz.** El `pre-commit` corre `brain:check` en todo commit que toque `docs/` y bloquea
+  con `exit(problems ? 1 : 0)`; un ⚠️ del kernel suma a `problems`, así que aquí **un aviso no es un
+  aviso: es un fallo con otro icono**. Los 2 que bloqueaban eran de kernel STALE (v1.20.0 frente al
+  canónico v1.29.0). Y el remedio prescrito —`brain:pull`— apagaba esos dos y encendía uno nuevo:
+  **14 skills DERIVADAS** frente a una deuda congelada de 0. No era un fallo del gate: es el
+  trinquete 6b, que nació en v1.22/23 y que este repo, congelado en v1.20, **nunca había visto**.
+  La deuda no la creó el lote; el lote solo fue el primer commit que la tuvo delante.
+- **.2 Solución estructural — se paga por donde el propio gate dice.** El 6b prescribe literalmente
+  *«Manda la de `~/.claude` (§33): re-copia la nueva, no subas la línea base»*, y así se hizo: **no
+  se tocó `skillDriftBaseline`**. Subirlo a 14 habría dejado el número en verde y las catorce skills
+  viejas exactamente donde estaban — el ✅ inmerecido que este kernel lleva versiones cazando.
+  Canonicidad verificada ANTES de pisar nada, con cuatro pruebas: (a) en **14 de 14**, la copia de
+  inmobiliaria —el repo escritor de la familia— es ya byte-idéntica a la de `~/.claude`; (b) **10 de
+  14** copias de aquí son byte-idénticas a las de cars y bersaglio, o sea que no son ediciones de
+  esta casa sino la misma versión vieja compartida por tres repos; (c) de las 4 restantes, en dos
+  (`auditoria-cerebro`, `comite-expertos`) los hermanos ya estaban al día y solo INSEMA se quedó
+  atrás, y en las otras dos (`asesor-critico-honesto`, `caza-bugs`) los hermanos llevan una versión
+  intermedia y la de aquí es **la más antigua de las tres**; (d) **11 de 14** son subconjunto
+  estricto por líneas, y las 3 que no lo eran se leyeron a mano una por una: su «línea propia» es la
+  misma frase que la canónica reescribe o parte en dos. `asesor-critico-honesto` es literalmente la
+  v1 que la cargada sustituye por una v2. En ningún caso la versión de este repo era la más nueva.
+- **.3 Guardián: qué NO se pisó, y cómo se comprobó.** Regla dada: re-copiar solo si no se pierde
+  nada propio. Test decisivo, `grep -i "insema|ecovoces"` sobre las 14 copias del repo = **0
+  menciones**; ninguna llevaba una línea de este proyecto. Resultado: **14 re-copiadas, 0 fuera**.
+  La condición se comprobó además **por fichero y en el momento de escribir** —el script salta y
+  reporta cualquiera cuya línea perdida nombre a INSEMA o ECOVOCES—, no solo en el análisis previo:
+  un guardián que solo mira antes de empezar no protege del fichero número once. Alcance mínimo: se
+  tocó **solo `SKILL.md`**, que es lo único que el gate compara; los auxiliares
+  (`ssg-static-prerender/{agents,references}/*`, `optimizacion-rendimiento-web/scripts/*`) se
+  midieron **ya idénticos** módulo CRLF y no se tocaron.
+- **.4 No-regresión, medida.** `brain:check`: **2 problemas (v1.20) → 1 (tras el pull) → 0** (tras
+  las skills). El commit del lote corrió el hook **entero**, sin `--no-verify`. Sitio servido
+  INTACTO: no se tocó un byte de `index.html`, `ecovoces-ia.html`, `src/` ni `404.html`, así que no
+  hay cache bump que hacer. `skills/` cambia en contenido pero **ninguna carpeta aparece o
+  desaparece**: el 6a (catálogo) y `docs/skills-inventory` no se mueven.
+- **.5 Lo que el kernel nuevo DICE y el viejo callaba — se declara, no se tapa.** Aparece un gate
+  **🟠 DEGRADADO: el #16 (fiabilidad, la lección `CARS:M-22`)**, porque este repo no tiene ni un marcador
+  `verificado-vivo:` y por tanto ese gate *no comparó nada*. **No bloquea** (`degraded` no suma a
+  `problems`) y **no lo causa este trabajo**: es información que v1.20 no daba. Lo arregla la rama
+  `cerebro/sello-verificado-vivo`, que espera merge. Segundo aviso heredado, y con la trampa dentro:
+  el **BOOT pasa de 99,9 % (30c de margen) a 98,9 % (296c)** sin que se haya podado una sola línea.
+  Los 266c de diferencia salen exactos de que v1.29 **normaliza CRLF al medir** y v1.20 no:
+  `CLAUDE.md` −244c (sus 245 líneas menos una), `05` −22c (sus 23) y `10` −0c porque ese fichero ya
+  estaba en LF en el árbol de trabajo. **El cerebro no adelgazó: cambió la unidad de medida.** Quien
+  lea el 98,9 % como una poda estará celebrando un `\r`.
+- **.5-bis La restricción que declaraba el ADR-G queda LEVANTADA, y se estrenó sola.** El §7.4 dejó
+  escrito que mientras este repo siguiera en v1.20 **ninguna neurona de aquí podía citar una lección
+  de otro repo**, porque el gate la resolvería a ciegas contra una de esta casa. Escribiendo este
+  mismo ADR se topó con el caso: el punto `.5` nombraba la lección de la fiabilidad con su ID pelado
+  y el chequeo #5 la sacó **⚠️ COLGANTE** (aquí no existe: vive en cars). Cualificada a `CARS:M-22`,
+  el lookbehind `(?<![A-Z]{2,}:)` de v1.29 la ignora y el #5 vuelve a `7 usadas / 7 def`. Primera
+  cita cruzada de la historia de este cerebro, y a la primera. Coda: el gate volvió a cazarme cuando
+  este párrafo *contaba* la anécdota escribiendo el ID pelado — no distingue una cita de una
+  demostración, igual que el #7 del maestro. Por eso arriba no aparece: se nombra, no se escribe.
+- **.6 Archivos.** MODIFICADOS: `scripts/brain-check.mjs`, `scripts/session-handoff.mjs`,
+  `scripts/.kernel-version.json` (reparto), los 14 `skills/<n>/SKILL.md`, `docs/99` (este ADR + el
+  puntero de frescura en §7.3-bis) y `docs/00` (fila §8). NUEVO: `MERGE-GUIA-DANIEL.md` en la raíz.
+  INTACTOS y verificados: `CLAUDE.md`, `docs/05`, `docs/10`, `docs/20`, `docs/30`, `docs/40`,
+  `docs/60`, `scripts/brain-diff.mjs` (ya idéntico al canónico), todos los auxiliares de skills y
+  todo el sitio. Tres commits separados por tipo (kernel · skills · lote), y este ADR es el cuarto.
+- **.7 Doctrina.** *La deuda ajena hay que pagarla igual, o el gate deja de ser un gate.* Un hook que
+  se salta «porque esta vez no es culpa mía» ya no bloquea a nadie: bloquea solo a quien no tiene
+  prisa. El coste real de haberlo pagado fue leer 14 diffs y medir cuatro veces la dirección de la
+  copia — barato comparado con estrenar el precedente. Corolario que este caso deja: **una deuda
+  congelada en un repo que no corre el gate no está congelada, está invisible**, y aparece entera el
+  día que alguien actualiza. Los otros tres hermanos la vieron cuando les tocó; a INSEMA le tocó hoy.
+
