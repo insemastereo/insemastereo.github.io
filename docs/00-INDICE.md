@@ -26,6 +26,7 @@
 | 🧠 Monta el comité / mejora ×3 / 2ª opinión interna | Skill **`comite-expertos`** (+ `15` para Gemini) |
 | 🛰️ Decisión fuerte / cara de revertir | 🛰️ `docs/15-CONSEJO-EXTERNO.md` |
 | Video del proyecto / página de presentación / enlace de entrega al docente | 📚 `99` §3 (ADR-C) + 🗺️ `20` → `ecovoces-ia.html` |
+| El `pre-commit` me BLOQUEA por una deuda que no la causa mi cambio | 📚 `99` §8 (ADR-H): se paga, no se salta — `brain:pull` + re-copiar la skill canónica |
 | ¿Qué hay pendiente? estado del sprint | ⚡ `10` (TODO-NN) |
 | El "por qué" de una decisión / detalle de un § | tabla § → ADR abajo → 📚 `99` |
 
@@ -43,3 +44,5 @@
 | §4 | ADR-D — Consejo Externo: Gemini vía Antigravity SÍ ve el código (solo-lectura); §15 corregido. De cars §224. ⟦OPUS-4.8⟧ | 2026-06-21 |
 | §5 | ADR-E — Guardián del índice (cars TODO-32) **N/A aquí**: índice por-proveniencia, sin columna de línea por diseño (`99` corto). De cars §229. ⟦OPUS-4.8⟧ | 2026-06-22 |
 | §6 | ADR-F — **Auditoría Nivel-2 #1 REAL**: el `05` mentía sobre git 42 días (decía main sincronizado; el trabajo vivía en `cerebro/todo-32`). El heartbeat ya generaba la verdad y ningún nodo la enrutaba. Kernel sin gobernanza: 2 canones declarados, ambos falsos. 36 hallazgos → 14. | auditoría 2026-08-01 |
+| §7 | ADR-G — **Lote 3 del CEREBRO MAESTRO**: `L-04`, `L-05` y `M-01` mudan su cuerpo a la bóveda; aquí quedan titular + stub + `_legacy/`. Censo sha 3/3; kernel v1.20 MEDIDO. | rama `f2/lote-inse` 2026-09-01 |
+| §8 | ADR-H — **La deuda AJENA se paga igual**: kernel v1.20→v1.29.0 + las 14 skills DERIVADAS re-copiadas desde la canónica, sin subir `skillDriftBaseline`. Desbloquea el lote 3 sin `--no-verify`. | rama `f2/lote-inse` 2026-09-01 |

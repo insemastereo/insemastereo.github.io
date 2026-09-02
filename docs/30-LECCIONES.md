@@ -24,15 +24,11 @@
 - `deploy=push` elimina el staging → **verifica en navegador real ANTES de cada push**. Construye el mirror **por bloques, commit por bloque**.
 - Degradación: sin GSAP, el IntersectionObserver revela todo; `prefers-reduced-motion` apaga el motion (ya cubierto en el CSS del handoff — no re-tocar el marquee).
 
-### L-04 — `preview_screenshot` se cuelga en páginas de animación continua
-**Disparador**: vas a verificar visualmente con `preview_screenshot`.
-- En páginas con animación en bucle (canvas de follaje rAF + video autoplay + marquee), `preview_screenshot` **se cuelga (timeout 30s)**. Gotcha heredado del cerebro hermano altorracars.
-- **Receta**: verifica con `preview_eval` (estado del DOM, `naturalWidth` de imágenes = asset realmente cargado, `document.fonts.check`, colores computados, disparar el toggle i18n por `.click()`) + `preview_console_logs level=error` (0 errores = sin 404s ni JS roto). Más fiable que una captura.
+### L-04 — `preview_screenshot` se cuelga en páginas de animación continua ⇒ **migrada al maestro**: [[INSE:L-04]]
+Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
-### L-05 — Push 403: el credential helper cachea la cuenta equivocada
-**Disparador**: `git push` a un repo de OTRA cuenta GitHub da `403 Permission denied to <otra-cuenta>`.
-- En esta máquina, Git Credential Manager (`credential.helper=manager`) cachea la cuenta **`altorracars`**, que NO tiene escritura en el repo de la cuenta **`insemastereo`** → push 403. `gh` NO está instalado.
-- **No lo resuelve Claude** (autenticarse = acción del dueño). Fix (uno de): (a) añadir `altorracars` como **colaborador** del repo `insemastereo` (GitHub → repo → Settings → Collaborators); (b) limpiar la credencial cacheada (Windows → Administrador de credenciales → quitar `git:https://github.com`) y re-loguear como `insemastereo` en el próximo push; (c) usar un **PAT** de `insemastereo`. Luego `git push -u origin main`.
+### L-05 — Push 403: el credential helper cachea la cuenta equivocada ⇒ **migrada al maestro**: [[INSE:L-05]]
+Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
 ### L-06 — Leer el contenido REAL de una fuente externa antes de describirla (Canva / video / PDF)
 **Disparador**: vas a describir/resumir lo que dice un video, una presentación de Canva o un PDF que NO has leído.
@@ -44,12 +40,8 @@
 
 ## §Meta — Meta-lecciones del cerebro
 
-### M-01 — Cita el número exacto o no lo cites (verifica, no asumas)
-**Disparador**: vas a afirmar una cifra/hecho del código o una capacidad de la herramienta.
-- Origen: el comité fundacional (2026-06-19) corrigió "108 window.appState" (real: `appState`=142, `window.appState`=6)
-  y desmintió un "riesgo del marquee" que `landing.css:373` ya cubría. **Refuerzo (verificación del mirror):** el
-  comité afirmó "el preview no corre GSAP" y la prueba real mostró GSAP corriendo (`gsap: object`, L-04). **Un supuesto
-  heredado equivocado mina igual que un bug.** Lee/ejecuta y cita evidencia (`archivo:línea`/output), o di "no verificado".
+### M-01 — Cita el número exacto o no lo cites (verifica, no asumas) ⇒ **migrada al maestro**: [[INSE:M-01]]
+Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
 ## 🧭 Decisiones de gobernanza 2026-06-24 (operador-cars → ×4 cerebros) [HONOR]
 > De la sesión cars (PLAN UNIFICADO, cars §237). Mismo dueño/operación en los 4 repos.
