@@ -27,6 +27,7 @@
 | 🛰️ Decisión fuerte / cara de revertir | 🛰️ `docs/15-CONSEJO-EXTERNO.md` |
 | Video del proyecto / página de presentación / enlace de entrega al docente | 📚 `99` §3 (ADR-C) + 🗺️ `20` → `ecovoces-ia.html` |
 | El `pre-commit` me BLOQUEA por una deuda que no la causa mi cambio | 📚 `99` §8 (ADR-H): se paga, no se salta — `brain:pull` + re-copiar la skill canónica |
+| Busco una lección de aquí y su cuerpo ya no está en `30` (solo el titular + un stub) | 🧪 `30` → `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno) y `brain-private/maestro/` — 9 migradas al maestro, cola en CERO (📚 `99` §7 · §9) |
 | ¿Qué hay pendiente? estado del sprint | ⚡ `10` (TODO-NN) |
 | El "por qué" de una decisión / detalle de un § | tabla § → ADR abajo → 📚 `99` |
 
@@ -46,3 +47,4 @@
 | §6 | ADR-F — **Auditoría Nivel-2 #1 REAL**: el `05` mentía sobre git 42 días (decía main sincronizado; el trabajo vivía en `cerebro/todo-32`). El heartbeat ya generaba la verdad y ningún nodo la enrutaba. Kernel sin gobernanza: 2 canones declarados, ambos falsos. 36 hallazgos → 14. | auditoría 2026-08-01 |
 | §7 | ADR-G — **Lote 3 del CEREBRO MAESTRO**: `L-04`, `L-05` y `M-01` mudan su cuerpo a la bóveda; aquí quedan titular + stub + `_legacy/`. Censo sha 3/3; kernel v1.20 MEDIDO. | rama `f2/lote-inse` 2026-09-01 |
 | §8 | ADR-H — **La deuda AJENA se paga igual**: kernel v1.20→v1.29.0 + las 14 skills DERIVADAS re-copiadas desde la canónica, sin subir `skillDriftBaseline`. Desbloquea el lote 3 sin `--no-verify`. | rama `f2/lote-inse` 2026-09-01 |
+| §9 | ADR-I — **Lote 16 y la cola en CERO**: `L-01`, `L-06`, `M-09` y los puntos 1/3/4 del bloque de gobernanza (`GOB-1`/`GOB-3`/`GOB-4`, forma §4.2) mudan su cuerpo a la bóveda. `L-02` **RETENIDA** por el guardián. Censo sha 6/6. | `main` 2026-09-02 |

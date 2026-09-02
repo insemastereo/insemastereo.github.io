@@ -116,6 +116,8 @@ kernel — **inmobiliaria TODO-23**, porque el #17 habría cazado N2-01 el prime
 > Programa F2 (diseño VIGENTE: `brain-private/cerebro-maestro/F2-DISENO.md`; bitácora del programa:
 > `brain-private/cerebro-maestro/BITACORA.md`). **En RAMA a propósito**: aquí Claude nunca toca `main`
 > — este trabajo vive en `f2/lote-inse` y el merge es del dueño, como el de las otras dos ramas abiertas.
+> ⚠️ **Superado el 2026-09-02 (§9)**: el dueño mergeó esa rama y las otras dos a `main`, y desde
+> entonces el trabajo de este repo vive en `main`. La frase de arriba describe el lote 3, no la regla de hoy.
 
 - **.1 Qué se mueve, y por qué éstas.** `L-04` (la captura de pantalla se cuelga en una página con
   animación en bucle), `L-05` (push 403: el gestor de credenciales cachea la cuenta equivocada) y
@@ -265,3 +267,88 @@ kernel — **inmobiliaria TODO-23**, porque el #17 habría cazado N2-01 el prime
   congelada en un repo que no corre el gate no está congelada, está invisible**, y aparece entera el
   día que alguien actualiza. Los otros tres hermanos la vieron cuando les tocó; a INSEMA le tocó hoy.
 
+## 9. ADR-I — Seis lecciones más y la cola de insemastereo en CERO: el lote 16, que cierra el programa ⟦OPUS-5⟧ (2026-09-02)
+
+> Programa F2 (diseño VIGENTE: `brain-private/cerebro-maestro/F2-DISENO.md`; bitácora del programa:
+> `brain-private/cerebro-maestro/BITACORA.md`). **En `main`, no en rama**: el 2-sep el dueño mergeó
+> a `main` las tres ramas abiertas (`f2/lote-inse`, `seguridad/escaner-secretos`,
+> `cerebro/sello-verificado-vivo`) y no queda ninguna por delante —medido: las cuatro ramas locales
+> a 0 commits de `main`, y `main` == `origin/main`—, así que este lote no abre rama ni deja nada
+> que mergear. ⚠️ **La cláusula del router global «en INSEMA mergea él» no se toca aquí**: sigue
+> valiendo para quien ABRA una rama; lo que este ADR constata es que hoy no había ninguna.
+
+- **.1 Qué se mueve, y qué NO.** Van **seis**: `L-01` (publicar a GitHub Pages sin sustos), `L-06`
+  (leer el contenido REAL de una fuente externa antes de describirla), `M-09` (el criterio de salida
+  del always-on) y los puntos **1, 3 y 4** del bloque «Decisiones de gobernanza 2026-06-24», que el
+  censo del maestro nombra `GOB-1`, `GOB-3` y `GOB-4`. Con ellas este repo pasa de **3 a 9**
+  lecciones en la bóveda y su cola queda en **CERO**. Los cuatro cuerpos se leyeron enteros antes de
+  moverlos, como manda el §8 del diseño (el lector de CUERPOS gana al de títulos).
+- **.1-bis `L-02` queda RETENIDA por el guardián — y esto es el desempate, no un olvido.** El
+  `F2-DISENO §3.2` la selló **ESPECÍFICA** ("patrón global ya trivial; convención local") y el §8
+  registra que los **dos clasificadores ciegos coincidieron** con ese veredicto leyendo el cuerpo:
+  tres lecturas independientes, misma conclusión. El censo masivo del 1-sep —una pasada de 311
+  piezas— la mandó a la cola, y el §9 del diseño, que sí re-adjudicó los conflictos que vio (`INMO:L-12`
+  entra, `INMO:L-03` se queda, `CARS:L-37` pendiente), **no menciona ésta**: el conflicto pasó
+  inadvertido. Ante dos rondas del MISMO criterio que discrepan, el desempate no es la más reciente
+  sino el **default de guardián** del §3.1 —*ante la duda, NO se migra*—, que es exactamente el
+  mecanismo que el §8 ya usó para `INMO:L-12`. Se queda aquí, entera y sin marca. Lo que sí sale es
+  su **EXTRACTO** (§3.1, regla del extracto), depositado como candidata `G` en el `_inbox/` del
+  maestro: *una plataforma que no te deja poner cabeceras de caché convierte el cache-bust por
+  query-string en la respuesta CORRECTA, no en un parche* — el caso se queda, el patrón se destila.
+  Fable puede revocarlo con evidencia; queda escrito para que no haya que re-investigarlo.
+- **.2 Las tres `GOB-N`: piezas de UNA línea, con un ID que el origen nunca les dio.** No tienen
+  header propio —son puntos de una lista numerada—, así que se aplica la **forma §4.2**: la línea
+  **se queda entera** en `30` y solo gana la marca `⇒ **migrado al maestro**: [[INSE:GOB-N]]`, sin
+  el renglón «cuerpo íntegro en…» que sobraría encima de un texto que el lector tiene delante.
+  Consecuencia declarada: **en esas tres el `30` no descomprime, crece** ~60c por pieza. Y el
+  `GOB-N` es un **ID sintético**: lo asignó el censo del maestro, no este repo; aquí no significa
+  nada fuera de la cita cualificada, y por eso el kernel (que solo indexa `L-`/`M-`) ni lo ve.
+  El punto **2** del bloque no va: es la regla de trato con el dueño, y su sitio es el router global.
+  El bloque es el MISMO en cars y en bersaglio (medido: `cars docs/30` y `bers docs/34`); esta casa
+  es solo la primera que lo migra, y las otras dos conservan su copia intacta.
+- **.3 `M-09` es una COPIA de la de inmobiliaria, y aun así va — con su puerta compartida.** Llegó
+  aquí por sinapsis desde `INMO §84` y se reescribió con un «cómo se aplica aquí» propio: mismo ID,
+  misma regla, texto distinto. Migrar las dos **no duplica conocimiento**: conserva la voz de cada
+  casa, que es justo lo que el drill de ambigüedad existe para probar (el maestro ya tiene la
+  CUÁDRUPLE `INSE:M-01`·`CARS:M-11`·`BERS:M-09`·`INMO:M-30`). Lo que NO se hace es darle fila
+  propia en el índice: entra como **segundo destino** de la fila que ya rutea a la de inmobiliaria —
+  una fila gemela rutea peor que ninguna.
+- **.4 Censo de checksums: 6/6 byte-idénticos**, dentro de un censo de **10/10** con las cuatro de
+  inmobiliaria. Tres vías independientes —el fichero del maestro, el bloque «Lote 16» de
+  `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` y el **blob git PINNEADO** `5646f22` del nodo que cada
+  pieza DECLARA en su `> Origen:`—, corrido **en memoria ANTES** de escribir un byte. Normalización
+  declarada e igual en las tres: CRLF→LF + recorte de saltos finales; el fichero del maestro se
+  escribe con el **EOL del nodo de origen** (aquí CRLF, medido, no supuesto). sha256: `L-01`
+  `77ac75be…` · `L-06` `e24c4e63…` · `M-09` `552230b8…` · `GOB-1` `fc894f5f…` · `GOB-3`
+  `71efe311…` · `GOB-4` `9fc17215…`.
+  **Y cazó dos rojas, las dos del INSTRUMENTO**: el verificador cortaba la pieza en el siguiente
+  encabezado, regla, separador o `> Origen:`… y no en el **siguiente punto de la misma lista**, así
+  que `GOB-1` y `GOB-3` se tragaban a sus hermanas en la vía del blob. Es la misma clase de fallo
+  que el lote 15 destiló —*una frontera es el CONJUNTO de terminadores, nunca «no es X, es Y»*—
+  **reincidiendo en el lote siguiente**: va al `_inbox` como evidencia de que esa regla necesita un
+  gate y no memoria.
+- **.5 No-regresión.** `brain:check` **CEREBRO SANO**, y el diff contra la línea base es **una sola
+  línea**: el tamaño de `30` (6583c → **4201c**, −36,2 %; 69L → 48L). `refs L-/M- (8 usadas / 8
+  def)` **sin moverse** —los titulares siguen en `30`, que es la tabla de resolución del #5b—.
+  **BOOT always-on INTACTO en 27712c** de 28000 (288c de margen): ninguna de las seis vivía en un
+  always-on, y `CLAUDE.md`, `05` y `10` no se han tocado. **Colgantes ×4 con diff VACÍO**: INMO
+  98/98 · CARS 99/99 · BERS 97/97 · INSE 8/8, con el regex del kernel de cada repo. Sitio servido
+  INTACTO: ni un byte de `index.html`, `ecovoces-ia.html`, `src/` o `404.html` → **sin cache bump**.
+- **.6 Anti-patterns evitados.** `--no-verify` (el hook corrió entero) · `--amend` · `git add -A` ·
+  editar el CUERPO de una migrada (el censo lo prohíbe) · **renumerar** el bloque de gobernanza al
+  sacarle tres puntos (los números 1-4 se quedan como están: renumerar rompería toda cita) ·
+  escribir primero y comprobar después · subir un techo del maestro para que cupiera una fila.
+- **.7 Archivos.** MODIFICADOS: `docs/30-LECCIONES.md` (3 stubs + 3 marcas §4.2),
+  `docs/99-HISTORIAL-ADR.md` (este ADR + el puntero de frescura del §7),
+  `docs/00-INDICE.md` (fila §9), `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (bloque «Lote 16»).
+  INTACTOS y verificados: `CLAUDE.md`, `docs/05`, `docs/10`, `docs/15`, `docs/20`, `docs/40`,
+  `docs/60`, `scripts/`, `skills/`, `MERGE-GUIA-DANIEL.md` y todo el sitio.
+- **.8 Doctrina.** *Cerrar una cola no es vaciarla: es decidir cada pieza y escribir el veredicto de
+  las que se quedan.* De siete candidatas salen seis y se queda una, con su razón medida y su
+  extracto destilado — porque una cola que llega a cero **migrándolo todo** no habría probado nada
+  del criterio. Y el aviso honesto sobre el alivio: `30` baja 2382c sobre un cap de 40000c que nunca
+  estuvo apretado, mientras **el nodo que sí ahoga a este cerebro sigue igual** —el BOOT al 99 %, a
+  288c de bloquear el próximo commit—. Migrar descomprime donde había cuerpo, no donde duele; decir
+  lo contrario sería vender un alivio que no existe. Estado: lote **MIGRADO, no SELLADO** — los
+  drills de ambigüedad, contexto y ruteo (D10 §5.3-§5.5) los corren agentes fríos ajenos a la
+  migración.

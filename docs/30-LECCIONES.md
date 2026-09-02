@@ -5,13 +5,8 @@
 
 ---
 
-### L-01 — Publicar a GitHub Pages (user-site) sin sustos
-**Disparador**: vas a publicar / activar Pages por primera vez.
-- `.nojekyll` vacío **EN el mismo commit de publicación** (no después; si no, Jekyll ya procesó/ignoró recursos y el CDN sirve esa versión ~10 min).
-- `git add` **SELECTIVO** (NUNCA `-A`/`.`): confirma que `Multimedia/`, `_archive/` y `design_handoff_ecovoces_landing/` quedan fuera (gitignored).
-- Rama `main`; `Settings > Pages > Source = 'Deploy from a branch' > main/(root)` **a mano** (no se activa solo).
-- El **1er deploy tarda hasta ~10 min** y sirve un **404 transitorio** mientras aprovisiona el cert `*.github.io` → **NO es un fallo**; avisar al dueño.
-- user-site en la raíz → **rutas relativas, 0 paths root-absolutos**, sin base-path.
+### L-01 — Publicar a GitHub Pages (user-site) sin sustos ⇒ **migrada al maestro**: [[INSE:L-01]]
+Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
 ### L-02 — Cache-bust `?v=w11-N` (no es inmadurez)
 **Disparador**: cambiaste comportamiento y el dueño "no ve" el cambio.
@@ -30,11 +25,8 @@ Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del
 ### L-05 — Push 403: el credential helper cachea la cuenta equivocada ⇒ **migrada al maestro**: [[INSE:L-05]]
 Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
-### L-06 — Leer el contenido REAL de una fuente externa antes de describirla (Canva / video / PDF)
-**Disparador**: vas a describir/resumir lo que dice un video, una presentación de Canva o un PDF que NO has leído.
-- **NUNCA lo infieras del proyecto** (la landing ≠ el video): produce afirmaciones falsas. El dueño detectó tarjetas inventadas en `ecovoces-ia.html` que no reflejaban su video (→ `99 §3` ADR-C). Companion de **M-01**.
-- **Receta Canva (MCP)**: `resolve-shortlink <id>` → diseño `D…` → `get-presenter-notes` (guion, si existe) + `get-design-content richtexts`. Si vienen VACÍOS (narración por voz / texto incrustado en gráficos) → **`export-design` a JPG por página** → `curl` para descargar → `Read` cada imagen. (El `Read` de PDF necesita `pdftoppm`, AUSENTE en esta máquina, y `pdftotext` no extrae texto de gráficos → exporta JPG, no PDF.)
-- **YouTube**: `WebFetch` a la página del video devuelve solo el footer (la página es JS) → NO sirve para el contenido; ve a la fuente (Canva) o pide el guion al dueño.
+### L-06 — Leer el contenido REAL de una fuente externa antes de describirla (Canva / video / PDF) ⇒ **migrada al maestro**: [[INSE:L-06]]
+Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
 ---
 
@@ -43,26 +35,13 @@ Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del
 ### M-01 — Cita el número exacto o no lo cites (verifica, no asumas) ⇒ **migrada al maestro**: [[INSE:M-01]]
 Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
-### M-09 — El always-on se ganó por importancia y nunca se perdió por desuso: el criterio es frecuencia × costo de omisión
-**Disparador**: el router (`CLAUDE.md`) va apretado y estás a punto de recortar redacción para que quepa algo nuevo.
-- **Patrón** (medido en inmobiliaria, 2026-08-30): el router llegó al **99,8%** del presupuesto de arranque
-  y el diagnóstico escrito era *«los recortes de urgencia ya no dan más»*. Al medirlo, el problema no era el
-  estilo: tres secciones de doctrina pesaban ~2,2k de 20,4k **y gobernaban un sitio ya RETIRADO**. Se
-  auto-cargaban en CADA sesión para no usarse en casi ninguna.
-- **Por qué el cerebro contribuye**: hay gate para el TECHO y doctrina para no subirlo, pero **ninguna regla
-  dice qué se gana el derecho a estar siempre cargado**. Con criterio de entrada y sin criterio de salida, un
-  always-on solo puede crecer: toda doctrina es importante para alguien, y **el que la escribe nunca paga su
-  renta** — la pagan todas las sesiones siguientes.
-- **Regla**: lo que se queda en el always-on se decide por **frecuencia de uso × costo de omitirlo**, no por
-  importancia. Antes de recortar prosa, pregunta qué secciones gobiernan algo que ya no se toca y **múdalas a
-  una hoja on-demand**; una doctrina que se lee cuando hace falta sigue vigente sin pagar renta diaria.
-- **Cómo se aplica aquí**: este repo tiene un solo frente vivo. Cualquier sección del router que gobierne el
-  otro —o una superficie retirada— es candidata a salir a `docs/` y quedarse con su puntero.
+### M-09 — El always-on se ganó por importancia y nunca se perdió por desuso: el criterio es frecuencia × costo de omisión ⇒ **migrada al maestro**: [[INSE:M-09]]
+Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
 
 ## 🧭 Decisiones de gobernanza 2026-06-24 (operador-cars → ×4 cerebros) [HONOR]
 > De la sesión cars (PLAN UNIFICADO, cars §237). Mismo dueño/operación en los 4 repos.
-1. **La extensión Claude-in-Chrome la maneja CLAUDE directamente** (no relay): tras merge+~5min de deploy el dueño avisa y Claude conduce la validación live SOLO (es los OJOS), caza diseño/bugs/regresiones. Skill `validacion-live-chrome` modo (b) = DEFAULT con navegador conectado. Login/credenciales = solo el dueño; cambios locales no-deployados → `preview_*`.
+1. **La extensión Claude-in-Chrome la maneja CLAUDE directamente** (no relay): tras merge+~5min de deploy el dueño avisa y Claude conduce la validación live SOLO (es los OJOS), caza diseño/bugs/regresiones. Skill `validacion-live-chrome` modo (b) = DEFAULT con navegador conectado. Login/credenciales = solo el dueño; cambios locales no-deployados → `preview_*`. ⇒ **migrado al maestro**: [[INSE:GOB-1]] · cuerpo en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md`
 2. **NO preguntar "qué sigue" en un plan ya hecho + revisado estratégicamente por mí** (survey/comité/Gemini/arquitecto): yo manejo el ORDEN técnico; solo interrumpo por decisiones del DUEÑO (dinero/legal/go-no-go/irreversible) o su verificación final. Refuerzo emphático del dueño 24/06. Hablarle SIEMPRE en cristiano (es no-técnico).
-3. **Un workflow/comité ACOTADO (in-cwd read-only, sin git, sin lecturas fuera de cwd) NO se cuelga** — lo que cuelga es la lectura GATEADA por permiso (git/fuera-de-cwd), NO el fan-out acotado en sí (survey de 5 agentes corrió limpio). La maquinaria pesada (comité/Gemini/workflow) se usa para Decisión Fuerte, acotada.
-4. **Verificar TODO claim de un asesor externo (Gemini) contra el código** antes de adoptar — la joya: en cars Gemini revirtió su propio verdicto previo y sus 6 claims se confirmaron leyendo el código. Insumo, no oráculo.
+3. **Un workflow/comité ACOTADO (in-cwd read-only, sin git, sin lecturas fuera de cwd) NO se cuelga** — lo que cuelga es la lectura GATEADA por permiso (git/fuera-de-cwd), NO el fan-out acotado en sí (survey de 5 agentes corrió limpio). La maquinaria pesada (comité/Gemini/workflow) se usa para Decisión Fuerte, acotada. ⇒ **migrado al maestro**: [[INSE:GOB-3]] · cuerpo en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md`
+4. **Verificar TODO claim de un asesor externo (Gemini) contra el código** antes de adoptar — la joya: en cars Gemini revirtió su propio verdicto previo y sus 6 claims se confirmaron leyendo el código. Insumo, no oráculo. ⇒ **migrado al maestro**: [[INSE:GOB-4]] · cuerpo en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md`
