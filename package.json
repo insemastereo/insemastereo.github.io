@@ -7,6 +7,7 @@
   "scripts": {
     "brain:check": "node scripts/brain-check.mjs",
     "brain:diff": "node scripts/brain-diff.mjs",
-    "brain:pull": "node ../brain-private/kernel/pull.mjs"
+    "brain:pull": "node ../brain-private/kernel/pull.mjs",
+    "verify:secretos": "node scripts/verify-secretos.mjs"
   }
 }
