@@ -43,6 +43,23 @@ Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del
 ### M-01 — Cita el número exacto o no lo cites (verifica, no asumas) ⇒ **migrada al maestro**: [[INSE:M-01]]
 Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
+### M-09 — El always-on se ganó por importancia y nunca se perdió por desuso: el criterio es frecuencia × costo de omisión
+**Disparador**: el router (`CLAUDE.md`) va apretado y estás a punto de recortar redacción para que quepa algo nuevo.
+- **Patrón** (medido en inmobiliaria, 2026-08-30): el router llegó al **99,8%** del presupuesto de arranque
+  y el diagnóstico escrito era *«los recortes de urgencia ya no dan más»*. Al medirlo, el problema no era el
+  estilo: tres secciones de doctrina pesaban ~2,2k de 20,4k **y gobernaban un sitio ya RETIRADO**. Se
+  auto-cargaban en CADA sesión para no usarse en casi ninguna.
+- **Por qué el cerebro contribuye**: hay gate para el TECHO y doctrina para no subirlo, pero **ninguna regla
+  dice qué se gana el derecho a estar siempre cargado**. Con criterio de entrada y sin criterio de salida, un
+  always-on solo puede crecer: toda doctrina es importante para alguien, y **el que la escribe nunca paga su
+  renta** — la pagan todas las sesiones siguientes.
+- **Regla**: lo que se queda en el always-on se decide por **frecuencia de uso × costo de omitirlo**, no por
+  importancia. Antes de recortar prosa, pregunta qué secciones gobiernan algo que ya no se toca y **múdalas a
+  una hoja on-demand**; una doctrina que se lee cuando hace falta sigue vigente sin pagar renta diaria.
+- **Cómo se aplica aquí**: este repo tiene un solo frente vivo. Cualquier sección del router que gobierne el
+  otro —o una superficie retirada— es candidata a salir a `docs/` y quedarse con su puntero.
+
+
 ## 🧭 Decisiones de gobernanza 2026-06-24 (operador-cars → ×4 cerebros) [HONOR]
 > De la sesión cars (PLAN UNIFICADO, cars §237). Mismo dueño/operación en los 4 repos.
 1. **La extensión Claude-in-Chrome la maneja CLAUDE directamente** (no relay): tras merge+~5min de deploy el dueño avisa y Claude conduce la validación live SOLO (es los OJOS), caza diseño/bugs/regresiones. Skill `validacion-live-chrome` modo (b) = DEFAULT con navegador conectado. Login/credenciales = solo el dueño; cambios locales no-deployados → `preview_*`.
