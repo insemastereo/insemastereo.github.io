@@ -38,6 +38,11 @@ Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del
 ### M-09 — El always-on se ganó por importancia y nunca se perdió por desuso: el criterio es frecuencia × costo de omisión ⇒ **migrada al maestro**: [[INSE:M-09]]
 Cuerpo íntegro en `_legacy/LECCIONES-MIGRADAS-MAESTRO.md` (punto de retorno del ABORT).
 
+### M-10 — El kernel son CUATRO ficheros: grepear uno solo es medir con denominador 1/4
+**Disparador**: vas a declarar muerta una clave del manifest, un gate o una regla porque no aparece donde miraste.
+- La N2 #1 acusó a `lastOffsiteBackup` de «clave que nadie lee» midiendo solo `scripts/brain-check.mjs`. Medido el 2026-09-04: la lee `scripts/session-handoff.mjs:114`, y su salida es la línea del boot que el dueño SÍ ve.
+- Receta: barre los `kernelFiles` del manifest (hoy 4), no el linter solo. Un hallazgo de más contra un objeto correcto empuja a «arreglar» lo que estaba bien.
+
 
 ## 🧭 Decisiones de gobernanza 2026-06-24 (operador-cars → ×4 cerebros) [HONOR]
 > De la sesión cars (PLAN UNIFICADO, cars §237). Mismo dueño/operación en los 4 repos.

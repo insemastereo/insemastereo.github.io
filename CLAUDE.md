@@ -103,7 +103,7 @@ si reportó) y 7 puntos: **.1** causa raíz (verificada) · **.2** solución est
 doctrina + cache bump. Si hubo deliberación: línea-ancla `Deliberación: <crudo> · <síntesis>`.
 
 **Reglas git**
-- **Claude commitea Y PUSHEA** la rama al cerrar trabajo verificado; **el dueño mergea/publica**.
+- **Claude commitea, PUSHEA y MERGEA `main`** al cerrar (orden nº 2 del C0, 2-sep-2026); PR solo con permiso.
 - `git add` archivos específicos (**NUNCA `git add -A` / `.`** — arrastraría `Multimedia/` 58M al repo
   público para siempre). Confirmar que `Multimedia/` y `_archive/` quedan fuera.
 - Footer `Co-Authored-By: Claude <noreply@anthropic.com>` + `Modelo:`. NUNCA `--amend`/`--no-verify` sin pedido.

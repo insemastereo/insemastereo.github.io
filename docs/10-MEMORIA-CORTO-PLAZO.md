@@ -2,7 +2,7 @@
 
 > **Nodo: pizarra del sprint** (auto-carga con `CLAUDE.md` + `05`). SOLO lo vivo: foco, pendientes (TODO-NN),
 > bitácora efímera. Estado técnico → `05`. Al cerrar tarea: consolidar a ADR (`99`) + fila en `00`, lecciones
-> a `30`, y PODAR al foco vivo (GC §G.4). El foco SIEMPRE incluye 🚫 callejones sin salida.
+> a `30`, y PODAR al foco vivo (GC §G.4). El foco SIEMPRE incluye 🚫 callejones sin salida. **Última actualización: 2026-09-04.**
 
 ---
 
@@ -10,11 +10,9 @@
 > 🤖 Modelo vigente **⟦OPUS-5⟧** (desde 2026-07-24) · footer `Modelo:` con el modelo REAL de la sesión, nunca copiado de un commit viejo.
 
 > 🧠 Cerebro insemastereo ✅ (2026-06-19, `brain:check` SANO, commit fundacional `2f3e0bc`).
-> 🎨 **Mirror de la landing ✅ CONSTRUIDO y VERIFICADO** (vanilla 1:1 del handoff, ADR-A): `index.html` en la
-> raíz + `src/{styles,js/landing,assets}`. Verificado en navegador real: 18 secciones, GSAP, i18n ES↔EN,
-> 0 errores de consola, fuentes/assets OK. ✅ **PUBLICADO y AL AIRE** (`https://insemastereo.github.io/`).
+> 🎨 **Mirror de la landing ✅ AL AIRE** (vanilla 1:1 del handoff, ADR-A) — el detalle verificado vive en `05`.
 >
-> 🎬 **`ecovoces-ia.html` AL AIRE** (2026-06-20): presentación del proyecto en video (YouTube `NnoYIhtW9MA`) + apartado "ECOVOCES IA" en el footer. Entrega al docente → `https://insemastereo.github.io/ecovoces-ia.html`. Única excepción SOLICITADA a la pausa → cerrada en `99 §3` (ADR-C).
+> 🎬 **`ecovoces-ia.html` AL AIRE** (entrega al docente): única excepción a la pausa → cerrada en `99 §3` (ADR-C); estado en `05`.
 >
 > ⏸️ **PROYECTO EN PAUSA (dueño 2026-06-19)**: el demo queda AL AIRE estable — **NO cambiar proactivamente**. Retomar = paso **demo→real** (streaming en vivo · cuentas usuario · chat real · video cabina → `99` ADR-B §8) + migrar el laboratorio. **El dueño avisará cuándo y cómo continuar.**
 >
@@ -35,25 +33,22 @@
 | **TODO-06** | 2ª opinión externa Gemini sobre el sustrato (opcional; comité ya con confianza alta) | 🔮 | dueño |
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
+| **TODO-11** | **Al KERNEL canónico** (aquí no: gate #0) — N2 #2: `BRAIN_RE` de `session-handoff.mjs:98` acusa 8/14 commits de «producto sin ADR» con 0 producto tocado; + declarar `bootRealTarget` | 🔮 | canon |
 | **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
 
 > ✅ **CERRADOS y fuera del ledger** (§G.3) — dónde vive el registro de cada uno, sin inventar punteros:
 > **TODO-01** cerebro fundacional → `99 §0` · **TODO-02** mirror de la landing → `99 ADR-A` (la decisión de
 > sustrato) + bitácora 19-jun · **TODO-03** fixes ortogonales (preload · canonical · sitemap · robots · 404 ·
 > OG+JSON-LD) → **sin ADR**: viven en los commits y en la bitácora · **TODO-04** publicación en Pages →
-> estado LIVE en `05` + bitácora. **TODO-10** la rama del cerebro → **MERGEADA** en `094b08f` (el dueño la
-> mergeó; la fila que lo daba por pendiente era stale).
+> estado LIVE en `05` + bitácora. **TODO-10** la rama del cerebro → **MERGEADA** en `094b08f`.
 
 ---
 
 ## 📝 Bitácora (efímera)
 
-> 🐤 **26-ago — el canario acusó 19 commits sin arranque**; queda escrito ANTES de refrescar el
-> marcador, que borra la señal. Los hooks están BIEN cableados: los 19 son previos al commit que
-> instaló el heartbeat, o mantenimiento de flota desde la sesión de un repo hermano. El kernel ya
-> no acusa a la distribución (§219 de inmobiliaria); este caso es más ancho y se juzga, no se
-> regexea. Si vuelve a salir con trabajo LOCAL detrás, es real.
+> - **2026-09-04 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #2** (14 heredados: 10 cerrados, 2 parciales, 1 con premisa corregida, 1 abierto; 0 reincidentes) → tabla en la bóveda. Lo que cambia para ti: el `05` ya no dice que mergea el dueño (lo hace Claude) y el banner del boot acusa commits de «producto» que no lo son (TODO-11).
+
+> 🐤 **26-ago — el canario acusó 19 commits sin arranque: FALSA ALARMA** (previos al heartbeat, o flota desde un repo hermano). Se juzga, no se regexea: si vuelve con trabajo LOCAL detrás, es real.
 > - **2026-08-01 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #1** (36 hallazgos → 14) + **heartbeat** instalado → **ADR-F**. Lo que cambia para ti: rama/HEAD/sucios ya NO se copian al `05`, los genera `docs/.estado-auto.md`.
-> - **2026-07-20 → 07-23 ⟦FABLE-5⟧**: el kernel saltó del v1.4.1 al v1.6.0 vía `brain:pull`; el canónico pasó a `../brain-private/kernel/` y este repo solo CONSUME sus `kernelFiles`.
-> - **2026-07-18 ⟦sinapsis desde inmobiliaria, FABLE-5⟧**: payloads liderazgo aplicados (60-WORKFLOWS: escritor único kernel/§G = inmobiliaria-operador) + 15 skills re-sincronizadas con verdad de producción SEO (Offer-sin-price inválido, FAQPage sin rich result, AEM muerto, objetivo Mensajes retirado — detalle: inmobiliaria ADR §33-§37). Novedades disponibles para catalogar: refreshes paid-ads v2.2/ad-creative v2.8 (+ nuevas video/offers/marketing-loops/image en inmobiliaria).
+> - **2026-07-18 ⟦sinapsis, FABLE-5⟧**: payloads de liderazgo + 15 skills re-sincronizadas con verdad de producción SEO (detalle: inmobiliaria ADR §33-§37).
 > - **2026-06-19 ⟦Opus 4.8⟧**: cerebro fundacional (`2f3e0bc`) + comité de sustrato (vanilla > Astro) → mirror construido y verificado en navegador → push y **Pages AL AIRE**. El dueño revocó el token expuesto (→ L-05). Detalle → `99` ADR-A/ADR-C.

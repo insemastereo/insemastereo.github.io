@@ -141,12 +141,12 @@
     }
   ],
   "deepAudit": {
-    "last": "2026-08-01",
-    "coveredHeaderCount": 6,
+    "last": "2026-09-04",
+    "coveredHeaderCount": 10,
     "maxAdrGap": 12,
     "maxDays": 30,
-    "_que": "Auditoría Nivel-2 #1 REAL el 2026-08-01 (la anterior era la fecha de instalación, sin auditoría). 36 hallazgos brutos → 14 curados; tabla en el archiveDir.",
-    "tableFile": "2026-08-01-auditoria-nivel2-hallazgos.md"
+    "_que": "Auditoría Nivel-2 #2 el 2026-09-04 (la #1 fue el 2026-08-01; 34 días de retraso, carril B2-bis del DICTAMEN-ENCENDIDO). Sondas 0-3, 6 y 8; la 3 corrió MECÁNICA (sin agentes fríos: ListAgents no ofrece ninguno) y las 4/5/7 se declaran NO corridas, no se estiman. 14 hallazgos heredados con denominador completo: 10 cerrados, 2 parciales, 1 con premisa CORREGIDA, 1 abierto sin cambio, 0 reincidentes; 5 nuevos. coveredHeaderCount MEDIDO con el mismo regex de headers que usa el gate sobre docs/99 = 10, no copiado.",
+    "tableFile": "2026-09-04-auditoria-nivel2-2-hallazgos.md"
   },
   "orphanAllowlist": [
     ".handoff-auto.md",
