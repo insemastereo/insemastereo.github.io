@@ -9,7 +9,6 @@
 ## 🎯 Foco actual
 > 🤖 Modelo vigente **⟦OPUS-5⟧** (desde 2026-07-24) · footer `Modelo:` con el modelo REAL de la sesión, nunca copiado de un commit viejo.
 
-> 🧠 Cerebro insemastereo ✅ (2026-06-19, `brain:check` SANO, commit fundacional `2f3e0bc`).
 > 🎨 **Mirror de la landing ✅ AL AIRE** (vanilla 1:1 del handoff, ADR-A) — el detalle verificado vive en `05`.
 >
 > 🎬 **`ecovoces-ia.html` AL AIRE** (entrega al docente): única excepción a la pausa → cerrada en `99 §3` (ADR-C); estado en `05`.
@@ -34,6 +33,7 @@
 | **TODO-07** | **ADR-B — Migrar laboratorio** (de PROTOTIPO): reescritura a estado encapsulado (app.js 1427L, cero ESM, 21 onclick) + seguridad Firebase/menores | 🔒 futuro | post-landing |
 | **TODO-08** | Deuda doc PROTOTIPO: `ARCHITECTURE.md:58/:85` cita `core/i18n.js` + `data-i18n` fantasma (no existen) | 🔮 | con ADR-B |
 | **TODO-11** | **Al KERNEL canónico** (aquí no: gate #0) — N2 #2: `BRAIN_RE` de `session-handoff.mjs:98` acusa 8/14 commits de «producto sin ADR» con 0 producto tocado; + declarar `bootRealTarget` | 🔮 | canon |
+| **TODO-12** | **N2 #2 cierre** (bóveda y raíz, aquí no): lápida ⚰️ + tachado in-line en la síntesis del comité (N2b-06) · el handoff de diseño no está en NINGÚN repo (N2b-07) · residuo de la doctrina de merge en `secretos.yml` y `MERGE-GUIA-DANIEL.md` (N2b-12) | 🔮 | — |
 | **TODO-09** | **Epic demo→real** (visión dueño → `99` ADR-B §8): streaming audio en vivo · cuentas usuario (login/pass) · chat real · video cabina en vivo · +. Cada una = su propio ADR | 🔒 futuro | el dueño avisa |
 
 > ✅ **CERRADOS y fuera del ledger** (§G.3) — dónde vive el registro de cada uno, sin inventar punteros:
@@ -46,7 +46,7 @@
 
 ## 📝 Bitácora (efímera)
 
-> - **2026-09-04 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #2** (14 heredados: 10 cerrados, 2 parciales, 1 con premisa corregida, 1 abierto; 0 reincidentes) → tabla en la bóveda. Lo que cambia para ti: el `05` ya no dice que mergea el dueño (lo hace Claude) y el banner del boot acusa commits de «producto» que no lo son (TODO-11).
+> - **2026-09-04 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #2 CERRADA COMPLETA** en dos tandas (sondas 0-8; la 2ª corrió 3-en-frío/4/5/7/8.3) → `99 §10` + tabla en la bóveda. 14 heredados: 9 cerrados, 3 parciales, 1 con premisa corregida, 1 abierto; 0 reincidentes. Lo que cambia para ti: el `05` ya no dice que mergea el dueño (lo hace Claude), el banner del arranque acusa commits de «producto» que no lo son (TODO-11), y el documento de diseño del que nació la web **no está guardado en ningún repositorio** (TODO-12).
 
 > 🐤 **26-ago — el canario acusó 19 commits sin arranque: FALSA ALARMA** (previos al heartbeat, o flota desde un repo hermano). Se juzga, no se regexea: si vuelve con trabajo LOCAL detrás, es real.
 > - **2026-08-01 ⟦OPUS-5⟧**: 🔬 **auditoría Nivel-2 #1** (36 hallazgos → 14) + **heartbeat** instalado → **ADR-F**. Lo que cambia para ti: rama/HEAD/sucios ya NO se copian al `05`, los genera `docs/.estado-auto.md`.

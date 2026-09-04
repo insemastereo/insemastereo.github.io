@@ -48,3 +48,4 @@
 | §7 | ADR-G — **Lote 3 del CEREBRO MAESTRO**: `L-04`, `L-05` y `M-01` mudan su cuerpo a la bóveda; aquí quedan titular + stub + `_legacy/`. Censo sha 3/3; kernel v1.20 MEDIDO. | rama `f2/lote-inse` 2026-09-01 |
 | §8 | ADR-H — **La deuda AJENA se paga igual**: kernel v1.20→v1.29.0 + las 14 skills DERIVADAS re-copiadas desde la canónica, sin subir `skillDriftBaseline`. Desbloquea el lote 3 sin `--no-verify`. | rama `f2/lote-inse` 2026-09-01 |
 | §9 | ADR-I — **Lote 16 y la cola en CERO**: `L-01`, `L-06`, `M-09` y los puntos 1/3/4 del bloque de gobernanza (`GOB-1`/`GOB-3`/`GOB-4`, forma §4.2) mudan su cuerpo a la bóveda. `L-02` **RETENIDA** por el guardián. Censo sha 6/6. | `main` 2026-09-02 |
+| §10 | ADR-J — **Auditoría Nivel-2 #2 COMPLETA** (sondas 0-8, 8=3/3): la fuente de verdad VISUAL no está en NINGÚN repo; N2-08 reabierta. 13 hallazgos nuevos. | auditoría 2026-09-04 |

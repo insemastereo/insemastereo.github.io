@@ -352,3 +352,65 @@ kernel — **inmobiliaria TODO-23**, porque el #17 habría cazado N2-01 el prime
   lo contrario sería vender un alivio que no existe. Estado: lote **MIGRADO, no SELLADO** — los
   drills de ambigüedad, contexto y ruteo (D10 §5.3-§5.5) los corren agentes fríos ajenos a la
   migración.
+
+## 10. ADR-J — Auditoría Nivel-2 #2 COMPLETA: la fuente de verdad VISUAL del producto no vive en ningún repositorio ⟦OPUS-5⟧ (2026-09-04)
+
+Deliberación: `research-archive/2026-09-04-auditoria-nivel2-2-hallazgos.md` (tabla curada, = `deepAudit.tableFile`;
+14 heredadas + 13 nuevas) · sondas **3 en frío, 4, 5, 7 y 8.3** corridas en subagentes esta misma fecha, §3A-§4D
+de esa tabla.
+
+**10.1 Contexto: esta auditoría se cerró DOS veces y la primera no valía.** La 1ª tanda (`c2ceb33`) corrió las
+sondas 0-3 —la 3 **mecánica**, sin agente frío—, la 6 y las 8.1/8.2, arregló los nodos y **movió `deepAudit.last`
+a hoy con cuatro sondas sin correr**. El verificador lo rechazó contra la propia skill, §«Modo sin-tokens»:
+*`last` solo se mueve cuando la auditoría está COMPLETA*; en una parcial va `deepAudit.parcial` junto al `last`
+ANTERIOR **y el nudge sigue encendido a propósito** — porque es el aviso que convoca justo lo que falta. Los otros
+dos rechazos: no existía este ADR (cierre obligatorio nº 2) y el `_que` del manifest declaraba «sondas 0-3, 6 y 8»
+sin decir que la 8 era **1 de 3** y la 3 mecánica. La 2ª tanda corrió las cinco que faltaban: **el sello se sostiene
+por lo CORRIDO, no por la fecha.** Sondas 0-8 completas, 8 = 3/3.
+
+**10.2 El hallazgo que manda (N2b-07): lo que el cerebro declara SSoT no sobrevive a un clon.** `CLAUDE.md:51` y
+`20 §2` declaran `design_handoff_ecovoces_landing/README.md` *«la fuente de verdad VISUAL del mirror»* — el producto
+entero de este repo es su espejo pixel-perfect. Medido: `git ls-files` sobre esa carpeta → **0** (excluida a
+propósito, `.gitignore:22`) y **cero copias en la bóveda** (el `find` por nombre da 3 hits y los tres son ajenos:
+instrumento comprobado antes de acusar). 16.832 bytes en un solo disco: una máquina nueva y la especificación de la
+que nació la landing desaparece. Los dos gates que rozan el tema —#5 (hojas referenciadas existen) y #27 (rutas no
+fantasma)— miden **existencia en DISCO, no trackeo**, así que dan verde para siempre justo en la máquina donde el
+fallo es invisible.
+
+**10.3 Lo que aportan las cinco sondas nuevas.** **3 en frío** (7 preguntas + control negativo, que no picó): 6/7
+en 0-2 saltos por punteros literales, y un hueco real — *el cerebro sabe decir «está al aire» y no puede decir «está
+actualizado»*: ningún campo ata el HEAD publicado al local. **4 (fidelidad)**: el titular de la decisión se re-toma,
+el camino no — la síntesis del comité promete un crudo que no existe y repite en su punto de uso (`:52`) el hecho que
+su propia cabecera declara refutado (`:9-13`); **N2-08 vuelve a PARCIAL** (N2b-06), y el §6 de este mismo historial
+ya lo había escrito: «tres punteros prometían», y el remedio cubrió uno. **5 (memoria del harness)**: 10 afirmaciones
+— 8 duplican un hecho con dueño, 2 apuntan bien, 1 es falsa («push bloqueado por credencial», desmentida por el
+CUERPO del mismo fichero) y 1 nombra un canon de kernel derogado. **7 (adversarial)**: 9 riesgos sin gate, 8
+candidatos a fusionar o declarar N/A, y **1 hallazgo retirado por fallo del propio instrumento**. **8.3 (régimen)**:
+151 fan-outs, 18 compactaciones, **0 sesiones propias** y un diff ES/EN sin divergencia de hecho en 4/4.
+
+**10.4 La pausa que nadie revisa (N2b-10).** El dueño declaró PAUSA el 2026-06-19: **77 días**, con **0** commits de
+producto en 30 días (3 en los últimos 100, 3 en el año) — y el calendario exige auditoría cada 30 días, frescura cada
+10 y respaldo cada 35. No existe el concepto de «repo congelado» en manifest, gate ni sonda: la pausa es prosa sin
+fecha de revisión y sin ejecutor. Es la pregunta que el cerebro no se hace: *se mantiene caliente a sí mismo para
+poder decir que está sano, sobre un producto congelado desde junio.*
+
+**10.5 No-regresión.** `brain:check` **CEREBRO SANO** con el kernel v1.34.1 **intacto** (gate #0) y sin tocar
+`scripts/`, `githooks/` ni `skills/`. **GC pareado**: BOOT 27.712c (en `2b02f3f`) → **27.441c**, delta **−271c**. La 1ª tanda lo
+dejó en 27.069c; ésta añade **+464c** (la ficha TODO-12 y el puntero de la bitácora) y poda **−92c** (el estado
+fundacional duplicado en el `10`, cuyo dueño es el §0 de este mismo historial), así que el margen contra el
+`bootCharsTarget` queda en **559c** — más holgado que los 288c que esta auditoría encontró, menos que los 931c
+que dejó la 1ª tanda, y se dice con las tres cifras delante. El ADR y la fila del
+índice **no son boot**: `99` +5.756c y `00` +185c, medidos aparte con la misma regla (chars sin CR). Sitio servido
+**intacto** — ni un byte de `index.html`, `src/`, `ecovoces-ia.html` o `404.html` → **sin cache bump**.
+
+**10.6 Anti-patterns evitados.** Mover el sello con la auditoría a medias (el motivo del rechazo) · declarar en el
+`_que` más cobertura de la que hubo · **cerrar N2-08 por segunda vez sin re-medir sus tres punteros** · estimar las
+cifras que la 8.3 no pudo recolectar (se dice cuál faltó y por qué) · editar la síntesis del comité en el mismo
+commit que la audita, que habría borrado la evidencia del hallazgo · `--no-verify` · `--amend` · `git add -A`.
+
+**10.7 Doctrina.** *El sello de una auditoría es la afirmación más cara del cerebro, porque apaga el aviso que la
+convoca.* Un `deepAudit.last` fresco no dice «se auditó»: dice «no hace falta auditar», y esa frase la lee el gate,
+la lee el banner del dueño y la lee la sesión siguiente — por eso la skill exige que un sello parcial **no le dé al
+gate el dato que le falta**, y por eso una auditoría parcial honesta vale más que una completa fingida. El corolario
+llega del handoff: **un nodo que declara «fuente de verdad» y ningún `git ls-files` encuentra está declarando una
+promesa, no un respaldo**, y los gates de existencia dan verde precisamente en la máquina donde eso no se nota.
