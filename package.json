@@ -3,11 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Landing ECOVOCES IA — INSEMA STEREO (vanilla, GitHub Pages). Cerebro documental + kernel byte-idéntico con la familia (altorracars/bersaglio/inmobiliaria).",
+  "description": "Landing ECOVOCES IA — INSEMA STEREO (vanilla, GitHub Pages). El cerebro documental vive en ../brain-private/insemastereo/ (F8, 2026-09-05); aqui solo el sitio y su escaner de secretos.",
   "scripts": {
-    "brain:check": "node scripts/brain-check.mjs",
-    "brain:diff": "node scripts/brain-diff.mjs",
-    "brain:pull": "node ../brain-private/kernel/pull.mjs",
     "verify:secretos": "node scripts/verify-secretos.mjs"
   }
 }
