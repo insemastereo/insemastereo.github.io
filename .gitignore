@@ -1,0 +1,30 @@
+# Dependencias / build (vanilla no usa node_modules en runtime; solo tooling futuro)
+node_modules/
+dist/
+.vite/
+
+# Secrets (NUNCA al repo público)
+.env
+.env.*
+!.env.example
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Pesados que NO van al repo público (ADR-A · blindaje pre-publicación)
+# PNG originales 2048+ (~58M) — usar solo los .webp optimizados en web
+Multimedia/
+_archive/
+
+# Handoff de diseño = fuente de referencia (el sitio servido vive en src/). No al repo público.
+design_handoff_ecovoces_landing/
+
+# (F8, 2026-09-05) Los sidecars del cerebro (docs/.estado-auto.md, .guard-log, .sesiones/…) ya no
+# viven aqui: el cerebro esta en ../brain-private/insemastereo/ y los ignora el .gitignore de la boveda.
+
+# Carpetas que escriben plugins de terceros dentro del repo (incidente 2026-09-03).
+# No son nuestras y una de ellas llevaba un id de telemetria dentro.
+.semgrep/
+.remember/

@@ -1,0 +1,70 @@
+/* ==========================================================================
+   ECOVOCES IA — colors.css
+   Sistema de color "Windows 11 Mica" (tema CLARO). Calmado, translúcido, premium.
+   NUNCA oscuro, NUNCA neón. El acento verde eco es el "accent color" del sistema.
+   Base values + semantic aliases. Prefijo --w11-* preservado (lo usan los componentes).
+   ========================================================================== */
+:root{
+  /* ---- Material Mica / Acrylic (superficies por profundidad) ---- */
+  --w11-mica:#f4f6f9;          /* base del fondo de página */
+  --w11-mica-2:#eaeef3;        /* mica más profunda / hovers planos */
+  --w11-card:#ffffff;          /* tarjeta sólida (legibilidad) */
+  --w11-card-2:#fbfcfe;        /* banda ABP (apenas tintada) */
+  --w11-acrylic:rgba(255,255,255,.72); /* SOLO superficies flotantes (nav, tiles, tags) */
+
+  /* ---- Trazos y divisores sutiles ---- */
+  --w11-stroke:rgba(17,24,39,.08);
+  --w11-stroke-2:rgba(17,24,39,.14);
+
+  /* ---- Texto ---- */
+  --w11-text:#161a20;          /* títulos y cuerpo principal */
+  --w11-text-2:#586273;        /* texto secundario / leads */
+  --w11-text-3:#8a93a2;        /* texto terciario / micro */
+  --w11-on-accent:#ffffff;     /* texto sobre acento */
+
+  /* ---- Acento principal: VERDE ECO (rol del accent color de Win11) ---- */
+  --w11-accent:#0f7a49;        /* CTA primario, enlaces hover, iconos eco */
+  --w11-accent-2:#0a6a3f;      /* hover/pressed del acento */
+  --w11-accent-bright:#15935a; /* variante luminosa (reveal glow) */
+  --w11-accent-soft:#e7f6ed;   /* fondo suave del acento (pills, iconos) */
+  --w11-ring:rgba(21,147,90,.40); /* focus ring */
+
+  /* ---- Acentos secundarios (uso MEDIDO, nunca dominan) ---- */
+  --w11-blue:#0a7ea4;    --w11-blue-soft:#e3f1f7;   /* IA / Caribe */
+  --w11-amber:#a96a02;   --w11-amber-soft:#fbeed3;  /* metas / comunicación */
+  --w11-violet:#6a46cf;  --w11-violet-soft:#eee9fb; /* tecnología maker */
+
+  /* ---- Gradiente firma (titulares + números fantasma) ---- */
+  --w11-grad-heading:linear-gradient(135deg,#0f7a49 0%,#0a7ea4 100%); /* @kind color */
+
+  /* ====================================================================
+     ALIASES SEMÁNTICOS (nombres legibles que mapean a los tokens base).
+     Úsalos en código nuevo; el prefijo --w11-* sigue siendo la fuente.
+     ==================================================================== */
+  --surface-page:var(--w11-mica);
+  --surface-sunken:var(--w11-mica-2);
+  --surface-card:var(--w11-card);
+  --surface-card-quiet:var(--w11-card-2);
+  --surface-floating:var(--w11-acrylic);
+
+  --border-hairline:var(--w11-stroke);
+  --border-strong:var(--w11-stroke-2);
+
+  --text-primary:var(--w11-text);
+  --text-secondary:var(--w11-text-2);
+  --text-tertiary:var(--w11-text-3);
+
+  --accent:var(--w11-accent);
+  --accent-hover:var(--w11-accent-2);
+  --accent-soft:var(--w11-accent-soft);
+  --focus-ring:var(--w11-ring);
+
+  /* ---- Fondo Mica cohesivo de la página (un solo gradiente + dos halos) ---- */
+  --bg-mica:
+    radial-gradient(900px 520px at 12% -6%, rgba(15,122,73,.10), transparent 58%),
+    radial-gradient(820px 520px at 100% -2%, rgba(10,126,164,.08), transparent 54%),
+    linear-gradient(180deg,#f4f6f9 0%,#eef1f5 45%,#eaeef3 100%); /* @kind color */
+
+  /* ---- Franja institucional Colombia (detalle de marca) ---- */
+  --flag-strip:linear-gradient(to right,#f6c945 0 40%,#3b82f6 40% 70%,#ef4444 70% 100%); /* @kind color */
+}

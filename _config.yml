@@ -1,0 +1,26 @@
+# _config.yml — el cerebro documental NO es el sitio.
+#
+# GitHub Pages publica esta rama tal cual y, con `.nojekyll` en la raiz, servia el
+# repositorio ENTERO en https://insemastereo.github.io: CLAUDE.md, docs/, scripts/,
+# skills/, _legacy/ y hasta .gitignore devolvian 200 (medido 2026-09-05).
+# Este fichero activa Jekyll con una sola clave —`exclude`— para que esas rutas dejen
+# de servirse. Ningun HTML del sitio lleva front matter YAML ni Liquid, asi que Jekyll
+# los copia verbatim: index.html, 404.html, ecovoces-ia.html, robots.txt, sitemap.xml
+# y todo src/ (fuentes, imagenes, video, css y js del landing) salen igual que antes.
+# Lo que empieza por "." o "_" (.claude/, .github/, .gitignore, _legacy/) Jekyll ya lo
+# ignora por si mismo; aqui se listan igual los que importan, para que se lean.
+
+exclude:
+  # --- Cerebro documental y su maquinaria ---
+  - CLAUDE.md
+  - docs/
+  - scripts/
+  - skills/
+  - githooks/
+  - _legacy/
+  # --- Notas internas y tooling: no son el sitio ---
+  - MERGE-GUIA-DANIEL.md
+  - package.json
+  - package-lock.json
+  - node_modules/
+  - "*.log"

@@ -1,0 +1,10 @@
+{
+  "name": "insemastereo.github.io",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Landing ECOVOCES IA — INSEMA STEREO (vanilla, GitHub Pages). El cerebro documental vive en ../brain-private/insemastereo/ (F8, 2026-09-05); aqui solo el sitio y su escaner de secretos.",
+  "scripts": {
+    "verify:secretos": "node scripts/verify-secretos.mjs"
+  }
+}

@@ -1,0 +1,11 @@
+/* ==========================================================================
+   ECOVOCES IA — tokens (entry) · INSEMA STEREO mirror
+   Punto de entrada de los design tokens del sistema "Windows 11 Mica".
+   Self-hosted, 100% offline. Las rutas ../assets/fonts/ de fonts.css resuelven
+   desde src/styles/ → src/assets/fonts/. (ADR-A: vanilla sin build.)
+   ========================================================================== */
+@import "fonts.css";
+@import "colors.css";
+@import "typography.css";
+@import "spacing.css";
+@import "effects.css";
